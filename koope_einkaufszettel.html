@@ -64,7 +64,7 @@
       top: 12px;
       z-index: 100;
     }
-    .search-icon { font-size: 15px; flex-shrink: 0; opacity: 0.45; }
+    .search-icon { width: 17px; height: 17px; flex-shrink: 0; opacity: 0.45; display: block; }
     .search-in {
       flex: 1;
       border: none;
@@ -202,8 +202,9 @@
 
     li {
       display: flex;
-      align-items: flex-start;
-      padding: 9px 16px;
+      align-items: center;
+      padding: 12px 16px;
+      min-height: 56px;
       border-bottom: 1px solid var(--border);
       gap: 10px;
       transition: background 0.1s;
@@ -213,12 +214,11 @@
     li.checked { background: color-mix(in srgb, var(--accent) 5%, transparent); }
 
     input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
+      width: 22px;
+      height: 22px;
       accent-color: var(--accent);
       cursor: pointer;
       flex-shrink: 0;
-      margin-top: 2px;
     }
 
     label {
@@ -236,9 +236,9 @@
     }
 
     /* ── Quantity ──────────────────────────────────────────────── */
-    .q { display: flex; align-items: center; gap: 3px; flex-shrink: 0; margin-top: 1px; }
+    .q { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
     .qi {
-      width: 52px;
+      width: 40px;
       padding: 3px 5px;
       border: 1px solid var(--border);
       border-radius: 6px;
@@ -285,19 +285,66 @@
     .cart-name { flex: 1; font-size: 14px; }
     .cart-qty-label { font-size: 12px; color: var(--accent); white-space: nowrap; font-weight: 600; }
     .cart-price { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+    /* ── Logo ────────────────────────────────────────────────────── */
+    .header-logo { display: flex; align-items: center; gap: 13px; }
+    .logo-bag { width: 38px; height: 44px; flex-shrink: 0; }
+
+    /* ── Stepper buttons ─────────────────────────────────────────── */
+    .q-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
+      font-family: inherit;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .q-btn:active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* ── Chevron SVG ─────────────────────────────────────────────── */
+    .chevron { display: flex; align-items: center; }
+
+    /* ── Actions row ─────────────────────────────────────────────── */
+    .actions button { padding: 9px 16px; font-size: 14px; }
   </style>
 </head>
 <body>
+<div id="loading-overlay" style="position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;font-size:15px;color:var(--muted);">Loading…</div>
 <div class="container">
 
   <header>
-    <h1>Koope Shopping List</h1>
-    <p class="subtitle">Pickup: Friday, 29.05.2026 · Self-service · 151 products</p>
+    <div class="header-logo">
+      <svg class="logo-bag" viewBox="0 0 40 46" fill="none" aria-hidden="true">
+        <rect x="3" y="18" width="34" height="26" rx="4" fill="var(--accent)" fill-opacity="0.13" stroke="var(--accent)" stroke-width="2"/>
+        <path d="M14 18C14 9 26 9 26 18" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="3" y1="26" x2="37" y2="26" stroke="var(--accent)" stroke-width="1" stroke-opacity="0.25"/>
+        <path d="M17 15C16 11 20 9 20 13" stroke="#ff9f0a" stroke-width="2" stroke-linecap="round"/>
+        <path d="M23 14C24 10 20 9 21 13" stroke="#34c759" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>Koope</h1>
+        <p class="subtitle">Pickup: Friday, 29.05.2026 · Self-service · 151 products</p>
+      </div>
+    </div>
   </header>
 
   <!-- ══ SEARCH ════════════════════════════════════════════════ -->
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
+    <svg class="search-icon" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
     <input class="search-in" id="search-in" type="search" placeholder="Search products…" autocomplete="off" autocorrect="off" spellcheck="false">
     <span class="search-count" id="search-count"></span>
     <button class="search-clr" id="search-clr" onclick="clearSearch()" title="Clear search">✕</button>
@@ -687,8 +734,14 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  const SUPABASE_URL = 'https://yxkkseauqoiemyswknsx.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_xQZU1Hvm5eOzNSaZE8wL1w_7YObMr-M';
+  const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
   const TOTAL = 151;
+  const state = {};
 
   const CATEGORIES = [
     { badge: 'getraenke',     ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -722,11 +775,31 @@
     { badge: 'nonfood',       ids: [145,146,147,148,149,150,151] },
   ];
 
-  // ── Checkbox ──────────────────────────────────────────────────
-  function getChecked(id) { return localStorage.getItem('cb' + id) === '1'; }
+  // ── State helpers ─────────────────────────────────────────────
+  function getChecked(id) { return state[id]?.checked || false; }
+  function getQty(id)     { return state[id]?.quantity || ''; }
+
   function setChecked(id, val) {
-    val ? localStorage.setItem('cb' + id, '1') : localStorage.removeItem('cb' + id);
+    state[id] = { ...(state[id] || {}), checked: val };
+    db.from('shopping_state')
+      .update({ checked: val, updated_at: new Date().toISOString() })
+      .eq('item_id', id)
+      .then(({ error }) => { if (error) console.error('sync error', error); });
   }
+
+  const _qTimer = {};
+  function setQty(id, val) {
+    state[id] = { ...(state[id] || {}), quantity: val };
+    clearTimeout(_qTimer[id]);
+    _qTimer[id] = setTimeout(() => {
+      db.from('shopping_state')
+        .update({ quantity: val, updated_at: new Date().toISOString() })
+        .eq('item_id', id)
+        .then(({ error }) => { if (error) console.error('sync error', error); });
+    }, 600);
+  }
+
+  // ── Apply state to UI ─────────────────────────────────────────
   function applyChecked(id) {
     const cb = document.getElementById('cb' + id);
     if (!cb) return;
@@ -735,11 +808,6 @@
     cb.closest('li').classList.toggle('checked', v);
   }
 
-  // ── Quantity ──────────────────────────────────────────────────
-  function getQty(id) { return localStorage.getItem('q' + id) || ''; }
-  function setQty(id, val) {
-    val ? localStorage.setItem('q' + id, val) : localStorage.removeItem('q' + id);
-  }
   function applyQty(id) {
     const qi = document.getElementById('q' + id);
     if (qi) qi.value = getQty(id);
@@ -812,9 +880,6 @@
   }
 
   // ── Search ────────────────────────────────────────────────────
-  // Store original label HTML so we can restore it after highlighting
-  const originalLabels = {};
-
   function doSearch(rawQ) {
     const q = rawQ.trim().toLowerCase();
     const clr = document.getElementById('search-clr');
@@ -882,20 +947,58 @@
   function resetAll() {
     if (!confirm('Reset all checkboxes and quantities?')) return;
     for (let i = 1; i <= TOTAL; i++) {
-      setChecked(i, false);
-      setQty(i, '');
+      state[i] = { checked: false, quantity: '' };
       applyChecked(i);
       applyQty(i);
     }
     updateProgress();
     updateBadges();
+    updateCart();
+    const rows = Array.from({ length: TOTAL }, (_, k) => ({
+      item_id: k + 1, checked: false, quantity: '', updated_at: new Date().toISOString()
+    }));
+    db.from('shopping_state').upsert(rows)
+      .then(({ error }) => { if (error) console.error('reset sync error', error); });
   }
 
   function expandAll()   { document.querySelectorAll('details').forEach(d => d.open = true); }
   function collapseAll() { document.querySelectorAll('details').forEach(d => d.open = false); }
 
+  // ── Real-time sync ────────────────────────────────────────────
+  function subscribeToChanges() {
+    db.channel('shopping-sync')
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'shopping_state' }, payload => {
+        const { item_id, checked, quantity } = payload.new;
+        state[item_id] = { checked, quantity };
+        applyChecked(item_id);
+        applyQty(item_id);
+        updateProgress();
+        updateBadges();
+        updateCart();
+      })
+      .subscribe();
+  }
+
   // ── Init ──────────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', async function () {
+    const overlay = document.getElementById('loading-overlay');
+
+    // Replace text chevrons with SVG arrows
+    document.querySelectorAll('.chevron').forEach(el => {
+      el.innerHTML = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true" style="width:16px;height:16px;display:block"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    });
+
+    const { data, error } = await db.from('shopping_state').select('item_id, checked, quantity');
+    if (error) {
+      console.error('Failed to load:', error);
+      overlay.textContent = 'Could not connect. Check your internet connection.';
+      return;
+    }
+
+    data.forEach(row => {
+      state[row.item_id] = { checked: row.checked, quantity: row.quantity };
+    });
+
     for (let i = 1; i <= TOTAL; i++) {
       applyChecked(i);
       applyQty(i);
@@ -920,14 +1023,45 @@
           if (getChecked(n)) updateCart();
         });
         qi.addEventListener('click', e => e.stopPropagation());
+
+        // Inject +/− stepper buttons
+        const qSpan = qi.closest('.q');
+        const uEl = qSpan ? qSpan.querySelector('.u') : null;
+        if (qSpan && uEl) {
+          const step = uEl.textContent.trim() === 'g' ? 50 : 1;
+          const svgMinus = '<svg viewBox="0 0 14 14" fill="none" style="width:13px;height:13px"><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+          const svgPlus  = '<svg viewBox="0 0 14 14" fill="none" style="width:13px;height:13px"><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+
+          const minus = document.createElement('button');
+          minus.type = 'button'; minus.className = 'q-btn'; minus.setAttribute('aria-label', 'less');
+          minus.innerHTML = svgMinus;
+          minus.addEventListener('click', e => {
+            e.stopPropagation();
+            const next = Math.max(0, (parseFloat(qi.value) || 0) - step);
+            qi.value = next > 0 ? String(next) : '';
+            setQty(i, qi.value);
+            if (getChecked(i)) updateCart();
+          });
+
+          const plus = document.createElement('button');
+          plus.type = 'button'; plus.className = 'q-btn'; plus.setAttribute('aria-label', 'more');
+          plus.innerHTML = svgPlus;
+          plus.addEventListener('click', e => {
+            e.stopPropagation();
+            qi.value = String((parseFloat(qi.value) || 0) + step);
+            setQty(i, qi.value);
+            if (getChecked(i)) updateCart();
+          });
+
+          qSpan.insertBefore(minus, qi);
+          qSpan.insertBefore(plus, uEl);
+        }
       }
     }
 
     document.getElementById('search-in').addEventListener('input', function () {
       doSearch(this.value);
     });
-
-    // Clear with Escape key
     document.getElementById('search-in').addEventListener('keydown', function (e) {
       if (e.key === 'Escape') clearSearch();
     });
@@ -935,6 +1069,8 @@
     updateProgress();
     updateBadges();
     updateCart();
+    overlay.style.display = 'none';
+    subscribeToChanges();
   });
 </script>
 </body>
