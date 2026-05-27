@@ -256,6 +256,12 @@
 
     .price { font-size: 12px; color: var(--muted); white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
 
+    .item-num { font-size: 10px; color: var(--muted); background: var(--tag-bg); border-radius: 4px; padding: 1px 5px; flex-shrink: 0; font-weight: 500; min-width: 24px; text-align: center; }
+
+    .cart-total-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-top: 1.5px solid var(--border); font-size: 14px; font-weight: 600; }
+    .cart-total-row .total-label { color: var(--muted); font-weight: 500; }
+    .cart-total-row .total-amount { color: var(--accent); }
+
     .preorder-banner {
       font-size: 12px;
       background: #ff9f0a22;
@@ -372,6 +378,10 @@
     </summary>
     <div id="cart-body">
       <p id="cart-empty">No products selected yet.</p>
+    </div>
+    <div id="cart-total" style="display:none;" class="cart-total-row">
+      <span class="total-label">Estimated Total</span>
+      <span class="total-amount" id="cart-total-amount"></span>
     </div>
   </details>
 
@@ -775,6 +785,16 @@
     { badge: 'nonfood',       ids: [145,146,147,148,149,150,151] },
   ];
 
+  // ── Price helpers ─────────────────────────────────────────────
+  function fmtEur(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
+  function parseItemPrice(priceStr) {
+    if (!priceStr) return { value: 0, perKg: false };
+    const perKg = priceStr.includes('/kg');
+    const m = priceStr.replace(',', '.').match(/[\d.]+/);
+    return { value: m ? parseFloat(m[0]) : 0, perKg };
+  }
+
   // ── State helpers ─────────────────────────────────────────────
   function getChecked(id) { return state[id]?.checked || false; }
   function getQty(id)     { return state[id]?.quantity || ''; }
@@ -838,10 +858,13 @@
     const body = document.getElementById('cart-body');
     const empty = document.getElementById('cart-empty');
     const badge = document.getElementById('cart-badge');
+    const totalRow = document.getElementById('cart-total');
+    const totalAmt = document.getElementById('cart-total-amount');
 
     body.querySelectorAll('.cart-item').forEach(el => el.remove());
 
     let count = 0;
+    let totalEur = 0;
     for (let i = 1; i <= TOTAL; i++) {
       if (!getChecked(i)) continue;
       count++;
@@ -862,7 +885,16 @@
       const unit = u  ? u.textContent.trim() : '';
 
       const priceEl = li.querySelector('.price');
-      const price = priceEl ? priceEl.textContent.trim() : '';
+      const priceStr = priceEl ? priceEl.textContent.trim() : '';
+
+      const { value: unitPrice, perKg } = parseItemPrice(priceStr);
+      const qtyNum = parseFloat(qty) || 0;
+      let displayPrice = priceStr;
+      if (qtyNum > 0 && unitPrice > 0) {
+        const subtotal = perKg ? (qtyNum / 1000) * unitPrice : qtyNum * unitPrice;
+        totalEur += subtotal;
+        displayPrice = fmtEur(subtotal);
+      }
 
       const row = document.createElement('div');
       row.className = 'cart-item';
@@ -870,13 +902,17 @@
       row.innerHTML =
         '<span class="cart-name">' + name + '</span>' +
         (qty ? '<span class="cart-qty-label">' + qty + ' ' + unit + '</span>' : '') +
-        '<span class="cart-price">' + price + '</span>';
+        '<span class="cart-price">' + displayPrice + '</span>';
       body.appendChild(row);
     }
 
     empty.style.display = count ? 'none' : '';
     badge.textContent = count || '';
     badge.className = 'badge' + (count ? ' done' : '');
+    if (totalRow && totalAmt) {
+      totalRow.style.display = count ? '' : 'none';
+      totalAmt.textContent = fmtEur(totalEur);
+    }
   }
 
   // ── Search ────────────────────────────────────────────────────
@@ -1002,6 +1038,15 @@
     for (let i = 1; i <= TOTAL; i++) {
       applyChecked(i);
       applyQty(i);
+
+      // Inject item number badge
+      const liEl = document.getElementById('cb' + i)?.closest('li');
+      if (liEl && !liEl.querySelector('.item-num')) {
+        const numSpan = document.createElement('span');
+        numSpan.className = 'item-num';
+        numSpan.textContent = i;
+        liEl.insertBefore(numSpan, liEl.firstChild);
+      }
 
       const cb = document.getElementById('cb' + i);
       if (cb) {
