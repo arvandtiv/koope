@@ -257,6 +257,7 @@
     .price { font-size: 12px; color: var(--muted); white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
 
     .item-num { font-size: 10px; color: var(--muted); background: var(--tag-bg); border-radius: 4px; padding: 1px 5px; flex-shrink: 0; font-weight: 500; min-width: 24px; text-align: center; }
+    .koope-num { font-size: 10px; color: var(--muted); background: var(--tag-bg); border-radius: 4px; padding: 1px 5px; font-weight: 500; display: inline-block; margin-top: 2px; opacity: 0.75; }
 
     .cart-total-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-top: 1.5px solid var(--border); font-size: 14px; font-weight: 600; }
     .cart-total-row .total-label { color: var(--muted); font-weight: 500; }
@@ -351,7 +352,7 @@
       <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.6"/>
       <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
     </svg>
-    <input class="search-in" id="search-in" type="search" placeholder="Search products…" autocomplete="off" autocorrect="off" spellcheck="false">
+    <input class="search-in" id="search-in" type="search" placeholder="Search products or #ID…" autocomplete="off" autocorrect="off" spellcheck="false">
     <span class="search-count" id="search-count"></span>
     <button class="search-clr" id="search-clr" onclick="clearSearch()" title="Clear search">✕</button>
   </div>
@@ -389,16 +390,16 @@
   <details>
     <summary><span class="sum-left"><span>Drinks</span><span class="badge" id="badge-getraenke"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb1"><label for="cb1">Rotkäppchen Sekt, alkoholfrei<span class="note">Flasche</span></label><span class="q"><input type="number" class="qi" id="q1" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">4,84 €</span></li>
-      <li><input type="checkbox" id="cb2"><label for="cb2">Natumi Haferdrink Natur<span class="note">1 L</span></label><span class="q"><input type="number" class="qi" id="q2" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,64 €</span></li>
-      <li><input type="checkbox" id="cb3"><label for="cb3">Jolle Mate (Johannisbeere) – zickzack<span class="note">0,5 L + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q3" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,36 €</span></li>
-      <li><input type="checkbox" id="cb4"><label for="cb4">KiLiMo (Sauerkirschlimo) – zickzack<span class="note">0,5 L + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q4" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,72 €</span></li>
-      <li><input type="checkbox" id="cb5"><label for="cb5">Kolla Cola – zickzack<span class="note">0,5 L + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q5" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,72 €</span></li>
-      <li><input type="checkbox" id="cb6"><label for="cb6">Kolle Mate – zickzack<span class="note">0,5 L + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q6" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,90 €</span></li>
-      <li><input type="checkbox" id="cb7"><label for="cb7">Lipz Rhabarber<span class="note">0,5 L + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q7" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">2,15 €</span></li>
-      <li><input type="checkbox" id="cb8"><label for="cb8">Lipz Schwarze Johannisbeere<span class="note">0,5 L + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q8" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,62 €</span></li>
-      <li><input type="checkbox" id="cb9"><label for="cb9">Quipz (Quitte-Apfel-Schorle)<span class="note">0,5 L + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q9" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">2,27 €</span></li>
-      <li><input type="checkbox" id="cb10"><label for="cb10">Zotrine (Zitronenlimonade) – zickzack<span class="note">0,5 L + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q10" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,36 €</span></li>
+      <li data-koope-id="270"><input type="checkbox" id="cb1"><label for="cb1">Rotkäppchen Sekt, alkoholfrei<span class="note">Flasche</span><span class="koope-num">#270</span></label><span class="q"><input type="number" class="qi" id="q1" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">4,84 €</span></li>
+      <li data-koope-id="331"><input type="checkbox" id="cb2"><label for="cb2">Natumi Haferdrink Natur<span class="note">1 L</span><span class="koope-num">#331</span></label><span class="q"><input type="number" class="qi" id="q2" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,64 €</span></li>
+      <li data-koope-id="267"><input type="checkbox" id="cb3"><label for="cb3">Jolle Mate (Johannisbeere) – zickzack<span class="note">0,5 L + 0,15 € Pfand</span><span class="koope-num">#267</span></label><span class="q"><input type="number" class="qi" id="q3" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,36 €</span></li>
+      <li data-koope-id="266"><input type="checkbox" id="cb4"><label for="cb4">KiLiMo (Sauerkirschlimo) – zickzack<span class="note">0,5 L + 0,15 € Pfand</span><span class="koope-num">#266</span></label><span class="q"><input type="number" class="qi" id="q4" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,72 €</span></li>
+      <li data-koope-id="268"><input type="checkbox" id="cb5"><label for="cb5">Kolla Cola – zickzack<span class="note">0,5 L + 0,15 € Pfand</span><span class="koope-num">#268</span></label><span class="q"><input type="number" class="qi" id="q5" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,72 €</span></li>
+      <li data-koope-id="264"><input type="checkbox" id="cb6"><label for="cb6">Kolle Mate – zickzack<span class="note">0,5 L + 0,15 € Pfand</span><span class="koope-num">#264</span></label><span class="q"><input type="number" class="qi" id="q6" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,90 €</span></li>
+      <li data-koope-id="263"><input type="checkbox" id="cb7"><label for="cb7">Lipz Rhabarber<span class="note">0,5 L + 0,15 € Pfand</span><span class="koope-num">#263</span></label><span class="q"><input type="number" class="qi" id="q7" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">2,15 €</span></li>
+      <li data-koope-id="262"><input type="checkbox" id="cb8"><label for="cb8">Lipz Schwarze Johannisbeere<span class="note">0,5 L + 0,15 € Pfand</span><span class="koope-num">#262</span></label><span class="q"><input type="number" class="qi" id="q8" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,62 €</span></li>
+      <li data-koope-id="261"><input type="checkbox" id="cb9"><label for="cb9">Quipz (Quitte-Apfel-Schorle)<span class="note">0,5 L + 0,15 € Pfand</span><span class="koope-num">#261</span></label><span class="q"><input type="number" class="qi" id="q9" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">2,27 €</span></li>
+      <li data-koope-id="265"><input type="checkbox" id="cb10"><label for="cb10">Zotrine (Zitronenlimonade) – zickzack<span class="note">0,5 L + 0,15 € Pfand</span><span class="koope-num">#265</span></label><span class="q"><input type="number" class="qi" id="q10" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,36 €</span></li>
     </ul>
   </details>
 
@@ -406,8 +407,8 @@
   <details>
     <summary><span class="sum-left"><span>Bier</span><span class="badge" id="badge-bier"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb11"><label for="cb11">Fink Pils (Thüringen)<span class="note">0,33 L + 0,08 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q11" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,29 €</span></li>
-      <li><input type="checkbox" id="cb12"><label for="cb12">Fink, alkoholfrei (Thüringen)<span class="note">0,33 L + 0,08 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q12" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,07 €</span></li>
+      <li data-koope-id="97"><input type="checkbox" id="cb11"><label for="cb11">Fink Pils (Thüringen)<span class="note">0,33 L + 0,08 € Pfand</span><span class="koope-num">#97</span></label><span class="q"><input type="number" class="qi" id="q11" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,29 €</span></li>
+      <li data-koope-id="248"><input type="checkbox" id="cb12"><label for="cb12">Fink, alkoholfrei (Thüringen)<span class="note">0,33 L + 0,08 € Pfand</span><span class="koope-num">#248</span></label><span class="q"><input type="number" class="qi" id="q12" min="0" placeholder="0"><b class="u">Fl</b></span><span class="price">1,07 €</span></li>
     </ul>
   </details>
 
@@ -415,9 +416,9 @@
   <details>
     <summary><span class="sum-left"><span>Milk Alternatives</span><span class="badge" id="badge-milch"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb13"><label for="cb13">Haferdrinkpulver (Blue Farm)<span class="note">ca. 1,37 € / L · nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q13" min="0" placeholder="0"><b class="u">g</b></span><span class="price">14,02 €/kg</span></li>
-      <li><input type="checkbox" id="cb14"><label for="cb14">Haferdrinkpulver Barista (Blue Farm)<span class="note">ca. 1,58 € / L · nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q14" min="0" placeholder="0"><b class="u">g</b></span><span class="price">16,60 €/kg</span></li>
-      <li><input type="checkbox" id="cb15"><label for="cb15">Kokosmilch-Pulver (Kamelur)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q15" min="0" placeholder="0"><b class="u">g</b></span><span class="price">23,45 €/kg</span></li>
+      <li data-koope-id="137"><input type="checkbox" id="cb13"><label for="cb13">Haferdrinkpulver (Blue Farm)<span class="note">ca. 1,37 € / L · nach Gewicht</span><span class="koope-num">#137</span></label><span class="q"><input type="number" class="qi" id="q13" min="0" placeholder="0"><b class="u">g</b></span><span class="price">14,02 €/kg</span></li>
+      <li data-koope-id="138"><input type="checkbox" id="cb14"><label for="cb14">Haferdrinkpulver Barista (Blue Farm)<span class="note">ca. 1,58 € / L · nach Gewicht</span><span class="koope-num">#138</span></label><span class="q"><input type="number" class="qi" id="q14" min="0" placeholder="0"><b class="u">g</b></span><span class="price">16,60 €/kg</span></li>
+      <li data-koope-id="349"><input type="checkbox" id="cb15"><label for="cb15">Kokosmilch-Pulver (Kamelur)<span class="note">nach Gewicht</span><span class="koope-num">#349</span></label><span class="q"><input type="number" class="qi" id="q15" min="0" placeholder="0"><b class="u">g</b></span><span class="price">23,45 €/kg</span></li>
     </ul>
   </details>
 
@@ -425,9 +426,9 @@
   <details>
     <summary><span class="sum-left"><span>Coffee & Espresso</span><span class="badge" id="badge-kaffee"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb16"><label for="cb16">Kaffee, gesegelt (Café Chavalo, Nicaragua)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q16" min="0" placeholder="0"><b class="u">g</b></span><span class="price">29,49 €/kg</span></li>
-      <li><input type="checkbox" id="cb17"><label for="cb17">Espresso, gesegelt (Café Chavalo, Nicaragua)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q17" min="0" placeholder="0"><b class="u">g</b></span><span class="price">29,49 €/kg</span></li>
-      <li><input type="checkbox" id="cb18"><label for="cb18">Lupinenkaffee (DE–Hessen, 100 % Süßlupinen)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q18" min="0" placeholder="0"><b class="u">g</b></span><span class="price">11,12 €/kg</span></li>
+      <li data-koope-id="225"><input type="checkbox" id="cb16"><label for="cb16">Kaffee, gesegelt (Café Chavalo, Nicaragua)<span class="note">nach Gewicht</span><span class="koope-num">#225</span></label><span class="q"><input type="number" class="qi" id="q16" min="0" placeholder="0"><b class="u">g</b></span><span class="price">29,49 €/kg</span></li>
+      <li data-koope-id="78"><input type="checkbox" id="cb17"><label for="cb17">Espresso, gesegelt (Café Chavalo, Nicaragua)<span class="note">nach Gewicht</span><span class="koope-num">#78</span></label><span class="q"><input type="number" class="qi" id="q17" min="0" placeholder="0"><b class="u">g</b></span><span class="price">29,49 €/kg</span></li>
+      <li data-koope-id="156"><input type="checkbox" id="cb18"><label for="cb18">Lupinenkaffee (DE–Hessen, 100 % Süßlupinen)<span class="note">nach Gewicht</span><span class="koope-num">#156</span></label><span class="q"><input type="number" class="qi" id="q18" min="0" placeholder="0"><b class="u">g</b></span><span class="price">11,12 €/kg</span></li>
     </ul>
   </details>
 
@@ -435,12 +436,12 @@
   <details>
     <summary><span class="sum-left"><span>Tea</span><span class="badge" id="badge-tee"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb19"><label for="cb19">Abendtee (Karma Kollektiv)<span class="note">Lavendel, Lindenblüten, Kamille, Melisse …</span></label><span class="q"><input type="number" class="qi" id="q19" min="0" placeholder="0"><b class="u">g</b></span><span class="price">38,84 €/kg</span></li>
-      <li><input type="checkbox" id="cb20"><label for="cb20">Basischer Kräutertee<span class="note">Brennnessel, Pfefferminze, Zitronengras</span></label><span class="q"><input type="number" class="qi" id="q20" min="0" placeholder="0"><b class="u">g</b></span><span class="price">24,72 €/kg</span></li>
-      <li><input type="checkbox" id="cb21"><label for="cb21">Bergtee (Griechenland)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q21" min="0" placeholder="0"><b class="u">g</b></span><span class="price">68,66 €/kg</span></li>
-      <li><input type="checkbox" id="cb22"><label for="cb22">Fenchel-Anis-Kümmel<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q22" min="0" placeholder="0"><b class="u">g</b></span><span class="price">15,45 €/kg</span></li>
-      <li><input type="checkbox" id="cb23"><label for="cb23">Ingwer-Zitrone<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q23" min="0" placeholder="0"><b class="u">g</b></span><span class="price">34,86 €/kg</span></li>
-      <li><input type="checkbox" id="cb24"><label for="cb24">Morgentee<span class="note">Fenchel, Zitronengras, Grüner Tee, Mate …</span></label><span class="q"><input type="number" class="qi" id="q24" min="0" placeholder="0"><b class="u">g</b></span><span class="price">34,86 €/kg</span></li>
+      <li data-koope-id="236"><input type="checkbox" id="cb19"><label for="cb19">Abendtee (Karma Kollektiv)<span class="note">Lavendel, Lindenblüten, Kamille, Melisse …</span><span class="koope-num">#236</span></label><span class="q"><input type="number" class="qi" id="q19" min="0" placeholder="0"><b class="u">g</b></span><span class="price">38,84 €/kg</span></li>
+      <li data-koope-id="237"><input type="checkbox" id="cb20"><label for="cb20">Basischer Kräutertee<span class="note">Brennnessel, Pfefferminze, Zitronengras</span><span class="koope-num">#237</span></label><span class="q"><input type="number" class="qi" id="q20" min="0" placeholder="0"><b class="u">g</b></span><span class="price">24,72 €/kg</span></li>
+      <li data-koope-id="238"><input type="checkbox" id="cb21"><label for="cb21">Bergtee (Griechenland)<span class="note">nach Gewicht</span><span class="koope-num">#238</span></label><span class="q"><input type="number" class="qi" id="q21" min="0" placeholder="0"><b class="u">g</b></span><span class="price">68,66 €/kg</span></li>
+      <li data-koope-id="239"><input type="checkbox" id="cb22"><label for="cb22">Fenchel-Anis-Kümmel<span class="note">nach Gewicht</span><span class="koope-num">#239</span></label><span class="q"><input type="number" class="qi" id="q22" min="0" placeholder="0"><b class="u">g</b></span><span class="price">15,45 €/kg</span></li>
+      <li data-koope-id="329"><input type="checkbox" id="cb23"><label for="cb23">Ingwer-Zitrone<span class="note">nach Gewicht</span><span class="koope-num">#329</span></label><span class="q"><input type="number" class="qi" id="q23" min="0" placeholder="0"><b class="u">g</b></span><span class="price">34,86 €/kg</span></li>
+      <li data-koope-id="240"><input type="checkbox" id="cb24"><label for="cb24">Morgentee<span class="note">Fenchel, Zitronengras, Grüner Tee, Mate …</span><span class="koope-num">#240</span></label><span class="q"><input type="number" class="qi" id="q24" min="0" placeholder="0"><b class="u">g</b></span><span class="price">34,86 €/kg</span></li>
     </ul>
   </details>
 
@@ -448,10 +449,10 @@
   <details>
     <summary><span class="sum-left"><span>Pasta & Noodles</span><span class="badge" id="badge-nudeln"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb25"><label for="cb25">Farfalle (IT, Bio-Hartweizengriess)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q25" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,43 €/kg</span></li>
-      <li><input type="checkbox" id="cb26"><label for="cb26">Fusilli Dinkel hell (Alb Gold, DE)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q26" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,23 €/kg</span></li>
-      <li><input type="checkbox" id="cb27"><label for="cb27">Linguine (IT, Bio-Hartweizengriess)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q27" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,43 €/kg</span></li>
-      <li><input type="checkbox" id="cb28"><label for="cb28">Vollkorn Spirelli (IT)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q28" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,33 €/kg</span></li>
+      <li data-koope-id="352"><input type="checkbox" id="cb25"><label for="cb25">Farfalle (IT, Bio-Hartweizengriess)<span class="note">nach Gewicht</span><span class="koope-num">#352</span></label><span class="q"><input type="number" class="qi" id="q25" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,43 €/kg</span></li>
+      <li data-koope-id="342"><input type="checkbox" id="cb26"><label for="cb26">Fusilli Dinkel hell (Alb Gold, DE)<span class="note">nach Gewicht</span><span class="koope-num">#342</span></label><span class="q"><input type="number" class="qi" id="q26" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,23 €/kg</span></li>
+      <li data-koope-id="354"><input type="checkbox" id="cb27"><label for="cb27">Linguine (IT, Bio-Hartweizengriess)<span class="note">nach Gewicht</span><span class="koope-num">#354</span></label><span class="q"><input type="number" class="qi" id="q27" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,43 €/kg</span></li>
+      <li data-koope-id="353"><input type="checkbox" id="cb28"><label for="cb28">Vollkorn Spirelli (IT)<span class="note">nach Gewicht</span><span class="koope-num">#353</span></label><span class="q"><input type="number" class="qi" id="q28" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,33 €/kg</span></li>
     </ul>
   </details>
 
@@ -459,16 +460,16 @@
   <details>
     <summary><span class="sum-left"><span>Grains & Flour</span><span class="badge" id="badge-getreide"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb29"><label for="cb29">Dinkel Vollkornmehl (Biohof Reiche, LK Leipzig, Bioland)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q29" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,58 €/kg</span></li>
-      <li><input type="checkbox" id="cb30"><label for="cb30">Weizen Vollkornmehl (Maria Bienert, DE-Leipzig)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q30" min="0" placeholder="0"><b class="u">g</b></span><span class="price">1,78 €/kg</span></li>
-      <li><input type="checkbox" id="cb31"><label for="cb31">Couscous, Vollkorn<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q31" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,97 €/kg</span></li>
-      <li><input type="checkbox" id="cb32"><label for="cb32">Buchweizen (Tarabao, Polen)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q32" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,38 €/kg</span></li>
-      <li><input type="checkbox" id="cb33"><label for="cb33">Hirse (Maria Bienert, DE-Leipzig)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q33" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,09 €/kg</span></li>
-      <li><input type="checkbox" id="cb34"><label for="cb34">Quinoa, Vollkorn (Mudda Natur, DE)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q34" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,86 €/kg</span></li>
-      <li><input type="checkbox" id="cb35"><label for="cb35">Hafer, Korn – ganzes Korn (Maria Bienert, DE-Leipzig)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q35" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,22 €/kg</span></li>
-      <li><input type="checkbox" id="cb36"><label for="cb36">Haferflocken, fein (Maria Bienert, DE-Leipzig)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q36" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,19 €/kg</span></li>
-      <li><input type="checkbox" id="cb37"><label for="cb37">Polenta (B-Ware, −10 %)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q37" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,56 €/kg</span></li>
-      <li><input type="checkbox" id="cb38"><label for="cb38">Hefeflocken (Kamelur)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q38" min="0" placeholder="0"><b class="u">g</b></span><span class="price">33,60 €/kg</span></li>
+      <li data-koope-id="347"><input type="checkbox" id="cb29"><label for="cb29">Dinkel Vollkornmehl (Biohof Reiche, LK Leipzig, Bioland)<span class="note">nach Gewicht</span><span class="koope-num">#347</span></label><span class="q"><input type="number" class="qi" id="q29" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,58 €/kg</span></li>
+      <li data-koope-id="161"><input type="checkbox" id="cb30"><label for="cb30">Weizen Vollkornmehl (Maria Bienert, DE-Leipzig)<span class="note">nach Gewicht</span><span class="koope-num">#161</span></label><span class="q"><input type="number" class="qi" id="q30" min="0" placeholder="0"><b class="u">g</b></span><span class="price">1,78 €/kg</span></li>
+      <li data-koope-id="57"><input type="checkbox" id="cb31"><label for="cb31">Couscous, Vollkorn<span class="note">nach Gewicht</span><span class="koope-num">#57</span></label><span class="q"><input type="number" class="qi" id="q31" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,97 €/kg</span></li>
+      <li data-koope-id="283"><input type="checkbox" id="cb32"><label for="cb32">Buchweizen (Tarabao, Polen)<span class="note">nach Gewicht</span><span class="koope-num">#283</span></label><span class="q"><input type="number" class="qi" id="q32" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,38 €/kg</span></li>
+      <li data-koope-id="113"><input type="checkbox" id="cb33"><label for="cb33">Hirse (Maria Bienert, DE-Leipzig)<span class="note">nach Gewicht</span><span class="koope-num">#113</span></label><span class="q"><input type="number" class="qi" id="q33" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,09 €/kg</span></li>
+      <li data-koope-id="363"><input type="checkbox" id="cb34"><label for="cb34">Quinoa, Vollkorn (Mudda Natur, DE)<span class="note">nach Gewicht</span><span class="koope-num">#363</span></label><span class="q"><input type="number" class="qi" id="q34" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,86 €/kg</span></li>
+      <li data-koope-id="187"><input type="checkbox" id="cb35"><label for="cb35">Hafer, Korn – ganzes Korn (Maria Bienert, DE-Leipzig)<span class="note">nach Gewicht</span><span class="koope-num">#187</span></label><span class="q"><input type="number" class="qi" id="q35" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,22 €/kg</span></li>
+      <li data-koope-id="62"><input type="checkbox" id="cb36"><label for="cb36">Haferflocken, fein (Maria Bienert, DE-Leipzig)<span class="note">nach Gewicht</span><span class="koope-num">#62</span></label><span class="q"><input type="number" class="qi" id="q36" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,19 €/kg</span></li>
+      <li data-koope-id="274"><input type="checkbox" id="cb37"><label for="cb37">Polenta (B-Ware, −10 %)<span class="note">nach Gewicht</span><span class="koope-num">#274</span></label><span class="q"><input type="number" class="qi" id="q37" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,56 €/kg</span></li>
+      <li data-koope-id="167"><input type="checkbox" id="cb38"><label for="cb38">Hefeflocken (Kamelur)<span class="note">nach Gewicht</span><span class="koope-num">#167</span></label><span class="q"><input type="number" class="qi" id="q38" min="0" placeholder="0"><b class="u">g</b></span><span class="price">33,60 €/kg</span></li>
     </ul>
   </details>
 
@@ -476,9 +477,9 @@
   <details>
     <summary><span class="sum-left"><span>Muesli & Flakes</span><span class="badge" id="badge-muesli"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb39"><label for="cb39">Müsli, 4-Kornflocken Bioland (Hafer, Gerste, Weizen, Roggen)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q39" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,53 €/kg</span></li>
-      <li><input type="checkbox" id="cb40"><label for="cb40">Müsli, Schoko Crunchy (Müsli Mühle)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q40" min="0" placeholder="0"><b class="u">g</b></span><span class="price">9,32 €/kg</span></li>
-      <li><input type="checkbox" id="cb41"><label for="cb41">Müsli, Paleo-Früchtemüsli (Tarabao)<span class="note">Buchweizenflocken, Erdmandel, Nüsse, Beeren</span></label><span class="q"><input type="number" class="qi" id="q41" min="0" placeholder="0"><b class="u">g</b></span><span class="price">11,12 €/kg</span></li>
+      <li data-koope-id="69"><input type="checkbox" id="cb39"><label for="cb39">Müsli, 4-Kornflocken Bioland (Hafer, Gerste, Weizen, Roggen)<span class="note">nach Gewicht</span><span class="koope-num">#69</span></label><span class="q"><input type="number" class="qi" id="q39" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,53 €/kg</span></li>
+      <li data-koope-id="310"><input type="checkbox" id="cb40"><label for="cb40">Müsli, Schoko Crunchy (Müsli Mühle)<span class="note">nach Gewicht</span><span class="koope-num">#310</span></label><span class="q"><input type="number" class="qi" id="q40" min="0" placeholder="0"><b class="u">g</b></span><span class="price">9,32 €/kg</span></li>
+      <li data-koope-id="338"><input type="checkbox" id="cb41"><label for="cb41">Müsli, Paleo-Früchtemüsli (Tarabao)<span class="note">Buchweizenflocken, Erdmandel, Nüsse, Beeren</span><span class="koope-num">#338</span></label><span class="q"><input type="number" class="qi" id="q41" min="0" placeholder="0"><b class="u">g</b></span><span class="price">11,12 €/kg</span></li>
     </ul>
   </details>
 
@@ -486,15 +487,15 @@
   <details>
     <summary><span class="sum-left"><span>Rice & Legumes</span><span class="badge" id="badge-reis"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb42"><label for="cb42">Langkornreis Thaibonnet, weiß (IT)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q42" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,43 €/kg</span></li>
-      <li><input type="checkbox" id="cb43"><label for="cb43">Weiße Bohnen (CN)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q43" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,58 €/kg</span></li>
-      <li><input type="checkbox" id="cb44"><label for="cb44">Schwarze Bohnen (Tarabao, AT)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q44" min="0" placeholder="0"><b class="u">g</b></span><span class="price">6,63 €/kg</span></li>
-      <li><input type="checkbox" id="cb45"><label for="cb45">Braune Linsen (IT)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q45" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,17 €/kg</span></li>
-      <li><input type="checkbox" id="cb46"><label for="cb46">Grüne Linsen, Du-Puy-Art (Tarabao, DE–Hessen)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q46" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,50 €/kg</span></li>
-      <li><input type="checkbox" id="cb47"><label for="cb47">Rote Linsen (Tarabao, TR)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q47" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,38 €/kg</span></li>
-      <li><input type="checkbox" id="cb48"><label for="cb48">Kichererbsen (Jonas Schulze Niehoff, DE–Sachsen-Anhalt)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q48" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,87 €/kg</span></li>
-      <li><input type="checkbox" id="cb49"><label for="cb49">Sojaschnetzel, grob (Sobo, DE/EU)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q49" min="0" placeholder="0"><b class="u">g</b></span><span class="price">8,53 €/kg</span></li>
-      <li><input type="checkbox" id="cb50"><label for="cb50">Leinsamen, braun (Tarabao, DE–Hessen)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q50" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,50 €/kg</span></li>
+      <li data-koope-id="76"><input type="checkbox" id="cb42"><label for="cb42">Langkornreis Thaibonnet, weiß (IT)<span class="note">nach Gewicht</span><span class="koope-num">#76</span></label><span class="q"><input type="number" class="qi" id="q42" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,43 €/kg</span></li>
+      <li data-koope-id="107"><input type="checkbox" id="cb43"><label for="cb43">Weiße Bohnen (CN)<span class="note">nach Gewicht</span><span class="koope-num">#107</span></label><span class="q"><input type="number" class="qi" id="q43" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,58 €/kg</span></li>
+      <li data-koope-id="128"><input type="checkbox" id="cb44"><label for="cb44">Schwarze Bohnen (Tarabao, AT)<span class="note">nach Gewicht</span><span class="koope-num">#128</span></label><span class="q"><input type="number" class="qi" id="q44" min="0" placeholder="0"><b class="u">g</b></span><span class="price">6,63 €/kg</span></li>
+      <li data-koope-id="37"><input type="checkbox" id="cb45"><label for="cb45">Braune Linsen (IT)<span class="note">nach Gewicht</span><span class="koope-num">#37</span></label><span class="q"><input type="number" class="qi" id="q45" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,17 €/kg</span></li>
+      <li data-koope-id="136"><input type="checkbox" id="cb46"><label for="cb46">Grüne Linsen, Du-Puy-Art (Tarabao, DE–Hessen)<span class="note">nach Gewicht</span><span class="koope-num">#136</span></label><span class="q"><input type="number" class="qi" id="q46" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,50 €/kg</span></li>
+      <li data-koope-id="155"><input type="checkbox" id="cb47"><label for="cb47">Rote Linsen (Tarabao, TR)<span class="note">nach Gewicht</span><span class="koope-num">#155</span></label><span class="q"><input type="number" class="qi" id="q47" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,38 €/kg</span></li>
+      <li data-koope-id="116"><input type="checkbox" id="cb48"><label for="cb48">Kichererbsen (Jonas Schulze Niehoff, DE–Sachsen-Anhalt)<span class="note">nach Gewicht</span><span class="koope-num">#116</span></label><span class="q"><input type="number" class="qi" id="q48" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,87 €/kg</span></li>
+      <li data-koope-id="175"><input type="checkbox" id="cb49"><label for="cb49">Sojaschnetzel, grob (Sobo, DE/EU)<span class="note">nach Gewicht</span><span class="koope-num">#175</span></label><span class="q"><input type="number" class="qi" id="q49" min="0" placeholder="0"><b class="u">g</b></span><span class="price">8,53 €/kg</span></li>
+      <li data-koope-id="188"><input type="checkbox" id="cb50"><label for="cb50">Leinsamen, braun (Tarabao, DE–Hessen)<span class="note">nach Gewicht</span><span class="koope-num">#188</span></label><span class="q"><input type="number" class="qi" id="q50" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,50 €/kg</span></li>
     </ul>
   </details>
 
@@ -502,16 +503,16 @@
   <details>
     <summary><span class="sum-left"><span>Nuts & Seeds</span><span class="badge" id="badge-nuesse"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb51"><label for="cb51">Kürbiskerne (Biogewinner, AT)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q51" min="0" placeholder="0"><b class="u">g</b></span><span class="price">9,98 €/kg</span></li>
-      <li><input type="checkbox" id="cb52"><label for="cb52">Sesam, ungeschält (Uganda)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q52" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,48 €/kg</span></li>
-      <li><input type="checkbox" id="cb53"><label for="cb53">Sonnenblumenkerne (Riesernuss, DE–Bayern, Bioland)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q53" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,77 €/kg</span></li>
-      <li><input type="checkbox" id="cb54"><label for="cb54">Haselnusskerne (Riesernuss, Bayern)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q54" min="0" placeholder="0"><b class="u">g</b></span><span class="price">20,31 €/kg</span></li>
-      <li><input type="checkbox" id="cb55"><label for="cb55">Mandeln, ganz (Tarabao, Spanien)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q55" min="0" placeholder="0"><b class="u">g</b></span><span class="price">15,06 €/kg</span></li>
-      <li><input type="checkbox" id="cb56"><label for="cb56">Walnusskerne, Bruch (Riesernuss, Frankreich/Périgord)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q56" min="0" placeholder="0"><b class="u">g</b></span><span class="price">14,51 €/kg</span></li>
-      <li><input type="checkbox" id="cb57"><label for="cb57">Walnusskerne, B-Ware ⚠️ Bitte erhitzen! (Tarabao, Ungarn, −10 %)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q57" min="0" placeholder="0"><b class="u">g</b></span><span class="price">13,04 €/kg</span></li>
-      <li><input type="checkbox" id="cb58"><label for="cb58">Cashew, Bruch (Tarabao, Burkina Faso)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q58" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,00 €/kg</span></li>
-      <li><input type="checkbox" id="cb59"><label for="cb59">Cashews, Tamari-Sesam (Tarabao, Burkina Faso/Uganda)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q59" min="0" placeholder="0"><b class="u">g</b></span><span class="price">20,11 €/kg</span></li>
-      <li><input type="checkbox" id="cb60"><label for="cb60">Erdnüsse, gesalzen (Tarabao, Burkina Faso)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q60" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,56 €/kg</span></li>
+      <li data-koope-id="63"><input type="checkbox" id="cb51"><label for="cb51">Kürbiskerne (Biogewinner, AT)<span class="note">nach Gewicht</span><span class="koope-num">#63</span></label><span class="q"><input type="number" class="qi" id="q51" min="0" placeholder="0"><b class="u">g</b></span><span class="price">9,98 €/kg</span></li>
+      <li data-koope-id="173"><input type="checkbox" id="cb52"><label for="cb52">Sesam, ungeschält (Uganda)<span class="note">nach Gewicht</span><span class="koope-num">#173</span></label><span class="q"><input type="number" class="qi" id="q52" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,48 €/kg</span></li>
+      <li data-koope-id="181"><input type="checkbox" id="cb53"><label for="cb53">Sonnenblumenkerne (Riesernuss, DE–Bayern, Bioland)<span class="note">nach Gewicht</span><span class="koope-num">#181</span></label><span class="q"><input type="number" class="qi" id="q53" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,77 €/kg</span></li>
+      <li data-koope-id="180"><input type="checkbox" id="cb54"><label for="cb54">Haselnusskerne (Riesernuss, Bayern)<span class="note">nach Gewicht</span><span class="koope-num">#180</span></label><span class="q"><input type="number" class="qi" id="q54" min="0" placeholder="0"><b class="u">g</b></span><span class="price">20,31 €/kg</span></li>
+      <li data-koope-id="133"><input type="checkbox" id="cb55"><label for="cb55">Mandeln, ganz (Tarabao, Spanien)<span class="note">nach Gewicht</span><span class="koope-num">#133</span></label><span class="q"><input type="number" class="qi" id="q55" min="0" placeholder="0"><b class="u">g</b></span><span class="price">15,06 €/kg</span></li>
+      <li data-koope-id="355"><input type="checkbox" id="cb56"><label for="cb56">Walnusskerne, Bruch (Riesernuss, Frankreich/Périgord)<span class="note">nach Gewicht</span><span class="koope-num">#355</span></label><span class="q"><input type="number" class="qi" id="q56" min="0" placeholder="0"><b class="u">g</b></span><span class="price">14,51 €/kg</span></li>
+      <li data-koope-id="134"><input type="checkbox" id="cb57"><label for="cb57">Walnusskerne, B-Ware ⚠️ Bitte erhitzen! (Tarabao, Ungarn, −10 %)<span class="note">nach Gewicht</span><span class="koope-num">#134</span></label><span class="q"><input type="number" class="qi" id="q57" min="0" placeholder="0"><b class="u">g</b></span><span class="price">13,04 €/kg</span></li>
+      <li data-koope-id="154"><input type="checkbox" id="cb58"><label for="cb58">Cashew, Bruch (Tarabao, Burkina Faso)<span class="note">nach Gewicht</span><span class="koope-num">#154</span></label><span class="q"><input type="number" class="qi" id="q58" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,00 €/kg</span></li>
+      <li data-koope-id="243"><input type="checkbox" id="cb59"><label for="cb59">Cashews, Tamari-Sesam (Tarabao, Burkina Faso/Uganda)<span class="note">nach Gewicht</span><span class="koope-num">#243</span></label><span class="q"><input type="number" class="qi" id="q59" min="0" placeholder="0"><b class="u">g</b></span><span class="price">20,11 €/kg</span></li>
+      <li data-koope-id="242"><input type="checkbox" id="cb60"><label for="cb60">Erdnüsse, gesalzen (Tarabao, Burkina Faso)<span class="note">nach Gewicht</span><span class="koope-num">#242</span></label><span class="q"><input type="number" class="qi" id="q60" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,56 €/kg</span></li>
     </ul>
   </details>
 
@@ -519,12 +520,12 @@
   <details>
     <summary><span class="sum-left"><span>Nut Butter</span><span class="badge" id="badge-nussmus"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb61"><label for="cb61">Erdnussmus Monki<span class="note">650 g Glas</span></label><span class="q"><input type="number" class="qi" id="q61" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">6,46 €</span></li>
-      <li><input type="checkbox" id="cb62"><label for="cb62">Erdnussmus Terrasana, crunchy<span class="note">500 g Glas</span></label><span class="q"><input type="number" class="qi" id="q62" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">5,33 €</span></li>
-      <li><input type="checkbox" id="cb63"><label for="cb63">Mandelmus braun, Terrasana<span class="note">250 g Glas</span></label><span class="q"><input type="number" class="qi" id="q63" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">4,98 €</span></li>
-      <li><input type="checkbox" id="cb64"><label for="cb64">Mandelmus braun, Ecoterra<span class="note">500 g Mehrwegglas + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q64" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">9,81 €</span></li>
-      <li><input type="checkbox" id="cb65"><label for="cb65">Tahin dark, Terrasana (Uganda)<span class="note">500 g Glas</span></label><span class="q"><input type="number" class="qi" id="q65" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">6,96 €</span></li>
-      <li><input type="checkbox" id="cb66"><label for="cb66">Tahin weiß, Terrasana (Bolivien/Uganda)<span class="note">500 g Glas</span></label><span class="q"><input type="number" class="qi" id="q66" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">6,80 €</span></li>
+      <li data-koope-id="106"><input type="checkbox" id="cb61"><label for="cb61">Erdnussmus Monki<span class="note">650 g Glas</span><span class="koope-num">#106</span></label><span class="q"><input type="number" class="qi" id="q61" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">6,46 €</span></li>
+      <li data-koope-id="70"><input type="checkbox" id="cb62"><label for="cb62">Erdnussmus Terrasana, crunchy<span class="note">500 g Glas</span><span class="koope-num">#70</span></label><span class="q"><input type="number" class="qi" id="q62" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">5,33 €</span></li>
+      <li data-koope-id="252"><input type="checkbox" id="cb63"><label for="cb63">Mandelmus braun, Terrasana<span class="note">250 g Glas</span><span class="koope-num">#252</span></label><span class="q"><input type="number" class="qi" id="q63" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">4,98 €</span></li>
+      <li data-koope-id="345"><input type="checkbox" id="cb64"><label for="cb64">Mandelmus braun, Ecoterra<span class="note">500 g Mehrwegglas + 0,15 € Pfand</span><span class="koope-num">#345</span></label><span class="q"><input type="number" class="qi" id="q64" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">9,81 €</span></li>
+      <li data-koope-id="124"><input type="checkbox" id="cb65"><label for="cb65">Tahin dark, Terrasana (Uganda)<span class="note">500 g Glas</span><span class="koope-num">#124</span></label><span class="q"><input type="number" class="qi" id="q65" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">6,96 €</span></li>
+      <li data-koope-id="366"><input type="checkbox" id="cb66"><label for="cb66">Tahin weiß, Terrasana (Bolivien/Uganda)<span class="note">500 g Glas</span><span class="koope-num">#366</span></label><span class="q"><input type="number" class="qi" id="q66" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">6,80 €</span></li>
     </ul>
   </details>
 
@@ -532,15 +533,15 @@
   <details>
     <summary><span class="sum-left"><span>Savory Spreads</span><span class="badge" id="badge-aufstriche"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb67"><label for="cb67">Tofu küsst Wirsing (Leipspeis)<span class="note">140 g Glas</span></label><span class="q"><input type="number" class="qi" id="q67" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
-      <li><input type="checkbox" id="cb68"><label for="cb68">Hummus, goldbäckener (Leipspeis)<span class="note">140 g Glas</span></label><span class="q"><input type="number" class="qi" id="q68" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
-      <li><input type="checkbox" id="cb69"><label for="cb69">Grüne Linse & rote Tomate (Leipspeis)<span class="note">140 g Glas</span></label><span class="q"><input type="number" class="qi" id="q69" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
-      <li><input type="checkbox" id="cb70"><label for="cb70">Purpurrote Königin – Rote Beete (Leipspeis)<span class="note">140 g Glas</span></label><span class="q"><input type="number" class="qi" id="q70" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
-      <li><input type="checkbox" id="cb71"><label for="cb71">Sommertomate & Hanf (Leipspeis)<span class="note">140 g Glas</span></label><span class="q"><input type="number" class="qi" id="q71" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
-      <li><input type="checkbox" id="cb72"><label for="cb72">Zucchini Lupini (Leipspeis)<span class="note">140 g Glas</span></label><span class="q"><input type="number" class="qi" id="q72" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
-      <li><input type="checkbox" id="cb73"><label for="cb73">Confit Burgunder-Zwiebel (Leipspeis)<span class="note">140 g Glas</span></label><span class="q"><input type="number" class="qi" id="q73" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,37 €</span></li>
-      <li><input type="checkbox" id="cb74"><label for="cb74">Confit Riesling-Zwiebel (Leipspeis)<span class="note">140 g Glas</span></label><span class="q"><input type="number" class="qi" id="q74" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,37 €</span></li>
-      <li><input type="checkbox" id="cb75"><label for="cb75">Senf, süß & halbkörnig (Leipspeis)<span class="note">150 ml Glas</span></label><span class="q"><input type="number" class="qi" id="q75" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
+      <li data-koope-id="351"><input type="checkbox" id="cb67"><label for="cb67">Tofu küsst Wirsing (Leipspeis)<span class="note">140 g Glas</span><span class="koope-num">#351</span></label><span class="q"><input type="number" class="qi" id="q67" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
+      <li data-koope-id="226"><input type="checkbox" id="cb68"><label for="cb68">Hummus, goldbäckener (Leipspeis)<span class="note">140 g Glas</span><span class="koope-num">#226</span></label><span class="q"><input type="number" class="qi" id="q68" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
+      <li data-koope-id="84"><input type="checkbox" id="cb69"><label for="cb69">Grüne Linse & rote Tomate (Leipspeis)<span class="note">140 g Glas</span><span class="koope-num">#84</span></label><span class="q"><input type="number" class="qi" id="q69" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
+      <li data-koope-id="83"><input type="checkbox" id="cb70"><label for="cb70">Purpurrote Königin – Rote Beete (Leipspeis)<span class="note">140 g Glas</span><span class="koope-num">#83</span></label><span class="q"><input type="number" class="qi" id="q70" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
+      <li data-koope-id="157"><input type="checkbox" id="cb71"><label for="cb71">Sommertomate & Hanf (Leipspeis)<span class="note">140 g Glas</span><span class="koope-num">#157</span></label><span class="q"><input type="number" class="qi" id="q71" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
+      <li data-koope-id="86"><input type="checkbox" id="cb72"><label for="cb72">Zucchini Lupini (Leipspeis)<span class="note">140 g Glas</span><span class="koope-num">#86</span></label><span class="q"><input type="number" class="qi" id="q72" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
+      <li data-koope-id="87"><input type="checkbox" id="cb73"><label for="cb73">Confit Burgunder-Zwiebel (Leipspeis)<span class="note">140 g Glas</span><span class="koope-num">#87</span></label><span class="q"><input type="number" class="qi" id="q73" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,37 €</span></li>
+      <li data-koope-id="88"><input type="checkbox" id="cb74"><label for="cb74">Confit Riesling-Zwiebel (Leipspeis)<span class="note">140 g Glas</span><span class="koope-num">#88</span></label><span class="q"><input type="number" class="qi" id="q74" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,37 €</span></li>
+      <li data-koope-id="246"><input type="checkbox" id="cb75"><label for="cb75">Senf, süß & halbkörnig (Leipspeis)<span class="note">150 ml Glas</span><span class="koope-num">#246</span></label><span class="q"><input type="number" class="qi" id="q75" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,81 €</span></li>
     </ul>
   </details>
 
@@ -548,9 +549,9 @@
   <details>
     <summary><span class="sum-left"><span>Fruit Spreads</span><span class="badge" id="badge-frucht"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb76"><label for="cb76">Mirabelle, gelb (Rosenberg Delikatessen)<span class="note">160 g Glas</span></label><span class="q"><input type="number" class="qi" id="q76" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,54 €</span></li>
-      <li><input type="checkbox" id="cb77"><label for="cb77">Sanddorn (Rosenberg Delikatessen)<span class="note">170 g Glas</span></label><span class="q"><input type="number" class="qi" id="q77" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,54 €</span></li>
-      <li><input type="checkbox" id="cb78"><label for="cb78">Wilde Pflaume (Rosenberg Delikatessen)<span class="note">160 g Glas</span></label><span class="q"><input type="number" class="qi" id="q78" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,54 €</span></li>
+      <li data-koope-id="371"><input type="checkbox" id="cb76"><label for="cb76">Mirabelle, gelb (Rosenberg Delikatessen)<span class="note">160 g Glas</span><span class="koope-num">#371</span></label><span class="q"><input type="number" class="qi" id="q76" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,54 €</span></li>
+      <li data-koope-id="370"><input type="checkbox" id="cb77"><label for="cb77">Sanddorn (Rosenberg Delikatessen)<span class="note">170 g Glas</span><span class="koope-num">#370</span></label><span class="q"><input type="number" class="qi" id="q77" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,54 €</span></li>
+      <li data-koope-id="372"><input type="checkbox" id="cb78"><label for="cb78">Wilde Pflaume (Rosenberg Delikatessen)<span class="note">160 g Glas</span><span class="koope-num">#372</span></label><span class="q"><input type="number" class="qi" id="q78" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">3,54 €</span></li>
     </ul>
   </details>
 
@@ -558,8 +559,8 @@
   <details>
     <summary><span class="sum-left"><span>Ready Meals</span><span class="badge" id="badge-fertig"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb79"><label for="cb79">Linsenbolognese (Leipspeis)<span class="note">500 g Pfandglas + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q79" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">5,48 €</span></li>
-      <li><input type="checkbox" id="cb80"><label for="cb80">Veganes Gulasch (Leipspeis)<span class="note">500 g Pfandglas + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q80" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">5,48 €</span></li>
+      <li data-koope-id="306"><input type="checkbox" id="cb79"><label for="cb79">Linsenbolognese (Leipspeis)<span class="note">500 g Pfandglas + 0,15 € Pfand</span><span class="koope-num">#306</span></label><span class="q"><input type="number" class="qi" id="q79" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">5,48 €</span></li>
+      <li data-koope-id="307"><input type="checkbox" id="cb80"><label for="cb80">Veganes Gulasch (Leipspeis)<span class="note">500 g Pfandglas + 0,15 € Pfand</span><span class="koope-num">#307</span></label><span class="q"><input type="number" class="qi" id="q80" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">5,48 €</span></li>
     </ul>
   </details>
 
@@ -568,10 +569,10 @@
     <summary><span class="sum-left"><span>Tofu – Tofurei Leipzig</span><span class="badge" id="badge-tofu"></span></span><span class="chevron">›</span></summary>
     <div class="preorder-banner">⏰ Pre-order by Sun. 31.05. · Pickup Fri. 05.06.2026</div>
     <ul>
-      <li><input type="checkbox" id="cb81"><label for="cb81">Tofu geräuchert – Alge Soja<span class="note">ca. 200 g</span></label><span class="q"><input type="number" class="qi" id="q81" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">3,37 €</span></li>
-      <li><input type="checkbox" id="cb82"><label for="cb82">Tofu geräuchert – Natur Soja<span class="note">ca. 200 g</span></label><span class="q"><input type="number" class="qi" id="q82" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">3,37 €</span></li>
-      <li><input type="checkbox" id="cb83"><label for="cb83">Tofu geräuchert – Röstzwiebel Pfeffer<span class="note">ca. 200 g</span></label><span class="q"><input type="number" class="qi" id="q83" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">3,37 €</span></li>
-      <li><input type="checkbox" id="cb84"><label for="cb84">Tofu geräuchert – Sesam-Soja<span class="note">ca. 200 g</span></label><span class="q"><input type="number" class="qi" id="q84" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">3,37 €</span></li>
+      <li data-koope-id="153"><input type="checkbox" id="cb81"><label for="cb81">Tofu geräuchert – Alge Soja<span class="note">ca. 200 g</span><span class="koope-num">#153</span></label><span class="q"><input type="number" class="qi" id="q81" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">3,37 €</span></li>
+      <li data-koope-id="150"><input type="checkbox" id="cb82"><label for="cb82">Tofu geräuchert – Natur Soja<span class="note">ca. 200 g</span><span class="koope-num">#150</span></label><span class="q"><input type="number" class="qi" id="q82" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">3,37 €</span></li>
+      <li data-koope-id="152"><input type="checkbox" id="cb83"><label for="cb83">Tofu geräuchert – Röstzwiebel Pfeffer<span class="note">ca. 200 g</span><span class="koope-num">#152</span></label><span class="q"><input type="number" class="qi" id="q83" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">3,37 €</span></li>
+      <li data-koope-id="177"><input type="checkbox" id="cb84"><label for="cb84">Tofu geräuchert – Sesam-Soja<span class="note">ca. 200 g</span><span class="koope-num">#177</span></label><span class="q"><input type="number" class="qi" id="q84" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">3,37 €</span></li>
     </ul>
   </details>
 
@@ -579,8 +580,8 @@
   <details>
     <summary><span class="sum-left"><span>Canned & Jarred Goods</span><span class="badge" id="badge-konserven"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb85"><label for="cb85">Tomaten Passata (Ecoterra, IT)<span class="note">500 g Mehrwegglas + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q85" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,27 €</span></li>
-      <li><input type="checkbox" id="cb86"><label for="cb86">Tomatenmark (Ecoterra, IT)<span class="note">270 g Mehrwegglas + 0,15 € Pfand</span></label><span class="q"><input type="number" class="qi" id="q86" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,77 €</span></li>
+      <li data-koope-id="344"><input type="checkbox" id="cb85"><label for="cb85">Tomaten Passata (Ecoterra, IT)<span class="note">500 g Mehrwegglas + 0,15 € Pfand</span><span class="koope-num">#344</span></label><span class="q"><input type="number" class="qi" id="q85" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,27 €</span></li>
+      <li data-koope-id="346"><input type="checkbox" id="cb86"><label for="cb86">Tomatenmark (Ecoterra, IT)<span class="note">270 g Mehrwegglas + 0,15 € Pfand</span><span class="koope-num">#346</span></label><span class="q"><input type="number" class="qi" id="q86" min="0" placeholder="0"><b class="u">Glas</b></span><span class="price">2,77 €</span></li>
     </ul>
   </details>
 
@@ -588,10 +589,10 @@
   <details>
     <summary><span class="sum-left"><span>Oils</span><span class="badge" id="badge-oele"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb87"><label for="cb87">Bratöl Sonnenblumenkernöl (Teutoburger Ölmühle)<span class="note">10 L · ca. 5,03 € / L · nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q87" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,46 €/kg</span></li>
-      <li><input type="checkbox" id="cb88"><label for="cb88">Olivenöl (Griechenland, 5-L-Kanister)<span class="note">ca. 15,52 € / L · nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q88" min="0" placeholder="0"><b class="u">g</b></span><span class="price">17,98 €/kg</span></li>
-      <li><input type="checkbox" id="cb89"><label for="cb89">Rapsöl (Ölmühle Leipzig)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q89" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,61 €/kg</span></li>
-      <li><input type="checkbox" id="cb90"><label for="cb90">Sonnenblumenöl (Ölmühle Leipzig)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q90" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,94 €/kg</span></li>
+      <li data-koope-id="259"><input type="checkbox" id="cb87"><label for="cb87">Bratöl Sonnenblumenkernöl (Teutoburger Ölmühle)<span class="note">10 L · ca. 5,03 € / L · nach Gewicht</span><span class="koope-num">#259</span></label><span class="q"><input type="number" class="qi" id="q87" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,46 €/kg</span></li>
+      <li data-koope-id="193"><input type="checkbox" id="cb88"><label for="cb88">Olivenöl (Griechenland, 5-L-Kanister)<span class="note">ca. 15,52 € / L · nach Gewicht</span><span class="koope-num">#193</span></label><span class="q"><input type="number" class="qi" id="q88" min="0" placeholder="0"><b class="u">g</b></span><span class="price">17,98 €/kg</span></li>
+      <li data-koope-id="361"><input type="checkbox" id="cb89"><label for="cb89">Rapsöl (Ölmühle Leipzig)<span class="note">nach Gewicht</span><span class="koope-num">#361</span></label><span class="q"><input type="number" class="qi" id="q89" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,61 €/kg</span></li>
+      <li data-koope-id="184"><input type="checkbox" id="cb90"><label for="cb90">Sonnenblumenöl (Ölmühle Leipzig)<span class="note">nach Gewicht</span><span class="koope-num">#184</span></label><span class="q"><input type="number" class="qi" id="q90" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,94 €/kg</span></li>
     </ul>
   </details>
 
@@ -599,9 +600,9 @@
   <details>
     <summary><span class="sum-left"><span>Vinegar & Sauces</span><span class="badge" id="badge-essig"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb91"><label for="cb91">Apfelessig (Beutelsbacher, DE, 10 L)<span class="note">ca. 3,56 € / L · nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q91" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,52 €/kg</span></li>
-      <li><input type="checkbox" id="cb92"><label for="cb92">Balsamico di Modena (De Nigris, IT)<span class="note">ca. 6,30 € / L · nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q92" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,25 €/kg</span></li>
-      <li><input type="checkbox" id="cb93"><label for="cb93">Sojasauce Shoyu (Arche Naturküche)<span class="note">ca. 11,14 € / L · nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q93" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,00 €/kg</span></li>
+      <li data-koope-id="254"><input type="checkbox" id="cb91"><label for="cb91">Apfelessig (Beutelsbacher, DE, 10 L)<span class="note">ca. 3,56 € / L · nach Gewicht</span><span class="koope-num">#254</span></label><span class="q"><input type="number" class="qi" id="q91" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,52 €/kg</span></li>
+      <li data-koope-id="260"><input type="checkbox" id="cb92"><label for="cb92">Balsamico di Modena (De Nigris, IT)<span class="note">ca. 6,30 € / L · nach Gewicht</span><span class="koope-num">#260</span></label><span class="q"><input type="number" class="qi" id="q92" min="0" placeholder="0"><b class="u">g</b></span><span class="price">5,25 €/kg</span></li>
+      <li data-koope-id="168"><input type="checkbox" id="cb93"><label for="cb93">Sojasauce Shoyu (Arche Naturküche)<span class="note">ca. 11,14 € / L · nach Gewicht</span><span class="koope-num">#168</span></label><span class="q"><input type="number" class="qi" id="q93" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,00 €/kg</span></li>
     </ul>
   </details>
 
@@ -609,9 +610,9 @@
   <details>
     <summary><span class="sum-left"><span>Salt & Sugar</span><span class="badge" id="badge-salz"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb94"><label for="cb94">Steinsalz fein (Buxtrade, NL)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q94" min="0" placeholder="0"><b class="u">g</b></span><span class="price">0,56 €/kg</span></li>
-      <li><input type="checkbox" id="cb95"><label for="cb95">Steinsalz fein, ohne Zusätze (K+S, DE)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q95" min="0" placeholder="0"><b class="u">g</b></span><span class="price">0,58 €/kg</span></li>
-      <li><input type="checkbox" id="cb96"><label for="cb96">Rübenzucker (DE)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q96" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,16 €/kg</span></li>
+      <li data-koope-id="285"><input type="checkbox" id="cb94"><label for="cb94">Steinsalz fein (Buxtrade, NL)<span class="note">nach Gewicht</span><span class="koope-num">#285</span></label><span class="q"><input type="number" class="qi" id="q94" min="0" placeholder="0"><b class="u">g</b></span><span class="price">0,56 €/kg</span></li>
+      <li data-koope-id="379"><input type="checkbox" id="cb95"><label for="cb95">Steinsalz fein, ohne Zusätze (K+S, DE)<span class="note">nach Gewicht</span><span class="koope-num">#379</span></label><span class="q"><input type="number" class="qi" id="q95" min="0" placeholder="0"><b class="u">g</b></span><span class="price">0,58 €/kg</span></li>
+      <li data-koope-id="89"><input type="checkbox" id="cb96"><label for="cb96">Rübenzucker (DE)<span class="note">nach Gewicht</span><span class="koope-num">#89</span></label><span class="q"><input type="number" class="qi" id="q96" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,16 €/kg</span></li>
     </ul>
   </details>
 
@@ -619,7 +620,7 @@
   <details>
     <summary><span class="sum-left"><span>Broth & Seasoning</span><span class="badge" id="badge-bruehe"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb97"><label for="cb97">Gemüsebrühe, hefefrei vegan (Erntesegen)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q97" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,70 €/kg</span></li>
+      <li data-koope-id="170"><input type="checkbox" id="cb97"><label for="cb97">Gemüsebrühe, hefefrei vegan (Erntesegen)<span class="note">nach Gewicht</span><span class="koope-num">#170</span></label><span class="q"><input type="number" class="qi" id="q97" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,70 €/kg</span></li>
     </ul>
   </details>
 
@@ -627,15 +628,15 @@
   <details>
     <summary><span class="sum-left"><span>Spices</span><span class="badge" id="badge-gewuerze"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb98"><label for="cb98">Ingwer, gemahlen<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q98" min="0" placeholder="0"><b class="u">g</b></span><span class="price">11,46 €/kg</span></li>
-      <li><input type="checkbox" id="cb99"><label for="cb99">Kreuzkümmel (Cumin), gemahlen<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q99" min="0" placeholder="0"><b class="u">g</b></span><span class="price">43,70 €/kg</span></li>
-      <li><input type="checkbox" id="cb100"><label for="cb100">Curry Mild (Karma Kollektiv, IND/EGY)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q100" min="0" placeholder="0"><b class="u">g</b></span><span class="price">34,83 €/kg</span></li>
-      <li><input type="checkbox" id="cb101"><label for="cb101">Kurkuma, gemahlen (Madagaskar)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q101" min="0" placeholder="0"><b class="u">g</b></span><span class="price">23,64 €/kg</span></li>
-      <li><input type="checkbox" id="cb102"><label for="cb102">Muskatnuss, gemahlen (Indien)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q102" min="0" placeholder="0"><b class="u">g</b></span><span class="price">62,22 €/kg</span></li>
-      <li><input type="checkbox" id="cb103"><label for="cb103">Paprika, geräuchert (Spanien)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q103" min="0" placeholder="0"><b class="u">g</b></span><span class="price">34,45 €/kg</span></li>
-      <li><input type="checkbox" id="cb104"><label for="cb104">Paprikapulver, edelsüß (Spanien)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q104" min="0" placeholder="0"><b class="u">g</b></span><span class="price">20,80 €/kg</span></li>
-      <li><input type="checkbox" id="cb105"><label for="cb105">Pfeffer, schwarz, ganz (Kambodscha)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q105" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,75 €/kg</span></li>
-      <li><input type="checkbox" id="cb106"><label for="cb106">Zimt Ceylon (Madagaskar)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q106" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,45 €/kg</span></li>
+      <li data-koope-id="314"><input type="checkbox" id="cb98"><label for="cb98">Ingwer, gemahlen<span class="note">nach Gewicht</span><span class="koope-num">#314</span></label><span class="q"><input type="number" class="qi" id="q98" min="0" placeholder="0"><b class="u">g</b></span><span class="price">11,46 €/kg</span></li>
+      <li data-koope-id="350"><input type="checkbox" id="cb99"><label for="cb99">Kreuzkümmel (Cumin), gemahlen<span class="note">nach Gewicht</span><span class="koope-num">#350</span></label><span class="q"><input type="number" class="qi" id="q99" min="0" placeholder="0"><b class="u">g</b></span><span class="price">43,70 €/kg</span></li>
+      <li data-koope-id="227"><input type="checkbox" id="cb100"><label for="cb100">Curry Mild (Karma Kollektiv, IND/EGY)<span class="note">nach Gewicht</span><span class="koope-num">#227</span></label><span class="q"><input type="number" class="qi" id="q100" min="0" placeholder="0"><b class="u">g</b></span><span class="price">34,83 €/kg</span></li>
+      <li data-koope-id="228"><input type="checkbox" id="cb101"><label for="cb101">Kurkuma, gemahlen (Madagaskar)<span class="note">nach Gewicht</span><span class="koope-num">#228</span></label><span class="q"><input type="number" class="qi" id="q101" min="0" placeholder="0"><b class="u">g</b></span><span class="price">23,64 €/kg</span></li>
+      <li data-koope-id="230"><input type="checkbox" id="cb102"><label for="cb102">Muskatnuss, gemahlen (Indien)<span class="note">nach Gewicht</span><span class="koope-num">#230</span></label><span class="q"><input type="number" class="qi" id="q102" min="0" placeholder="0"><b class="u">g</b></span><span class="price">62,22 €/kg</span></li>
+      <li data-koope-id="241"><input type="checkbox" id="cb103"><label for="cb103">Paprika, geräuchert (Spanien)<span class="note">nach Gewicht</span><span class="koope-num">#241</span></label><span class="q"><input type="number" class="qi" id="q103" min="0" placeholder="0"><b class="u">g</b></span><span class="price">34,45 €/kg</span></li>
+      <li data-koope-id="330"><input type="checkbox" id="cb104"><label for="cb104">Paprikapulver, edelsüß (Spanien)<span class="note">nach Gewicht</span><span class="koope-num">#330</span></label><span class="q"><input type="number" class="qi" id="q104" min="0" placeholder="0"><b class="u">g</b></span><span class="price">20,80 €/kg</span></li>
+      <li data-koope-id="233"><input type="checkbox" id="cb105"><label for="cb105">Pfeffer, schwarz, ganz (Kambodscha)<span class="note">nach Gewicht</span><span class="koope-num">#233</span></label><span class="q"><input type="number" class="qi" id="q105" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,75 €/kg</span></li>
+      <li data-koope-id="367"><input type="checkbox" id="cb106"><label for="cb106">Zimt Ceylon (Madagaskar)<span class="note">nach Gewicht</span><span class="koope-num">#367</span></label><span class="q"><input type="number" class="qi" id="q106" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,45 €/kg</span></li>
     </ul>
   </details>
 
@@ -643,12 +644,12 @@
   <details>
     <summary><span class="sum-left"><span>Herbs</span><span class="badge" id="badge-kraeuter"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb107"><label for="cb107">Basilikum, getrocknet (Lüneburger Heide, DE)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q107" min="0" placeholder="0"><b class="u">g</b></span><span class="price">39,24 €/kg</span></li>
-      <li><input type="checkbox" id="cb108"><label for="cb108">Kräuter der Provence<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q108" min="0" placeholder="0"><b class="u">g</b></span><span class="price">43,14 €/kg</span></li>
-      <li><input type="checkbox" id="cb109"><label for="cb109">Lorbeerblätter (Türkei)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q109" min="0" placeholder="0"><b class="u">g</b></span><span class="price">67,41 €/kg</span></li>
-      <li><input type="checkbox" id="cb110"><label for="cb110">Oregano (Griechenland)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q110" min="0" placeholder="0"><b class="u">g</b></span><span class="price">30,79 €/kg</span></li>
-      <li><input type="checkbox" id="cb111"><label for="cb111">Salatkräuter (DE/HU/CZ/NL)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q111" min="0" placeholder="0"><b class="u">g</b></span><span class="price">38,65 €/kg</span></li>
-      <li><input type="checkbox" id="cb112"><label for="cb112">Thymian (Griechenland)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q112" min="0" placeholder="0"><b class="u">g</b></span><span class="price">45,55 €/kg</span></li>
+      <li data-koope-id="368"><input type="checkbox" id="cb107"><label for="cb107">Basilikum, getrocknet (Lüneburger Heide, DE)<span class="note">nach Gewicht</span><span class="koope-num">#368</span></label><span class="q"><input type="number" class="qi" id="q107" min="0" placeholder="0"><b class="u">g</b></span><span class="price">39,24 €/kg</span></li>
+      <li data-koope-id="229"><input type="checkbox" id="cb108"><label for="cb108">Kräuter der Provence<span class="note">nach Gewicht</span><span class="koope-num">#229</span></label><span class="q"><input type="number" class="qi" id="q108" min="0" placeholder="0"><b class="u">g</b></span><span class="price">43,14 €/kg</span></li>
+      <li data-koope-id="231"><input type="checkbox" id="cb109"><label for="cb109">Lorbeerblätter (Türkei)<span class="note">nach Gewicht</span><span class="koope-num">#231</span></label><span class="q"><input type="number" class="qi" id="q109" min="0" placeholder="0"><b class="u">g</b></span><span class="price">67,41 €/kg</span></li>
+      <li data-koope-id="232"><input type="checkbox" id="cb110"><label for="cb110">Oregano (Griechenland)<span class="note">nach Gewicht</span><span class="koope-num">#232</span></label><span class="q"><input type="number" class="qi" id="q110" min="0" placeholder="0"><b class="u">g</b></span><span class="price">30,79 €/kg</span></li>
+      <li data-koope-id="234"><input type="checkbox" id="cb111"><label for="cb111">Salatkräuter (DE/HU/CZ/NL)<span class="note">nach Gewicht</span><span class="koope-num">#234</span></label><span class="q"><input type="number" class="qi" id="q111" min="0" placeholder="0"><b class="u">g</b></span><span class="price">38,65 €/kg</span></li>
+      <li data-koope-id="235"><input type="checkbox" id="cb112"><label for="cb112">Thymian (Griechenland)<span class="note">nach Gewicht</span><span class="koope-num">#235</span></label><span class="q"><input type="number" class="qi" id="q112" min="0" placeholder="0"><b class="u">g</b></span><span class="price">45,55 €/kg</span></li>
     </ul>
   </details>
 
@@ -656,14 +657,14 @@
   <details>
     <summary><span class="sum-left"><span>Dried Fruit</span><span class="badge" id="badge-trocken"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb113"><label for="cb113">Apfelchips (Tarabao, Polen)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q113" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,36 €/kg</span></li>
-      <li><input type="checkbox" id="cb114"><label for="cb114">Aprikosen, ungeschwefelt (Türkei)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q114" min="0" placeholder="0"><b class="u">g</b></span><span class="price">15,29 €/kg</span></li>
-      <li><input type="checkbox" id="cb115"><label for="cb115">Datteln Deglet Nour (Tunesien)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q115" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,77 €/kg</span></li>
-      <li><input type="checkbox" id="cb116"><label for="cb116">Feigen (Messenien, GR)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q116" min="0" placeholder="0"><b class="u">g</b></span><span class="price">12,36 €/kg</span></li>
-      <li><input type="checkbox" id="cb117"><label for="cb117">Heidelbeeren, gefriergetrocknet (Tarabao, Chile)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q117" min="0" placeholder="0"><b class="u">g</b></span><span class="price">77,52 €/kg</span></li>
-      <li><input type="checkbox" id="cb118"><label for="cb118">Maulbeeren (Tarabao, Türkei)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q118" min="0" placeholder="0"><b class="u">g</b></span><span class="price">14,49 €/kg</span></li>
-      <li><input type="checkbox" id="cb119"><label for="cb119">Pflaumen, entsteint (Tarabao, Bulgarien)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q119" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,00 €/kg</span></li>
-      <li><input type="checkbox" id="cb120"><label for="cb120">Sultaninen (Türkei)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q120" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,76 €/kg</span></li>
+      <li data-koope-id="337"><input type="checkbox" id="cb113"><label for="cb113">Apfelchips (Tarabao, Polen)<span class="note">nach Gewicht</span><span class="koope-num">#337</span></label><span class="q"><input type="number" class="qi" id="q113" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,36 €/kg</span></li>
+      <li data-koope-id="275"><input type="checkbox" id="cb114"><label for="cb114">Aprikosen, ungeschwefelt (Türkei)<span class="note">nach Gewicht</span><span class="koope-num">#275</span></label><span class="q"><input type="number" class="qi" id="q114" min="0" placeholder="0"><b class="u">g</b></span><span class="price">15,29 €/kg</span></li>
+      <li data-koope-id="43"><input type="checkbox" id="cb115"><label for="cb115">Datteln Deglet Nour (Tunesien)<span class="note">nach Gewicht</span><span class="koope-num">#43</span></label><span class="q"><input type="number" class="qi" id="q115" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,77 €/kg</span></li>
+      <li data-koope-id="159"><input type="checkbox" id="cb116"><label for="cb116">Feigen (Messenien, GR)<span class="note">nach Gewicht</span><span class="koope-num">#159</span></label><span class="q"><input type="number" class="qi" id="q116" min="0" placeholder="0"><b class="u">g</b></span><span class="price">12,36 €/kg</span></li>
+      <li data-koope-id="369"><input type="checkbox" id="cb117"><label for="cb117">Heidelbeeren, gefriergetrocknet (Tarabao, Chile)<span class="note">nach Gewicht</span><span class="koope-num">#369</span></label><span class="q"><input type="number" class="qi" id="q117" min="0" placeholder="0"><b class="u">g</b></span><span class="price">77,52 €/kg</span></li>
+      <li data-koope-id="162"><input type="checkbox" id="cb118"><label for="cb118">Maulbeeren (Tarabao, Türkei)<span class="note">nach Gewicht</span><span class="koope-num">#162</span></label><span class="q"><input type="number" class="qi" id="q118" min="0" placeholder="0"><b class="u">g</b></span><span class="price">14,49 €/kg</span></li>
+      <li data-koope-id="165"><input type="checkbox" id="cb119"><label for="cb119">Pflaumen, entsteint (Tarabao, Bulgarien)<span class="note">nach Gewicht</span><span class="koope-num">#165</span></label><span class="q"><input type="number" class="qi" id="q119" min="0" placeholder="0"><b class="u">g</b></span><span class="price">10,00 €/kg</span></li>
+      <li data-koope-id="55"><input type="checkbox" id="cb120"><label for="cb120">Sultaninen (Türkei)<span class="note">nach Gewicht</span><span class="koope-num">#55</span></label><span class="q"><input type="number" class="qi" id="q120" min="0" placeholder="0"><b class="u">g</b></span><span class="price">7,76 €/kg</span></li>
     </ul>
   </details>
 
@@ -671,7 +672,7 @@
   <details>
     <summary><span class="sum-left"><span>Oliven</span><span class="badge" id="badge-oliven"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb121"><label for="cb121">Kalamon-Oliven (Messenien, GR)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q121" min="0" placeholder="0"><b class="u">g</b></span><span class="price">14,98 €/kg</span></li>
+      <li data-koope-id="160"><input type="checkbox" id="cb121"><label for="cb121">Kalamon-Oliven (Messenien, GR)<span class="note">nach Gewicht</span><span class="koope-num">#160</span></label><span class="q"><input type="number" class="qi" id="q121" min="0" placeholder="0"><b class="u">g</b></span><span class="price">14,98 €/kg</span></li>
     </ul>
   </details>
 
@@ -679,10 +680,10 @@
   <details>
     <summary><span class="sum-left"><span>Chocolate & Sweets</span><span class="badge" id="badge-schoko"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb122"><label for="cb122">Choco Knuspies Dunkel – Kichererbsen (Hülsenreich)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q122" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,47 €/kg</span></li>
-      <li><input type="checkbox" id="cb123"><label for="cb123">Kakaopulver (Nusskauf, Peru/DR)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q123" min="0" placeholder="0"><b class="u">g</b></span><span class="price">24,14 €/kg</span></li>
-      <li><input type="checkbox" id="cb124"><label for="cb124">Schokolade, Himbeeren in Zartbitter (Tarabao, Ghana)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q124" min="0" placeholder="0"><b class="u">g</b></span><span class="price">32,47 €/kg</span></li>
-      <li><input type="checkbox" id="cb125"><label for="cb125">Schokolade, Zartbitter Kakaosplitter 70% (Tarabao, Ghana)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q125" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,36 €/kg</span></li>
+      <li data-koope-id="251"><input type="checkbox" id="cb122"><label for="cb122">Choco Knuspies Dunkel – Kichererbsen (Hülsenreich)<span class="note">nach Gewicht</span><span class="koope-num">#251</span></label><span class="q"><input type="number" class="qi" id="q122" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,47 €/kg</span></li>
+      <li data-koope-id="348"><input type="checkbox" id="cb123"><label for="cb123">Kakaopulver (Nusskauf, Peru/DR)<span class="note">nach Gewicht</span><span class="koope-num">#348</span></label><span class="q"><input type="number" class="qi" id="q123" min="0" placeholder="0"><b class="u">g</b></span><span class="price">24,14 €/kg</span></li>
+      <li data-koope-id="245"><input type="checkbox" id="cb124"><label for="cb124">Schokolade, Himbeeren in Zartbitter (Tarabao, Ghana)<span class="note">nach Gewicht</span><span class="koope-num">#245</span></label><span class="q"><input type="number" class="qi" id="q124" min="0" placeholder="0"><b class="u">g</b></span><span class="price">32,47 €/kg</span></li>
+      <li data-koope-id="244"><input type="checkbox" id="cb125"><label for="cb125">Schokolade, Zartbitter Kakaosplitter 70% (Tarabao, Ghana)<span class="note">nach Gewicht</span><span class="koope-num">#244</span></label><span class="q"><input type="number" class="qi" id="q125" min="0" placeholder="0"><b class="u">g</b></span><span class="price">22,36 €/kg</span></li>
     </ul>
   </details>
 
@@ -690,8 +691,8 @@
   <details>
     <summary><span class="sum-left"><span>Ice Cream & Sorbet</span><span class="badge" id="badge-eis"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb126"><label for="cb126">Sorbet Schwarze Johannisbeere (Quietzsch)<span class="note">110 ml</span></label><span class="q"><input type="number" class="qi" id="q126" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,25 €</span></li>
-      <li><input type="checkbox" id="cb127"><label for="cb127">Sorbet Zitrone (Quietzsch, Sizilien)<span class="note">110 ml</span></label><span class="q"><input type="number" class="qi" id="q127" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,25 €</span></li>
+      <li data-koope-id="381"><input type="checkbox" id="cb126"><label for="cb126">Sorbet Schwarze Johannisbeere (Quietzsch)<span class="note">110 ml</span><span class="koope-num">#381</span></label><span class="q"><input type="number" class="qi" id="q126" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,25 €</span></li>
+      <li data-koope-id="380"><input type="checkbox" id="cb127"><label for="cb127">Sorbet Zitrone (Quietzsch, Sizilien)<span class="note">110 ml</span><span class="koope-num">#380</span></label><span class="q"><input type="number" class="qi" id="q127" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,25 €</span></li>
     </ul>
   </details>
 
@@ -699,12 +700,12 @@
   <details>
     <summary><span class="sum-left"><span>Personal Care & Soaps</span><span class="badge" id="badge-koerperpflege"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb128"><label for="cb128">Seife, Lavaerde Lavendel (KOJE, DE-Lpz)<span class="note">50 g · palmöl- & plastikfrei</span></label><span class="q"><input type="number" class="qi" id="q128" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
-      <li><input type="checkbox" id="cb129"><label for="cb129">Seife, Weiße Tonerde Brombeer + Lavendel (KOJE)<span class="note">50 g</span></label><span class="q"><input type="number" class="qi" id="q129" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
-      <li><input type="checkbox" id="cb130"><label for="cb130">Seife, Soleseife Mohn & Rose (KOJE)<span class="note">50 g</span></label><span class="q"><input type="number" class="qi" id="q130" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
-      <li><input type="checkbox" id="cb131"><label for="cb131">Seife, Soleseife Thymian + Limone (KOJE)<span class="note">50 g</span></label><span class="q"><input type="number" class="qi" id="q131" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
-      <li><input type="checkbox" id="cb132"><label for="cb132">Seife, Wolkensteiner Thermalwasser (KOJE)<span class="note">50 g</span></label><span class="q"><input type="number" class="qi" id="q132" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
-      <li><input type="checkbox" id="cb133"><label for="cb133">Schneestern Seife Körper & Hände (KOJE)<span class="note">90 g</span></label><span class="q"><input type="number" class="qi" id="q133" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">4,75 €</span></li>
+      <li data-koope-id="139"><input type="checkbox" id="cb128"><label for="cb128">Seife, Lavaerde Lavendel (KOJE, DE-Lpz)<span class="note">50 g · palmöl- & plastikfrei</span><span class="koope-num">#139</span></label><span class="q"><input type="number" class="qi" id="q128" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
+      <li data-koope-id="91"><input type="checkbox" id="cb129"><label for="cb129">Seife, Weiße Tonerde Brombeer + Lavendel (KOJE)<span class="note">50 g</span><span class="koope-num">#91</span></label><span class="q"><input type="number" class="qi" id="q129" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
+      <li data-koope-id="90"><input type="checkbox" id="cb130"><label for="cb130">Seife, Soleseife Mohn & Rose (KOJE)<span class="note">50 g</span><span class="koope-num">#90</span></label><span class="q"><input type="number" class="qi" id="q130" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
+      <li data-koope-id="81"><input type="checkbox" id="cb131"><label for="cb131">Seife, Soleseife Thymian + Limone (KOJE)<span class="note">50 g</span><span class="koope-num">#81</span></label><span class="q"><input type="number" class="qi" id="q131" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
+      <li data-koope-id="182"><input type="checkbox" id="cb132"><label for="cb132">Seife, Wolkensteiner Thermalwasser (KOJE)<span class="note">50 g</span><span class="koope-num">#182</span></label><span class="q"><input type="number" class="qi" id="q132" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,63 €</span></li>
+      <li data-koope-id="284"><input type="checkbox" id="cb133"><label for="cb133">Schneestern Seife Körper & Hände (KOJE)<span class="note">90 g</span><span class="koope-num">#284</span></label><span class="q"><input type="number" class="qi" id="q133" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">4,75 €</span></li>
     </ul>
   </details>
 
@@ -712,17 +713,17 @@
   <details>
     <summary><span class="sum-left"><span>Cleaning Products (Sonett)</span><span class="badge" id="badge-reinigung"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb134"><label for="cb134">Allesreiniger<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q134" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,85 €/kg</span></li>
-      <li><input type="checkbox" id="cb135"><label for="cb135">Geschirrspülmittel<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q135" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,71 €/kg</span></li>
-      <li><input type="checkbox" id="cb136"><label for="cb136">Glasreiniger<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q136" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,44 €/kg</span></li>
-      <li><input type="checkbox" id="cb137"><label for="cb137">Handseife Citrus<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q137" min="0" placeholder="0"><b class="u">g</b></span><span class="price">6,20 €/kg</span></li>
-      <li><input type="checkbox" id="cb138"><label for="cb138">Handseife Rosmarin<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q138" min="0" placeholder="0"><b class="u">g</b></span><span class="price">6,30 €/kg</span></li>
-      <li><input type="checkbox" id="cb139"><label for="cb139">Maschinenspülmittel<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q139" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,54 €/kg</span></li>
-      <li><input type="checkbox" id="cb140"><label for="cb140">Waschmittel flüssig, Lavendel<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q140" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,67 €/kg</span></li>
-      <li><input type="checkbox" id="cb141"><label for="cb141">Waschmittel Olive (Wolle & Seide)<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q141" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,24 €/kg</span></li>
-      <li><input type="checkbox" id="cb142"><label for="cb142">Waschmittel Pulver<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q142" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,69 €/kg</span></li>
-      <li><input type="checkbox" id="cb143"><label for="cb143">WC-Reiniger Zeder-Citronella<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q143" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,54 €/kg</span></li>
-      <li><input type="checkbox" id="cb144"><label for="cb144">Waschsoda<span class="note">nach Gewicht</span></label><span class="q"><input type="number" class="qi" id="q144" min="0" placeholder="0"><b class="u">g</b></span><span class="price">0,49 €/kg</span></li>
+      <li data-koope-id="143"><input type="checkbox" id="cb134"><label for="cb134">Allesreiniger<span class="note">nach Gewicht</span><span class="koope-num">#143</span></label><span class="q"><input type="number" class="qi" id="q134" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,85 €/kg</span></li>
+      <li data-koope-id="35"><input type="checkbox" id="cb135"><label for="cb135">Geschirrspülmittel<span class="note">nach Gewicht</span><span class="koope-num">#35</span></label><span class="q"><input type="number" class="qi" id="q135" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,71 €/kg</span></li>
+      <li data-koope-id="144"><input type="checkbox" id="cb136"><label for="cb136">Glasreiniger<span class="note">nach Gewicht</span><span class="koope-num">#144</span></label><span class="q"><input type="number" class="qi" id="q136" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,44 €/kg</span></li>
+      <li data-koope-id="365"><input type="checkbox" id="cb137"><label for="cb137">Handseife Citrus<span class="note">nach Gewicht</span><span class="koope-num">#365</span></label><span class="q"><input type="number" class="qi" id="q137" min="0" placeholder="0"><b class="u">g</b></span><span class="price">6,20 €/kg</span></li>
+      <li data-koope-id="41"><input type="checkbox" id="cb138"><label for="cb138">Handseife Rosmarin<span class="note">nach Gewicht</span><span class="koope-num">#41</span></label><span class="q"><input type="number" class="qi" id="q138" min="0" placeholder="0"><b class="u">g</b></span><span class="price">6,30 €/kg</span></li>
+      <li data-koope-id="36"><input type="checkbox" id="cb139"><label for="cb139">Maschinenspülmittel<span class="note">nach Gewicht</span><span class="koope-num">#36</span></label><span class="q"><input type="number" class="qi" id="q139" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,54 €/kg</span></li>
+      <li data-koope-id="77"><input type="checkbox" id="cb140"><label for="cb140">Waschmittel flüssig, Lavendel<span class="note">nach Gewicht</span><span class="koope-num">#77</span></label><span class="q"><input type="number" class="qi" id="q140" min="0" placeholder="0"><b class="u">g</b></span><span class="price">2,67 €/kg</span></li>
+      <li data-koope-id="253"><input type="checkbox" id="cb141"><label for="cb141">Waschmittel Olive (Wolle & Seide)<span class="note">nach Gewicht</span><span class="koope-num">#253</span></label><span class="q"><input type="number" class="qi" id="q141" min="0" placeholder="0"><b class="u">g</b></span><span class="price">4,24 €/kg</span></li>
+      <li data-koope-id="33"><input type="checkbox" id="cb142"><label for="cb142">Waschmittel Pulver<span class="note">nach Gewicht</span><span class="koope-num">#33</span></label><span class="q"><input type="number" class="qi" id="q142" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,69 €/kg</span></li>
+      <li data-koope-id="34"><input type="checkbox" id="cb143"><label for="cb143">WC-Reiniger Zeder-Citronella<span class="note">nach Gewicht</span><span class="koope-num">#34</span></label><span class="q"><input type="number" class="qi" id="q143" min="0" placeholder="0"><b class="u">g</b></span><span class="price">3,54 €/kg</span></li>
+      <li data-koope-id="277"><input type="checkbox" id="cb144"><label for="cb144">Waschsoda<span class="note">nach Gewicht</span><span class="koope-num">#277</span></label><span class="q"><input type="number" class="qi" id="q144" min="0" placeholder="0"><b class="u">g</b></span><span class="price">0,49 €/kg</span></li>
     </ul>
   </details>
 
@@ -730,13 +731,13 @@
   <details>
     <summary><span class="sum-left"><span>Non-Food & Household</span><span class="badge" id="badge-nonfood"></span></span><span class="chevron">›</span></summary>
     <ul>
-      <li><input type="checkbox" id="cb145"><label for="cb145">Klopapier (Goldeimer, 100 % Recycling)<span class="note">8 Rollen · Blauer Engel</span></label><span class="q"><input type="number" class="qi" id="q145" min="0" placeholder="0"><b class="u">Pack</b></span><span class="price">4,68 €</span></li>
-      <li><input type="checkbox" id="cb146"><label for="cb146">Stumpenkerze bunt (Biokema, Thüringen)<span class="note">60×55 mm</span></label><span class="q"><input type="number" class="qi" id="q146" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,14 €</span></li>
-      <li><input type="checkbox" id="cb147"><label for="cb147">Stumpenkerze weiß (Biokema, Thüringen)<span class="note">60×120 mm</span></label><span class="q"><input type="number" class="qi" id="q147" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,97 €</span></li>
-      <li><input type="checkbox" id="cb148"><label for="cb148">Stabkerze bunt (Lichtbringer, Sachsen-Anhalt, Rapswachs)<span class="note">2×20,5 cm</span></label><span class="q"><input type="number" class="qi" id="q148" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">1,85 €</span></li>
-      <li><input type="checkbox" id="cb149"><label for="cb149">Stabkerze naturweiß (Lichtbringer, Sachsen-Anhalt, Rapswachs)<span class="note">2×20,5 cm</span></label><span class="q"><input type="number" class="qi" id="q149" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">1,72 €</span></li>
-      <li><input type="checkbox" id="cb150"><label for="cb150">Teelichte (Biokema, Thüringen)<span class="note">pro Stück</span></label><span class="q"><input type="number" class="qi" id="q150" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">0,11 €</span></li>
-      <li><input type="checkbox" id="cb151"><label for="cb151">Teelichtglas (Biokema)<span class="note">pro Stück</span></label><span class="q"><input type="number" class="qi" id="q151" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">0,86 €</span></li>
+      <li data-koope-id="93"><input type="checkbox" id="cb145"><label for="cb145">Klopapier (Goldeimer, 100 % Recycling)<span class="note">8 Rollen · Blauer Engel</span><span class="koope-num">#93</span></label><span class="q"><input type="number" class="qi" id="q145" min="0" placeholder="0"><b class="u">Pack</b></span><span class="price">4,68 €</span></li>
+      <li data-koope-id="357"><input type="checkbox" id="cb146"><label for="cb146">Stumpenkerze bunt (Biokema, Thüringen)<span class="note">60×55 mm</span><span class="koope-num">#357</span></label><span class="q"><input type="number" class="qi" id="q146" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,14 €</span></li>
+      <li data-koope-id="358"><input type="checkbox" id="cb147"><label for="cb147">Stumpenkerze weiß (Biokema, Thüringen)<span class="note">60×120 mm</span><span class="koope-num">#358</span></label><span class="q"><input type="number" class="qi" id="q147" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">2,97 €</span></li>
+      <li data-koope-id="360"><input type="checkbox" id="cb148"><label for="cb148">Stabkerze bunt (Lichtbringer, Sachsen-Anhalt, Rapswachs)<span class="note">2×20,5 cm</span><span class="koope-num">#360</span></label><span class="q"><input type="number" class="qi" id="q148" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">1,85 €</span></li>
+      <li data-koope-id="359"><input type="checkbox" id="cb149"><label for="cb149">Stabkerze naturweiß (Lichtbringer, Sachsen-Anhalt, Rapswachs)<span class="note">2×20,5 cm</span><span class="koope-num">#359</span></label><span class="q"><input type="number" class="qi" id="q149" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">1,72 €</span></li>
+      <li data-koope-id="356"><input type="checkbox" id="cb150"><label for="cb150">Teelichte (Biokema, Thüringen)<span class="note">pro Stück</span><span class="koope-num">#356</span></label><span class="q"><input type="number" class="qi" id="q150" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">0,11 €</span></li>
+      <li data-koope-id="362"><input type="checkbox" id="cb151"><label for="cb151">Teelichtglas (Biokema)<span class="note">pro Stück</span><span class="koope-num">#362</span></label><span class="q"><input type="number" class="qi" id="q151" min="0" placeholder="0"><b class="u">Stk</b></span><span class="price">0,86 €</span></li>
     </ul>
   </details>
 
