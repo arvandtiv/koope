@@ -354,16 +354,20 @@
     }
     .ghost:hover { background: var(--surface-2); }
     .ghost.danger { color: var(--danger); }
+    /* Inline reset confirmation: same height/structure as the action buttons,
+       reveals left→right, and wraps to the next row on mobile via .actions flex-wrap. */
     .reset-confirm {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      animation: reveal-lr var(--dur) var(--ease);
     }
-    .reset-confirm button {
-      font-size: 13px; font-weight: 700; padding: 4px 10px;
-      border-radius: var(--radius-pill);
+    .reset-confirm[hidden] { display: none; }
+    .rc-label { font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+    .rc-yes { background: var(--danger); border-color: var(--danger); color: #fff; }
+    .rc-yes:hover { background: var(--danger); filter: brightness(.92); }
+    @keyframes reveal-lr {
+      from { clip-path: inset(0 100% 0 0); opacity: .4; }
+      to   { clip-path: inset(0 0 0 0);   opacity: 1; }
     }
-    #reset-yes { color: var(--accent-contrast); background: var(--danger); }
-    #reset-no  { color: var(--text); background: var(--surface-2); }
 
     /* ─────────────── Category accordion (§6.5) ─────────────── */
     #catalog { display: flex; flex-direction: column; gap: var(--cat-gap); }
@@ -449,10 +453,16 @@
     .step.plus.add { background: var(--accent); color: var(--accent-contrast); }
     .step.plus.add:hover { background: var(--accent-strong); }
     .step-val {
-      width: 24px; text-align: center;
+      width: 34px; height: var(--step-size); text-align: center;
       font-family: var(--font-mono); font-variant-numeric: tabular-nums;
       font-size: 13px; font-weight: 600;
+      background: transparent; border: none; outline: none; padding: 0;
+      color: var(--text); cursor: text;
+      appearance: textfield; -moz-appearance: textfield;
     }
+    .step-val::-webkit-outer-spin-button,
+    .step-val::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .step-val:focus { color: var(--accent-strong); }
 
     .row-main { min-width: 0; }
     .row-name {
@@ -646,11 +656,11 @@
       <button class="ghost" id="expand-all">Expand all</button>
       <button class="ghost" id="collapse-all">Collapse all</button>
       <button class="ghost danger" id="reset-all">Reset all</button>
-      <span class="reset-confirm" id="reset-confirm" hidden>
-        Reset list?
-        <button id="reset-yes">Confirm</button>
-        <button id="reset-no">Cancel</button>
-      </span>
+      <div class="reset-confirm" id="reset-confirm" hidden>
+        <span class="rc-label">Reset list?</span>
+        <button class="ghost rc-yes" id="reset-yes">Confirm</button>
+        <button class="ghost" id="reset-no">Cancel</button>
+      </div>
     </div>
 
     <main id="catalog"></main>
