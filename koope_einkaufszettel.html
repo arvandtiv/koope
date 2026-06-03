@@ -294,8 +294,20 @@
     .cart-price { font-size: 12px; color: var(--muted); white-space: nowrap; }
 
     /* ── Logo ────────────────────────────────────────────────────── */
-    .header-logo { display: flex; align-items: center; gap: 13px; }
-    .logo-bag { width: 38px; height: 44px; flex-shrink: 0; }
+    .header-logo { display: flex; align-items: center; gap: 13px; flex: 1; }
+
+    .header-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+    .user-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-size: 15px; font-weight: 700;
+      display: none; align-items: center; justify-content: center;
+      flex-shrink: 0; cursor: pointer;
+      text-decoration: none;
+      user-select: none;
+    }
+    .user-avatar.visible { display: flex; }
 
     /* ── Stepper buttons ─────────────────────────────────────────── */
     .q-btn {
@@ -331,18 +343,15 @@
 <div class="container">
 
   <header>
-    <div class="header-logo">
-      <svg class="logo-bag" viewBox="0 0 40 46" fill="none" aria-hidden="true">
-        <rect x="3" y="18" width="34" height="26" rx="4" fill="var(--accent)" fill-opacity="0.13" stroke="var(--accent)" stroke-width="2"/>
-        <path d="M14 18C14 9 26 9 26 18" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="3" y1="26" x2="37" y2="26" stroke="var(--accent)" stroke-width="1" stroke-opacity="0.25"/>
-        <path d="M17 15C16 11 20 9 20 13" stroke="#ff9f0a" stroke-width="2" stroke-linecap="round"/>
-        <path d="M23 14C24 10 20 9 21 13" stroke="#34c759" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <h1>Koope</h1>
-        <p class="subtitle">151 products · Updated 29.05.2026 · v1.2<span id="user-tag"></span></p>
+    <div class="header-row">
+      <div class="header-logo">
+        <img src="koope-logo.svg" alt="Koope" style="width:44px;height:44px;flex-shrink:0;border-radius:50%">
+        <div>
+          <h1>Koope</h1>
+          <p class="subtitle">151 products · Updated 29.05.2026 · v1.2</p>
+        </div>
       </div>
+      <a id="user-avatar" class="user-avatar" href="#" title="Sign out"></a>
     </div>
   </header>
 
@@ -1048,20 +1057,18 @@
       await db.from('shopping_state').upsert(seed);
     }
 
-    const tagEl = document.getElementById('user-tag');
-    if (tagEl) {
-      const nameNode = document.createTextNode(' · ' + USER_ID);
-      tagEl.appendChild(nameNode);
-      const signOut = document.createElement('a');
-      signOut.textContent = ' · sign out';
-      signOut.href = '#';
-      signOut.style.cssText = 'color:var(--accent);text-decoration:none;';
-      signOut.addEventListener('click', e => {
+    const avatar = document.getElementById('user-avatar');
+    if (avatar) {
+      avatar.textContent = USER_ID.charAt(0).toUpperCase();
+      avatar.title = USER_ID + ' · tap to sign out';
+      avatar.classList.add('visible');
+      avatar.addEventListener('click', e => {
         e.preventDefault();
-        localStorage.removeItem('koope-auth');
-        window.location.replace('index.html');
+        if (confirm('Sign out as ' + USER_ID + '?')) {
+          localStorage.removeItem('koope-auth');
+          window.location.replace('index.html');
+        }
       });
-      tagEl.appendChild(signOut);
     }
 
     for (let i = 1; i <= TOTAL; i++) {
