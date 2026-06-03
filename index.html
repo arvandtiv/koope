@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Koope — Shopping List</title>
-  <meta name="theme-color" content="#16a34a">
+  <meta name="theme-color" content="#0b0e12">
   <link rel="icon" href="koope-logo.svg">
+  <script>
+    // Apply theme before first paint (dark default; honor a saved per-user choice).
+    try {
+      var _a = JSON.parse(localStorage.getItem('koope-auth') || 'null');
+      var _t = 'dark';
+      if (_a && _a.username) {
+        var _p = JSON.parse(localStorage.getItem('koope-prefs:' + _a.username) || '{}');
+        if (_p.theme) _t = _p.theme;
+      }
+      document.documentElement.setAttribute('data-theme', _t);
+    } catch (e) {}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -284,11 +296,28 @@
       border-bottom: 1px solid var(--border);
     }
     .mylist-item .mli-name { flex: 1; min-width: 0; font-size: 13.5px; font-weight: 500; }
+    .mylist-item .mli-name .mli-id {
+      font-family: var(--font-mono); font-size: 11.5px; font-weight: 600;
+      padding: 1px 6px; border-radius: var(--radius-sm);
+      background: var(--surface-2); color: var(--text-muted);
+      white-space: nowrap;
+    }
     .mylist-item .mli-name .mli-q { color: var(--accent-strong); font-weight: 700; font-family: var(--font-mono); }
     .mylist-item .mli-total {
       font-family: var(--font-mono); font-variant-numeric: tabular-nums;
       font-size: 13px; font-weight: 600; min-width: 64px; text-align: right;
     }
+    .mli-got {
+      width: 26px; height: 26px; border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border); background: var(--surface);
+      color: var(--text-faint); font-size: 13px; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .mli-got:hover { border-color: var(--accent); color: var(--accent); }
+    .mylist-item.acquired .mli-got { background: var(--accent); border-color: var(--accent); color: var(--accent-contrast); }
+    .mylist-item.acquired { opacity: .6; }
+    .mylist-item.acquired .mli-name { text-decoration: line-through; }
     .mli-step {
       width: 26px; height: 26px; border-radius: var(--radius-pill);
       background: var(--surface-2); color: var(--text);
@@ -400,8 +429,6 @@
       background: var(--accent-tint);
       box-shadow: inset 3px 0 0 var(--accent);
     }
-    .row.acquired .row-name { text-decoration: line-through; color: var(--text-muted); }
-    .row.acquired { opacity: .72; }
 
     .stepper {
       display: flex; align-items: center;
@@ -469,18 +496,6 @@
       font-family: var(--font-mono);
       font-size: 12px; font-weight: 500; color: var(--text-muted);
     }
-
-    .got-btn {
-      grid-column: 3;
-      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-      width: 26px; height: 26px; border-radius: var(--radius-pill);
-      border: 1.5px solid var(--border);
-      display: none; align-items: center; justify-content: center;
-      color: var(--text-faint); font-size: 13px; background: var(--surface);
-    }
-    .row.in-list .got-btn { display: flex; }
-    .row.in-list .row-price { margin-right: 32px; }
-    .got-btn.on { background: var(--accent); border-color: var(--accent); color: var(--accent-contrast); }
 
     /* row-style tweak (§8.4) */
     :root[data-row="card"] .cat-body-inner { padding: 6px; display: flex; flex-direction: column; gap: 6px; }
