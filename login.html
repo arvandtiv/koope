@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Koope — Sign In</title>
+  <link rel="icon" href="koope-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-2: #f1f3f5;
+      --text: #0f1115;
+      --text-muted: #5b6470;
+      --text-faint: #9aa3af;
+      --border: #e3e7ec;
+      --accent: #16a34a;
+      --accent-strong: #15803d;
+      --accent-contrast: #ffffff;
+      --danger: #dc2626;
+      --shadow: 0 4px 16px rgba(15,17,21,.08);
+      --radius: 16px;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-body: "Hanken Grotesk", system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0e12;
+        --surface: #151a21;
+        --surface-2: #1d242d;
+        --text: #f3f5f7;
+        --text-muted: #9aa6b2;
+        --text-faint: #5e6b78;
+        --border: #28313c;
+        --accent: #22c55e;
+        --accent-strong: #16a34a;
+        --accent-contrast: #06140c;
+        --danger: #f87171;
+        --shadow: 0 4px 16px rgba(0,0,0,.35);
+      }
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { width: 100%; max-width: 360px; }
+
+    header { margin-bottom: 28px; }
+    .header-logo { display: flex; align-items: center; gap: 13px; }
+    .header-logo img { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; background: var(--surface-2); }
+    h1 { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
+    .subtitle { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .card-title { font-size: 15px; font-weight: 600; }
+
+    input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus { border-color: var(--accent); }
+    input::placeholder { color: var(--text-faint); }
+
+    button {
+      width: 100%;
+      background: var(--accent);
+      color: var(--accent-contrast);
+      border: none;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      touch-action: manipulation;
+    }
+    button:disabled { opacity: 0.5; cursor: default; }
+    button:not(:disabled):hover { background: var(--accent-strong); }
+
+    .hint { font-size: 12px; color: var(--text-muted); text-align: center; min-height: 16px; }
+    .hint.error { color: var(--danger); }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="header-logo">
+      <img src="koope-logo.svg" alt="Koope">
+      <div>
+        <h1>Koope</h1>
+        <p class="subtitle">Leipzig Food Co-op</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="card">
+    <p class="card-title">Sign in to your list</p>
+    <input type="text" id="username" placeholder="Username" autocomplete="username" autocorrect="off" autocapitalize="none" spellcheck="false">
+    <input type="password" id="password" placeholder="Password" autocomplete="current-password">
+    <button id="go-btn" onclick="signIn()">Open my list</button>
+    <p class="hint" id="hint">New here? Pick a username and password — your account is created automatically.</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://yxkkseauqoiemyswknsx.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_xQZU1Hvm5eOzNSaZE8wL1w_7YObMr-M';
+  const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function showHint(msg, isError) {
+    const h = document.getElementById('hint');
+    h.textContent = msg;
+    h.className = 'hint' + (isError ? ' error' : '');
+  }
+
+  function setLoading(v) {
+    const btn = document.getElementById('go-btn');
+    btn.disabled = v;
+    btn.textContent = v ? 'Opening…' : 'Open my list';
+  }
+
+  // Auto-login if valid cached credentials
+  (async () => {
+    const cached = JSON.parse(localStorage.getItem('koope-auth') || 'null');
+    if (!cached?.username || !cached?.hash) return;
+    const { data } = await db.from('users').select('password_hash').eq('username', cached.username).single();
+    if (data?.password_hash === cached.hash) {
+      window.location.replace('index.html');
+    } else {
+      localStorage.removeItem('koope-auth');
+    }
+  })();
+
+  async function signIn() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    if (!username) { showHint('Enter a username.', true); return; }
+    if (!password)  { showHint('Enter a password.', true); return; }
+
+    setLoading(true);
+    const hash = await sha256(password);
+
+    const { data: existing } = await db.from('users').select('password_hash').eq('username', username).single();
+
+    if (!existing) {
+      const { error } = await db.from('users').insert({ username, password_hash: hash });
+      if (error) { showHint('Could not create account. Try again.', true); setLoading(false); return; }
+    } else if (existing.password_hash !== hash) {
+      showHint('Wrong password.', true);
+      setLoading(false);
+      return;
+    }
+
+    localStorage.setItem('koope-auth', JSON.stringify({ username, hash }));
+    window.location.replace('index.html');
+  }
+
+  // Pre-fill username from last session
+  const lastUser = JSON.parse(localStorage.getItem('koope-auth') || 'null');
+  if (lastUser?.username) document.getElementById('username').value = lastUser.username;
+
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') signIn(); });
+</script>
+</body>
+</html>
