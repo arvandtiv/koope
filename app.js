@@ -92,8 +92,7 @@
   const root = document.documentElement;
 
   function effectiveTheme() {
-    if (prefs.theme) return prefs.theme;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return prefs.theme || 'dark';   // dark is the default; explicit user choice wins
   }
   function applyTheme() {
     const t = effectiveTheme();
@@ -198,14 +197,9 @@
       '<span class="price-unit">' + p.unit + '</span>' +
       '<span class="price-val">' + escapeHtml(p.price) + '</span>';
 
-    // got-it tick
-    const got = document.createElement('button');
-    got.type = 'button'; got.className = 'got-btn';
-    got.setAttribute('aria-label', 'Mark ' + p.name + ' as acquired');
-    got.innerHTML = '✓';
-    got.addEventListener('click', () => toggleGot(p.seq));
-
-    row.append(stepper, main, price, got);
+    // Note: the "got it" tick + strike-through live only in the My-list panel (§6.6),
+    // not on the store catalog rows.
+    row.append(stepper, main, price);
     return row;
   }
 
@@ -239,7 +233,7 @@
   function toggleGot(seq) { setGot(seq, !state[seq].got, true); }
   function setGot(seq, v, persist) {
     state[seq].got = v;
-    applyRow(seq);
+    if (document.getElementById('mylist').classList.contains('open')) renderMyList();
     if (persist !== false) {
       db.from('shopping_state')
         .update({ checked: v, updated_at: new Date().toISOString() })
@@ -256,14 +250,12 @@
     const q = state[seq].qty;
     const inList = q > 0;
     row.classList.toggle('in-list', inList);
-    row.classList.toggle('acquired', inList && state[seq].got);
     row.querySelector('.step-val').textContent = q > 0 ? fmtQty(p, q) : '0';
     const minus = row.querySelector('.step.minus');
     const plus = row.querySelector('.step.plus');
     minus.classList.toggle('off', q <= 0);
     minus.disabled = q <= 0;
     plus.classList.toggle('add', q <= 0);
-    row.querySelector('.got-btn').classList.toggle('on', state[seq].got);
   }
 
   // ── Category header counts (§6.5) ───────────────────────────────────────
@@ -331,17 +323,19 @@
       const lt = lineTotal(p.seq); total += lt;
       const qLabel = fmtQty(p, state[p.seq].qty) + (isWeighed(p) ? ' kg' : '');
       const el = document.createElement('div');
-      el.className = 'mylist-item';
+      el.className = 'mylist-item' + (state[p.seq].got ? ' acquired' : '');
       el.innerHTML =
+        '<button class="mli-got" data-act="got" aria-pressed="' + !!state[p.seq].got + '" aria-label="Mark ' + p.name + ' as in the basket">✓</button>' +
         '<button class="mli-step" data-act="dec" aria-label="Decrease ' + p.name + '">−</button>' +
         '<button class="mli-step" data-act="inc" aria-label="Increase ' + p.name + '">+</button>' +
-        '<span class="mli-name"><span class="mli-q">' + qLabel + ' ×</span> ' + escapeHtml(p.name) + '</span>' +
+        '<span class="mli-name"><span class="mli-id">#' + escapeHtml(p.id) + '</span> <span class="mli-q">' + qLabel + ' ×</span> ' + escapeHtml(p.name) + '</span>' +
         '<span class="mli-total mono">' + fmtEur(lt) + '</span>' +
         '<button class="mli-remove" data-act="rm" aria-label="Remove ' + p.name + '">✕</button>';
       el.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => {
         const act = b.dataset.act;
         if (act === 'inc') bump(p.seq, stepFor(p));
         else if (act === 'dec') bump(p.seq, -stepFor(p));
+        else if (act === 'got') toggleGot(p.seq);
         else setQty(p.seq, 0, true);
       }));
       frag.appendChild(el);

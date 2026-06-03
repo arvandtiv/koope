@@ -12,37 +12,22 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f6f7f9;
-      --surface: #ffffff;
-      --surface-2: #f1f3f5;
-      --text: #0f1115;
-      --text-muted: #5b6470;
-      --text-faint: #9aa3af;
-      --border: #e3e7ec;
-      --accent: #16a34a;
-      --accent-strong: #15803d;
-      --accent-contrast: #ffffff;
-      --danger: #dc2626;
-      --shadow: 0 4px 16px rgba(15,17,21,.08);
+      /* dark is the default, to match the app */
+      --bg: #0b0e12;
+      --surface: #151a21;
+      --surface-2: #1d242d;
+      --text: #f3f5f7;
+      --text-muted: #9aa6b2;
+      --text-faint: #5e6b78;
+      --border: #28313c;
+      --accent: #22c55e;
+      --accent-strong: #16a34a;
+      --accent-contrast: #06140c;
+      --danger: #f87171;
+      --shadow: 0 4px 16px rgba(0,0,0,.35);
       --radius: 16px;
       --font-display: "Space Grotesk", system-ui, sans-serif;
       --font-body: "Hanken Grotesk", system-ui, sans-serif;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0b0e12;
-        --surface: #151a21;
-        --surface-2: #1d242d;
-        --text: #f3f5f7;
-        --text-muted: #9aa6b2;
-        --text-faint: #5e6b78;
-        --border: #28313c;
-        --accent: #22c55e;
-        --accent-strong: #16a34a;
-        --accent-contrast: #06140c;
-        --danger: #f87171;
-        --shadow: 0 4px 16px rgba(0,0,0,.35);
-      }
     }
 
     body {
