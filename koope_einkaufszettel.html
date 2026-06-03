@@ -341,7 +341,7 @@
       </svg>
       <div>
         <h1>Koope</h1>
-        <p class="subtitle">151 products · Updated 29.05.2026 · v1.2</p>
+        <p class="subtitle">151 products · Updated 29.05.2026 · v1.2<span id="user-tag"></span></p>
       </div>
     </div>
   </header>
@@ -751,6 +751,10 @@
   const SUPABASE_KEY = 'sb_publishable_xQZU1Hvm5eOzNSaZE8wL1w_7YObMr-M';
   const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  const _auth = JSON.parse(localStorage.getItem('koope-auth') || 'null');
+  const USER_ID = _auth?.username || '';
+  if (!USER_ID) window.location.replace('index.html');
+
   const TOTAL = 151;
   const state = {};
 
@@ -804,7 +808,7 @@
     state[id] = { ...(state[id] || {}), checked: val };
     db.from('shopping_state')
       .update({ checked: val, updated_at: new Date().toISOString() })
-      .eq('item_id', id)
+      .eq('user_id', USER_ID).eq('item_id', id)
       .then(({ error }) => { if (error) console.error('sync error', error); });
   }
 
@@ -815,7 +819,7 @@
     _qTimer[id] = setTimeout(() => {
       db.from('shopping_state')
         .update({ quantity: val, updated_at: new Date().toISOString() })
-        .eq('item_id', id)
+        .eq('user_id', USER_ID).eq('item_id', id)
         .then(({ error }) => { if (error) console.error('sync error', error); });
     }, 600);
   }
@@ -992,7 +996,7 @@
     updateBadges();
     updateCart();
     const rows = Array.from({ length: TOTAL }, (_, k) => ({
-      item_id: k + 1, checked: false, quantity: '', updated_at: new Date().toISOString()
+      user_id: USER_ID, item_id: k + 1, checked: false, quantity: '', updated_at: new Date().toISOString()
     }));
     db.from('shopping_state').upsert(rows)
       .then(({ error }) => { if (error) console.error('reset sync error', error); });
@@ -1003,8 +1007,8 @@
 
   // ── Real-time sync ────────────────────────────────────────────
   function subscribeToChanges() {
-    db.channel('shopping-sync')
-      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'shopping_state' }, payload => {
+    db.channel('shopping-' + USER_ID)
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'shopping_state', filter: 'user_id=eq.' + USER_ID }, payload => {
         const { item_id, checked, quantity } = payload.new;
         state[item_id] = { checked, quantity };
         applyChecked(item_id);
@@ -1025,7 +1029,8 @@
       el.innerHTML = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true" style="width:16px;height:16px;display:block"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     });
 
-    const { data, error } = await db.from('shopping_state').select('item_id, checked, quantity');
+    if (!USER_ID) return;
+    const { data, error } = await db.from('shopping_state').select('item_id, checked, quantity').eq('user_id', USER_ID);
     if (error) {
       console.error('Failed to load:', error);
       overlay.textContent = 'Could not connect. Check your internet connection.';
@@ -1035,6 +1040,29 @@
     data.forEach(row => {
       state[row.item_id] = { checked: row.checked, quantity: row.quantity };
     });
+
+    if (data.length === 0) {
+      const seed = Array.from({ length: TOTAL }, (_, k) => ({
+        user_id: USER_ID, item_id: k + 1, checked: false, quantity: '', updated_at: new Date().toISOString()
+      }));
+      await db.from('shopping_state').upsert(seed);
+    }
+
+    const tagEl = document.getElementById('user-tag');
+    if (tagEl) {
+      const nameNode = document.createTextNode(' · ' + USER_ID);
+      tagEl.appendChild(nameNode);
+      const signOut = document.createElement('a');
+      signOut.textContent = ' · sign out';
+      signOut.href = '#';
+      signOut.style.cssText = 'color:var(--accent);text-decoration:none;';
+      signOut.addEventListener('click', e => {
+        e.preventDefault();
+        localStorage.removeItem('koope-auth');
+        window.location.replace('index.html');
+      });
+      tagEl.appendChild(signOut);
+    }
 
     for (let i = 1; i <= TOTAL; i++) {
       applyChecked(i);

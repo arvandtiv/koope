@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<script>
+  // Redirect /koope/<username> → /koope/ (login page)
+  // The login page auto-logs in from localStorage, so bookmarking /koope/arvandtiv still works
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  const last = parts[parts.length - 1];
+  const base = window.location.origin + '/' + parts.slice(0, -1).join('/') + '/';
+  if (last && !last.includes('.')) {
+    window.location.replace(base);
+  } else {
+    window.location.replace(window.location.origin + '/koope/');
+  }
+</script>
+</html>
