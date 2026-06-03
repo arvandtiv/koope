@@ -50,8 +50,9 @@
   const eur = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
   function fmtEur(n) { return eur.format(n); }
 
-  // Each product price string is either "4,84 €" or "7,77 €/kg".
-  // For per-kg items the stepper counts grams, so line total = qty/1000 * price.
+  // Each product price string is either "4,84 €" (per unit) or "7,77 €/kg" (by weight).
+  // Per-kg items are measured in kilograms (stepper adds 0.1 kg each press), so the
+  // quantity unit always matches the price unit and line total = qty * price.
   const _priceCache = {};
   function parsePrice(str) {
     if (_priceCache[str]) return _priceCache[str];
@@ -61,14 +62,17 @@
     _priceCache[str] = out;
     return out;
   }
+  function isWeighed(p) { return parsePrice(p.price).perKg; }
+  function stepFor(p) { return isWeighed(p) ? 0.1 : 1; }
+  function roundQty(p, q) { return isWeighed(p) ? Math.round(q * 10) / 10 : Math.round(q); }
   function lineTotal(seq) {
-    const p = bySeq[seq];
     const q = state[seq].qty;
-    if (q <= 0) return 0;
-    const { value, perKg } = parsePrice(p.price);
-    return perKg ? (q / 1000) * value : q * value;
+    return q > 0 ? q * parsePrice(bySeq[seq].price).value : 0;
   }
-  function stepFor(p) { return p.unit === 'g' ? 50 : 1; }
+  // Display quantity: kg items use German decimals ("0,5", "1", "1,2"); counts are integers.
+  function fmtQty(p, q) {
+    return isWeighed(p) ? q.toLocaleString('de-DE', { maximumFractionDigits: 1 }) : String(q);
+  }
 
   // ── Diacritic-insensitive normalisation for search ──────────────────────
   function norm(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
@@ -221,7 +225,7 @@
   }
 
   function setQty(seq, q, persist) {
-    q = Math.max(0, Math.min(99999, q));
+    q = Math.max(0, Math.min(99999, roundQty(bySeq[seq], q)));
     const was = state[seq].qty;
     state[seq].qty = q;
     if (q === 0 && state[seq].got) setGot(seq, false, persist); // can't be acquired if not in list
@@ -253,7 +257,7 @@
     const inList = q > 0;
     row.classList.toggle('in-list', inList);
     row.classList.toggle('acquired', inList && state[seq].got);
-    row.querySelector('.step-val').textContent = q > 0 ? String(q) : '0';
+    row.querySelector('.step-val').textContent = q > 0 ? fmtQty(p, q) : '0';
     const minus = row.querySelector('.step.minus');
     const plus = row.querySelector('.step.plus');
     minus.classList.toggle('off', q <= 0);
@@ -325,13 +329,13 @@
     const frag = document.createDocumentFragment();
     items.forEach(p => {
       const lt = lineTotal(p.seq); total += lt;
-      const q = state[p.seq].qty;
+      const qLabel = fmtQty(p, state[p.seq].qty) + (isWeighed(p) ? ' kg' : '');
       const el = document.createElement('div');
       el.className = 'mylist-item';
       el.innerHTML =
         '<button class="mli-step" data-act="dec" aria-label="Decrease ' + p.name + '">−</button>' +
         '<button class="mli-step" data-act="inc" aria-label="Increase ' + p.name + '">+</button>' +
-        '<span class="mli-name"><span class="mli-q">' + q + '×</span> ' + escapeHtml(p.name) + '</span>' +
+        '<span class="mli-name"><span class="mli-q">' + qLabel + ' ×</span> ' + escapeHtml(p.name) + '</span>' +
         '<span class="mli-total mono">' + fmtEur(lt) + '</span>' +
         '<button class="mli-remove" data-act="rm" aria-label="Remove ' + p.name + '">✕</button>';
       el.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => {
@@ -618,6 +622,22 @@
         user_id: USER_ID, item_id: p.seq, checked: false, quantity: '', updated_at: new Date().toISOString()
       }));
       await db.from('shopping_state').upsert(seed);
+    }
+
+    // One-time migration: v1 stored weighed items in grams; v2 measures them in kg.
+    // Convert this user's existing gram quantities to kg, once, then remember.
+    const MIG_KEY = 'koope-kgmig:' + USER_ID;
+    if (!localStorage.getItem(MIG_KEY)) {
+      const updates = [];
+      PRODUCTS.forEach(p => {
+        if (isWeighed(p) && state[p.seq].qty >= 1) {           // ≥1 means it was grams, not kg
+          const kg = Math.max(0.1, Math.round(state[p.seq].qty / 100) / 10);
+          state[p.seq].qty = kg;
+          updates.push({ user_id: USER_ID, item_id: p.seq, quantity: String(kg), updated_at: new Date().toISOString() });
+        }
+      });
+      if (updates.length) await db.from('shopping_state').upsert(updates);
+      localStorage.setItem(MIG_KEY, '1');
     }
 
     // paint rows + headers
