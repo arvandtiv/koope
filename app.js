@@ -73,6 +73,8 @@
   function fmtQty(p, q) {
     return isWeighed(p) ? q.toLocaleString('de-DE', { maximumFractionDigits: 1 }) : String(q);
   }
+  // Parse a typed quantity, accepting either comma or dot as the decimal separator.
+  function parseTyped(s) { const n = parseFloat(String(s).replace(',', '.')); return isFinite(n) ? n : 0; }
 
   // ── Diacritic-insensitive normalisation for search ──────────────────────
   function norm(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
@@ -161,8 +163,17 @@
     minus.type = 'button'; minus.className = 'step minus';
     minus.setAttribute('aria-label', 'Decrease quantity of ' + p.name);
     minus.innerHTML = SVG_MINUS;
-    const val = document.createElement('span');
-    val.className = 'step-val'; val.textContent = '0';
+    const val = document.createElement('input');
+    val.className = 'step-val';
+    val.type = 'text';
+    val.inputMode = isWeighed(p) ? 'decimal' : 'numeric';
+    val.autocomplete = 'off';
+    val.setAttribute('aria-label', 'Quantity of ' + p.name + (isWeighed(p) ? ' in kg' : ''));
+    val.value = '0';
+    val.addEventListener('focus', () => val.select());
+    val.addEventListener('input', () => setQty(p.seq, parseTyped(val.value), true));
+    val.addEventListener('blur', () => applyRow(p.seq));      // normalize display on exit
+    val.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); val.blur(); } });
     const plus = document.createElement('button');
     plus.type = 'button'; plus.className = 'step plus';
     plus.setAttribute('aria-label', 'Increase quantity of ' + p.name);
@@ -250,7 +261,8 @@
     const q = state[seq].qty;
     const inList = q > 0;
     row.classList.toggle('in-list', inList);
-    row.querySelector('.step-val').textContent = q > 0 ? fmtQty(p, q) : '0';
+    const valEl = row.querySelector('.step-val');
+    if (document.activeElement !== valEl) valEl.value = q > 0 ? fmtQty(p, q) : '0';
     const minus = row.querySelector('.step.minus');
     const plus = row.querySelector('.step.plus');
     minus.classList.toggle('off', q <= 0);
