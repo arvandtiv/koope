@@ -1,186 +1,683 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Koope – Sign In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Koope — Shopping List</title>
+  <meta name="theme-color" content="#16a34a">
+  <link rel="icon" href="koope-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <style>
+    /* ─────────────── Design tokens (§4) ─────────────── */
+    :root {
+      /* neutrals — light theme (default) */
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-2: #f1f3f5;
+      --border: #e3e7ec;
+      --text: #0f1115;
+      --text-muted: #5b6470;
+      --text-faint: #9aa3af;
+      --danger: #dc2626;
+
+      /* accent group — injected by JS (applyAccent), green/light defaults below */
+      --accent: #16a34a;
+      --accent-strong: #15803d;
+      --accent-tint: #ecfdf3;
+      --accent-contrast: #ffffff;
+
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-body:    "Hanken Grotesk", system-ui, sans-serif;
+      --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+
+      --shadow-sm: 0 1px 2px rgba(15,17,21,.06), 0 1px 1px rgba(15,17,21,.04);
+      --shadow-md: 0 4px 16px rgba(15,17,21,.08);
+      --shadow-sticky: 0 6px 24px rgba(15,17,21,.10);
+
+      --ease: cubic-bezier(.2,.7,.2,1);
+      --dur: 180ms;
+      --dur-accordion: 240ms;
+
+      /* density-controlled (§8.2) */
+      --row-pad: 12px;
+      --cat-gap: 10px;
+      --step-size: 36px;
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0b0e12;
+      --surface: #151a21;
+      --surface-2: #1d242d;
+      --border: #28313c;
+      --text: #f3f5f7;
+      --text-muted: #9aa6b2;
+      --text-faint: #5e6b78;
+      --danger: #f87171;
+      /* accent group still injected by JS */
+    }
+
+    :root[data-density="compact"] {
+      --row-pad: 7px;
+      --cat-gap: 6px;
+      --step-size: 32px;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #f5f5f7;
-      --card: #ffffff;
-      --text: #1d1d1f;
-      --muted: #86868b;
-      --border: #e8e8ed;
-      --accent: #0071e3;
-      --shadow: 0 1px 4px rgba(0,0,0,0.08);
-      --radius: 12px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1c1c1e;
-        --card: #2c2c2e;
-        --text: #f5f5f7;
-        --muted: #98989d;
-        --border: #3a3a3c;
-        --accent: #0a84ff;
-        --shadow: 0 1px 4px rgba(0,0,0,0.3);
-      }
-    }
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.4;
+      padding-bottom: calc(40px + env(safe-area-inset-bottom));
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 720px;
+      margin-inline: auto;
+      padding-inline: 16px;
+    }
+    @media (min-width: 768px) {
+      .page { padding-inline: 24px; }
+      :root { --row-pad: 14px; }
+    }
+
+    .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+    button { font-family: inherit; cursor: pointer; background: none; border: none; color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    /* ─────────────── Header (§6.1) ─────────────── */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding-top: env(safe-area-inset-top);
+    }
+    .header-inner {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 24px 16px;
-    }
-
-    .container { width: 100%; max-width: 360px; }
-
-    header { margin-bottom: 28px; }
-    .header-logo { display: flex; align-items: center; gap: 13px; }
-    h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.3px; }
-    .subtitle { font-size: 13px; color: var(--muted); margin-top: 3px; }
-
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       gap: 12px;
+      padding-block: 12px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand img {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-pill);
+      flex-shrink: 0;
+      background: var(--surface-2);
+    }
+    .brand h1 {
+      font-family: var(--font-display);
+      font-size: 26px; line-height: 1.1; font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand .meta {
+      font-family: var(--font-mono);
+      font-size: 12px; line-height: 1.3; font-weight: 500;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .header-actions { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+    .icon-btn {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-pill);
+      color: var(--text-muted);
+      font-size: 19px;
+    }
+    .icon-btn:hover { background: var(--surface-2); color: var(--text); }
+    .avatar {
+      width: 34px; height: 34px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-tint);
+      color: var(--accent-strong);
+      font-weight: 700; font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
 
-    .card-title { font-size: 15px; font-weight: 600; }
-
-    input {
-      width: 100%;
+    /* ─────────────── Sticky search + summary (§6.2/6.3) ─────────────── */
+    .sticky-region {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 11px 14px;
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.15s;
+      transition: box-shadow var(--dur) var(--ease);
     }
-    input:focus { border-color: var(--accent); }
-    input::placeholder { color: var(--muted); }
+    .sticky-region.scrolled {
+      box-shadow: var(--shadow-sticky);
+      border-bottom: 1px solid var(--border);
+    }
+    .sticky-inner { padding-block: 10px; display: flex; flex-direction: column; gap: 8px; }
 
-    button {
+    .search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search-wrap .icon-search {
+      position: absolute; left: 14px;
+      width: 18px; height: 18px;
+      color: var(--text-faint);
+      pointer-events: none;
+    }
+    #search {
       width: 100%;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 14px;
+      height: 44px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-body);
       font-size: 15px;
-      font-family: inherit;
-      font-weight: 600;
+      padding: 0 76px 0 42px;
+      outline: none;
+      transition: border-color var(--dur) var(--ease);
+    }
+    #search:focus { border-color: var(--accent); }
+    #search::placeholder { color: var(--text-faint); }
+    #search::-webkit-search-cancel-button { display: none; }
+    .search-clear {
+      position: absolute; right: 10px;
+      width: 28px; height: 28px;
+      display: none; align-items: center; justify-content: center;
+      border-radius: var(--radius-pill);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .search-clear.on { display: flex; }
+    .search-clear:hover { background: var(--surface-2); }
+    .search-count {
+      position: absolute; right: 44px;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 500;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      pointer-events: none;
+    }
+
+    .summary-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 11px 16px;
+      box-shadow: var(--shadow-sm);
       cursor: pointer;
-      transition: opacity 0.15s;
+      overflow: hidden;
+    }
+    .summary-left { display: flex; align-items: center; gap: 10px; }
+    .summary-label { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+    .summary-count {
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      font-weight: 600; font-size: 14px;
+      min-width: 22px; height: 22px;
+      padding: 0 7px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-2);
+      color: var(--text-muted);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .summary-count.active { background: var(--accent-tint); color: var(--accent-strong); }
+    .summary-right { display: flex; align-items: center; gap: 8px; }
+    .summary-total {
+      font-family: var(--font-display);
+      font-size: 22px; line-height: 1.1; font-weight: 700;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+    .summary-chev {
+      color: var(--text-muted);
+      font-size: 16px;
+      transition: transform var(--dur) var(--ease);
+    }
+    .summary-bar.open .summary-chev { transform: rotate(180deg); }
+    .summary-progress {
+      position: absolute; left: 0; bottom: 0;
+      height: 2px; width: 100%;
+      background: var(--surface-2);
+    }
+    .summary-progress span {
+      display: block; height: 100%; width: 0;
+      background: var(--accent);
+      transition: width var(--dur) var(--ease);
+    }
+
+    /* My list expandable panel (§6.3) */
+    .mylist {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--dur-accordion) var(--ease);
+    }
+    .mylist.open { grid-template-rows: 1fr; }
+    .mylist-inner { min-height: 0; overflow: hidden; }
+    .mylist-empty { padding: 16px; color: var(--text-muted); font-size: 13px; text-align: center; }
+    .mylist-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mylist-item .mli-name { flex: 1; min-width: 0; font-size: 13.5px; font-weight: 500; }
+    .mylist-item .mli-name .mli-q { color: var(--accent-strong); font-weight: 700; font-family: var(--font-mono); }
+    .mylist-item .mli-total {
+      font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+      font-size: 13px; font-weight: 600; min-width: 64px; text-align: right;
+    }
+    .mli-step {
+      width: 26px; height: 26px; border-radius: var(--radius-pill);
+      background: var(--surface-2); color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; line-height: 1;
+    }
+    .mli-step:hover { background: var(--border); }
+    .mli-remove { color: var(--text-faint); font-size: 16px; width: 24px; height: 24px; }
+    .mli-remove:hover { color: var(--danger); }
+    .mylist-total {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 14px;
+      font-weight: 700; font-size: 14px;
+    }
+    .mylist-total .amt {
+      font-family: var(--font-display); color: var(--accent);
+      font-variant-numeric: tabular-nums; font-size: 18px;
+    }
+
+    /* ─────────────── Action row (§6.4) ─────────────── */
+    .actions {
+      display: flex; align-items: center; gap: 8px;
+      padding-block: 10px; flex-wrap: wrap;
+    }
+    .ghost {
+      height: 36px; padding: 0 14px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 14px; font-weight: 600;
+      display: inline-flex; align-items: center;
       touch-action: manipulation;
     }
-    button:disabled { opacity: 0.5; cursor: default; }
-    button:not(:disabled):hover { opacity: 0.88; }
+    .ghost:hover { background: var(--surface-2); }
+    .ghost.danger { color: var(--danger); }
+    .reset-confirm {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .reset-confirm button {
+      font-size: 13px; font-weight: 700; padding: 4px 10px;
+      border-radius: var(--radius-pill);
+    }
+    #reset-yes { color: var(--accent-contrast); background: var(--danger); }
+    #reset-no  { color: var(--text); background: var(--surface-2); }
 
-    .hint { font-size: 12px; color: var(--muted); text-align: center; min-height: 16px; }
-    .hint.error { color: #ff3b30; }
+    /* ─────────────── Category accordion (§6.5) ─────────────── */
+    #catalog { display: flex; flex-direction: column; gap: var(--cat-gap); }
+    .cat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .cat-head {
+      width: 100%;
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px;
+      text-align: left;
+      min-height: 44px;
+    }
+    .cat-head:hover { background: var(--surface-2); }
+    .cat-title {
+      font-family: var(--font-display);
+      font-size: 17px; line-height: 1.2; font-weight: 600;
+      flex: 1; min-width: 0;
+    }
+    .cat-badge {
+      font-size: 12px; font-weight: 600; line-height: 1;
+      padding: 4px 9px; border-radius: var(--radius-pill);
+      background: var(--surface-2); color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .cat-badge.active { background: var(--accent-tint); color: var(--accent-strong); }
+    .cat-sub {
+      font-size: 12px; font-weight: 600;
+      color: var(--accent-strong);
+    }
+    .cat-chev {
+      color: var(--text-faint); font-size: 18px;
+      display: flex; align-items: center;
+      transition: transform var(--dur-accordion) var(--ease);
+    }
+    .cat.open .cat-chev { transform: rotate(90deg); }
+    .cat-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--dur-accordion) var(--ease);
+    }
+    .cat.open .cat-body { grid-template-rows: 1fr; }
+    .cat-body-inner { min-height: 0; overflow: hidden; }
+
+    /* ─────────────── Product row (§6.6) ─────────────── */
+    .row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: var(--row-pad) 16px;
+      border-top: 1px solid var(--border);
+      position: relative;
+      transition: background var(--dur) var(--ease);
+    }
+    .row.hidden { display: none; }
+    /* in-list state */
+    .row.in-list {
+      background: var(--accent-tint);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+    .row.acquired .row-name { text-decoration: line-through; color: var(--text-muted); }
+    .row.acquired { opacity: .72; }
+
+    .stepper {
+      display: flex; align-items: center;
+      background: var(--surface-2);
+      border-radius: var(--radius-pill);
+      height: var(--step-size);
+      flex-shrink: 0;
+    }
+    .step {
+      width: var(--step-size); height: var(--step-size);
+      border-radius: var(--radius-pill);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text);
+      touch-action: manipulation;
+    }
+    .step svg { width: 14px; height: 14px; }
+    .step.minus.off { color: var(--text-faint); cursor: default; }
+    .step.plus.add { background: var(--accent); color: var(--accent-contrast); }
+    .step.plus.add:hover { background: var(--accent-strong); }
+    .step-val {
+      width: 24px; text-align: center;
+      font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+      font-size: 13px; font-weight: 600;
+    }
+
+    .row-main { min-width: 0; }
+    .row-name {
+      font-size: 15.5px; line-height: 1.25; font-weight: 600;
+      text-wrap: balance;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .row-name mark { background: var(--accent-tint); color: inherit; border-radius: 3px; padding: 0 1px; }
+    .row-meta {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+      margin-top: 3px;
+    }
+    .row-detail { font-size: 12.5px; line-height: 1.3; font-weight: 500; color: var(--text-muted); }
+    .id-chip {
+      font-family: var(--font-mono);
+      font-size: 12.5px; line-height: 1; font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      color: var(--text);
+      transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .id-chip.match {
+      background: var(--accent);
+      color: var(--accent-contrast);
+      transform: scale(1.04);
+    }
+    .id-chip b { font-weight: 700; }
+
+    .row-price {
+      display: flex; flex-direction: column; align-items: flex-end;
+      min-width: 64px; flex-shrink: 0;
+    }
+    .price-val {
+      font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+      font-size: 14px; font-weight: 600; white-space: nowrap;
+    }
+    .price-unit {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 500; color: var(--text-muted);
+    }
+
+    .got-btn {
+      grid-column: 3;
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      width: 26px; height: 26px; border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border);
+      display: none; align-items: center; justify-content: center;
+      color: var(--text-faint); font-size: 13px; background: var(--surface);
+    }
+    .row.in-list .got-btn { display: flex; }
+    .row.in-list .row-price { margin-right: 32px; }
+    .got-btn.on { background: var(--accent); border-color: var(--accent); color: var(--accent-contrast); }
+
+    /* row-style tweak (§8.4) */
+    :root[data-row="card"] .cat-body-inner { padding: 6px; display: flex; flex-direction: column; gap: 6px; }
+    :root[data-row="card"] .row {
+      border-top: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    :root[data-row="striped"] .row:nth-child(even) { background: var(--surface-2); }
+    :root[data-row="striped"] .row.in-list:nth-child(even) { background: var(--accent-tint); }
+
+    /* ─────────────── No results (§6.7) ─────────────── */
+    .no-results {
+      text-align: center; color: var(--text-muted);
+      padding: 40px 16px; font-size: 14px;
+    }
+    .no-results .nr-q { color: var(--text); font-weight: 600; }
+    .no-results button {
+      margin-top: 12px; display: inline-block;
+      height: 36px; padding: 0 16px; border-radius: var(--radius-pill);
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); font-weight: 600; font-size: 14px;
+    }
+
+    /* one-shot pulse ring for jump-to (§7.1.5) */
+    .row.pulse::after {
+      content: ""; position: absolute; inset: 2px;
+      border-radius: var(--radius-md);
+      outline: 2px solid var(--accent);
+      animation: pulse-fade 600ms var(--ease) forwards;
+      pointer-events: none;
+    }
+    @keyframes pulse-fade { from { opacity: 1; } to { opacity: 0; } }
+
+    /* ─────────────── Tweaks panel (§8) ─────────────── */
+    .tweaks-fab {
+      position: fixed;
+      right: calc(16px + env(safe-area-inset-right));
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      width: 48px; height: 48px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      color: var(--text);
+      font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 40;
+    }
+    .tweaks-panel {
+      position: fixed;
+      right: calc(16px + env(safe-area-inset-right));
+      bottom: calc(74px + env(safe-area-inset-bottom));
+      width: min(320px, calc(100vw - 32px));
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 16px;
+      z-index: 41;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .tweaks-panel[hidden] { display: none; }
+    .tweaks-head { display: flex; align-items: center; justify-content: space-between; }
+    .tweaks-head h2 { font-family: var(--font-display); font-size: 16px; font-weight: 600; }
+    .tweak label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .swatches { display: flex; gap: 10px; }
+    .swatch {
+      width: 32px; height: 32px; border-radius: var(--radius-pill);
+      border: 2px solid transparent;
+      position: relative;
+    }
+    .swatch.sel { border-color: var(--text); }
+    .swatch.sel::after { content: "✓"; color: #fff; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+    .segmented { display: flex; background: var(--surface-2); border-radius: var(--radius-pill); padding: 3px; }
+    .segmented button {
+      flex: 1; height: 32px; border-radius: var(--radius-pill);
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+    }
+    .segmented button.sel { background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
+
+    /* loading overlay */
+    #overlay {
+      position: fixed; inset: 0; z-index: 99;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 15px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation-duration: 1ms !important; }
+    }
   </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <div class="header-logo">
-      <img src="koope-logo.svg" alt="Koope" style="width:44px;height:44px;flex-shrink:0;border-radius:50%">
-      <div>
-        <h1>Koope</h1>
-        <p class="subtitle">Leipzig Food Co-op</p>
+  <div id="overlay">Loading…</div>
+
+  <header class="app-header">
+    <div class="page header-inner">
+      <div class="brand">
+        <img src="koope-logo.svg" alt="Koope logo">
+        <div>
+          <h1>Koope</h1>
+          <p class="meta" id="header-meta">151 products</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">◐</button>
+        <button class="avatar" id="user-avatar" aria-label="Account — tap to sign out">A</button>
       </div>
     </div>
   </header>
 
-  <div class="card">
-    <p class="card-title">Sign in to your list</p>
-    <input type="text" id="username" placeholder="Username" autocomplete="username" autocorrect="off" autocapitalize="none" spellcheck="false">
-    <input type="password" id="password" placeholder="Password" autocomplete="current-password">
-    <button id="go-btn" onclick="signIn()">Open my list</button>
-    <p class="hint" id="hint">New here? Pick a username and password — your account is created automatically.</p>
+  <div class="sticky-region" id="sticky-region">
+    <div class="page sticky-inner">
+      <div class="search-wrap">
+        <svg class="icon-search" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="13.5" y1="13.5" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <label for="search" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search products or ID</label>
+        <input id="search" type="search" placeholder="Search products or #ID…" autocomplete="off" autocorrect="off" spellcheck="false">
+        <span class="search-count" id="search-count" aria-live="polite"></span>
+        <button class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
+      </div>
+
+      <div class="summary-bar" id="summary-bar" role="button" tabindex="0" aria-expanded="false" aria-label="Toggle my list">
+        <div class="summary-left">
+          <span class="summary-label">In list</span>
+          <span class="summary-count" id="summary-count">0</span>
+        </div>
+        <div class="summary-right">
+          <span class="summary-total mono" id="summary-total" aria-live="polite">0,00 €</span>
+          <span class="summary-chev">▾</span>
+        </div>
+        <span class="summary-progress"><span id="progress-fill"></span></span>
+      </div>
+
+      <div class="mylist" id="mylist">
+        <div class="mylist-inner" id="mylist-inner"></div>
+      </div>
+    </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const SUPABASE_URL = 'https://yxkkseauqoiemyswknsx.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_xQZU1Hvm5eOzNSaZE8wL1w_7YObMr-M';
-  const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  <div class="page">
+    <div class="actions">
+      <button class="ghost" id="expand-all">Expand all</button>
+      <button class="ghost" id="collapse-all">Collapse all</button>
+      <button class="ghost danger" id="reset-all">Reset all</button>
+      <span class="reset-confirm" id="reset-confirm" hidden>
+        Reset list?
+        <button id="reset-yes">Confirm</button>
+        <button id="reset-no">Cancel</button>
+      </span>
+    </div>
 
-  async function sha256(str) {
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-  }
+    <main id="catalog"></main>
+    <div class="no-results" id="no-results" hidden></div>
+  </div>
 
-  function showHint(msg, isError) {
-    const h = document.getElementById('hint');
-    h.textContent = msg;
-    h.className = 'hint' + (isError ? ' error' : '');
-  }
+  <button class="tweaks-fab" id="tweaks-fab" aria-label="Open tweaks panel">⚙</button>
+  <div class="tweaks-panel" id="tweaks-panel" hidden role="dialog" aria-label="Tweaks">
+    <div class="tweaks-head">
+      <h2>Tweaks</h2>
+      <button class="icon-btn" id="tweaks-close" aria-label="Close tweaks" style="width:32px;height:32px;font-size:16px">✕</button>
+    </div>
+    <div class="tweak">
+      <label>Accent</label>
+      <div class="swatches" id="tw-accent"></div>
+    </div>
+    <div class="tweak">
+      <label>Density</label>
+      <div class="segmented" id="tw-density">
+        <button data-val="comfortable">Comfortable</button>
+        <button data-val="compact">Compact</button>
+      </div>
+    </div>
+    <div class="tweak">
+      <label>Theme</label>
+      <div class="segmented" id="tw-theme">
+        <button data-val="light">Light</button>
+        <button data-val="dark">Dark</button>
+      </div>
+    </div>
+    <div class="tweak">
+      <label>Row style</label>
+      <div class="segmented" id="tw-row">
+        <button data-val="list">List</button>
+        <button data-val="card">Card</button>
+        <button data-val="striped">Striped</button>
+      </div>
+    </div>
+  </div>
 
-  function setLoading(v) {
-    const btn = document.getElementById('go-btn');
-    btn.disabled = v;
-    btn.textContent = v ? 'Opening…' : 'Open my list';
-  }
-
-  // Auto-login if valid cached credentials
-  (async () => {
-    const cached = JSON.parse(localStorage.getItem('koope-auth') || 'null');
-    if (!cached?.username || !cached?.hash) return;
-    const { data } = await db.from('users').select('password_hash').eq('username', cached.username).single();
-    if (data?.password_hash === cached.hash) {
-      window.location.replace('koope_einkaufszettel.html');
-    } else {
-      localStorage.removeItem('koope-auth');
-    }
-  })();
-
-  async function signIn() {
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value;
-    if (!username) { showHint('Enter a username.', true); return; }
-    if (!password)  { showHint('Enter a password.', true); return; }
-
-    setLoading(true);
-    const hash = await sha256(password);
-
-    const { data: existing } = await db.from('users').select('password_hash').eq('username', username).single();
-
-    if (!existing) {
-      const { error } = await db.from('users').insert({ username, password_hash: hash });
-      if (error) { showHint('Could not create account. Try again.', true); setLoading(false); return; }
-    } else if (existing.password_hash !== hash) {
-      showHint('Wrong password.', true);
-      setLoading(false);
-      return;
-    }
-
-    localStorage.setItem('koope-auth', JSON.stringify({ username, hash }));
-    window.location.replace('koope_einkaufszettel.html');
-  }
-
-  // Pre-fill username from last session
-  const lastUser = JSON.parse(localStorage.getItem('koope-auth') || 'null');
-  if (lastUser?.username) document.getElementById('username').value = lastUser.username;
-
-  document.addEventListener('keydown', e => { if (e.key === 'Enter') signIn(); });
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
