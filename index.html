@@ -453,15 +453,17 @@
     .step.plus.add { background: var(--accent); color: var(--accent-contrast); }
     .step.plus.add:hover { background: var(--accent-strong); }
     .step-val {
-      width: 34px; height: var(--step-size); text-align: center;
+      width: 34px; height: var(--step-size); line-height: var(--step-size);
+      text-align: center;
       font-family: var(--font-mono); font-variant-numeric: tabular-nums;
       font-size: 13px; font-weight: 600;
-      background: transparent; border: none; outline: none; padding: 0;
+      background: transparent; border: none; outline: none; padding: 0; margin: 0;
       color: var(--text); cursor: text;
-      appearance: textfield; -moz-appearance: textfield;
+      /* Safari/iOS collapse form controls in flex to a tiny intrinsic height
+         unless their native appearance is reset. */
+      -webkit-appearance: none; appearance: none;
+      flex: 0 0 auto; align-self: stretch;
     }
-    .step-val::-webkit-outer-spin-button,
-    .step-val::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
     .step-val:focus { color: var(--accent-strong); }
 
     .row-main { min-width: 0; }
