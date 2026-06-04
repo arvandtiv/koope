@@ -217,15 +217,23 @@
   function rowEl(seq) { return catalogEl.querySelector('.row[data-seq="' + seq + '"]'); }
 
   // ── Quantity stepper (§7.2) ─────────────────────────────────────────────
+  // Local state is the source of truth while the user edits. We debounce the
+  // DB write and remember which items have a write in flight so the realtime
+  // echo of our own change doesn't clobber the UI (see subscribe()).
   const _qTimer = {};
+  const _pendingWrites = new Set();
   function commitQty(seq) {
-    const q = state[seq].qty;
     clearTimeout(_qTimer[seq]);
+    _pendingWrites.add(seq);
     _qTimer[seq] = setTimeout(() => {
+      const q = state[seq].qty; // read latest value at flush time
       db.from('shopping_state')
         .update({ quantity: q > 0 ? String(q) : '', updated_at: new Date().toISOString() })
         .eq('user_id', USER_ID).eq('item_id', seq)
-        .then(({ error }) => { if (error) console.error('qty sync error', error); });
+        .then(({ error }) => {
+          if (error) console.error('qty sync error', error);
+          _pendingWrites.delete(seq);
+        });
     }, 600);
   }
 
@@ -571,10 +579,18 @@
         { event: 'UPDATE', schema: 'public', table: 'shopping_state', filter: 'user_id=eq.' + USER_ID },
         payload => {
           const r = payload.new;
-          if (!state[r.item_id]) return;
-          state[r.item_id] = { qty: parseFloat(r.quantity) || 0, got: !!r.checked };
-          applyRow(r.item_id);
-          updateCatHeader(bySeq[r.item_id].cat);
+          const seq = r.item_id;
+          if (!state[seq]) return;
+          // Our own write in flight — local state wins, ignore the echo.
+          if (_pendingWrites.has(seq)) return;
+          const qty = parseFloat(r.quantity) || 0;
+          const got = !!r.checked;
+          // No actual change vs. what we already show (self-echo) — skip the
+          // re-render so the total doesn't re-animate / flicker.
+          if (state[seq].qty === qty && state[seq].got === got) return;
+          state[seq] = { qty, got };
+          applyRow(seq);
+          updateCatHeader(bySeq[seq].cat);
           updateSummary();
         })
       .subscribe();
