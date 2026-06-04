@@ -1,0 +1,41 @@
+name: Sync catalog from shop.koope.de
+
+on:
+  schedule:
+    - cron: '0 5 * * *'   # daily, 05:00 UTC (~07:00 Leipzig)
+  workflow_dispatch: {}    # allow manual runs from the Actions tab
+
+concurrency:
+  group: sync-catalog
+  cancel-in-progress: false
+
+permissions:
+  contents: write          # needed to commit data.js back to the repo
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Scrape shop and update data.js
+        env:
+          KOOPE_USER: ${{ secrets.KOOPE_USER }}
+          KOOPE_PASS: ${{ secrets.KOOPE_PASS }}
+        run: node scripts/sync-catalog.mjs --write
+
+      - name: Commit changes if catalog changed
+        run: |
+          if git diff --quiet -- data.js; then
+            echo "No catalog changes."
+            exit 0
+          fi
+          git config user.name  "koope-sync[bot]"
+          git config user.email "koope-sync@users.noreply.github.com"
+          git add data.js
+          git commit -m "Catalog sync from shop.koope.de ($(date -u +%Y-%m-%d))"
+          git push

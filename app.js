@@ -130,10 +130,17 @@
       head.setAttribute('aria-expanded', 'false');
       head.innerHTML =
         '<span class="cat-title"></span>' +
+        '<span class="cat-new" hidden></span>' +
         '<span class="cat-sub" hidden></span>' +
         '<span class="cat-badge"></span>' +
         '<span class="cat-chev">' + SVG_CHEV + '</span>';
       head.querySelector('.cat-title').textContent = cat.title;
+      // "N neu" count — static (set by the daily sync, not by user actions)
+      const newCount = cat.ids.filter(seq => bySeq[seq].isNew).length;
+      if (newCount > 0) {
+        const cn = head.querySelector('.cat-new');
+        cn.hidden = false; cn.textContent = newCount + ' neu';
+      }
       head.addEventListener('click', () => toggleCat(cat.badge));
 
       const body = document.createElement('div');
@@ -155,6 +162,8 @@
     row.className = 'row';
     row.dataset.seq = p.seq;
     row.dataset.id = p.id;
+    if (p.isNew) row.classList.add('is-new');
+    if (p.unavailable) row.classList.add('is-unavailable');
 
     // stepper
     const stepper = document.createElement('div');
@@ -199,6 +208,16 @@
     chip.className = 'id-chip';
     chip.textContent = '#' + p.id;
     meta.appendChild(chip);
+    if (p.isNew) {
+      const nb = document.createElement('span');
+      nb.className = 'new-badge'; nb.textContent = 'NEU';
+      meta.appendChild(nb);
+    }
+    if (p.unavailable) {
+      const ub = document.createElement('span');
+      ub.className = 'gone-tag'; ub.textContent = 'nicht verfügbar';
+      meta.appendChild(ub);
+    }
     main.append(name, meta);
 
     // price
@@ -614,7 +633,7 @@
     });
 
     document.getElementById('header-meta').textContent =
-      TOTAL + ' products · Updated 29.05.2026 · v2.0';
+      TOTAL + ' products · Updated ' + (window.KOOPE_UPDATED || '29.05.2026') + ' · v2.1';
 
     buildCatalog();
 
