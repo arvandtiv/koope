@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '04.06.2026';
+window.KOOPE_UPDATED = '05.06.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -38,7 +38,7 @@ window.KOOPE_CATEGORIES = [
 
 window.KOOPE_PRODUCTS = [
   { seq: 1, id: '270', name: 'Rotkäppchen Sekt, alkoholfrei', detail: 'Flasche', unit: 'Fl', price: '4,84 €', cat: 'getraenke' },
-  { seq: 2, id: '331', name: 'Natumi Haferdrink Natur', detail: '1 L', unit: 'Fl', price: '1,64 €', cat: 'getraenke' },
+  { seq: 2, id: '331', name: 'Natumi Haferdrink Natur', detail: '1 L', unit: 'Fl', price: '1,64 €', cat: 'getraenke', unavailable: true },
   { seq: 3, id: '267', name: 'Jolle Mate (Johannisbeere) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,36 €', cat: 'getraenke', unavailable: true },
   { seq: 4, id: '266', name: 'KiLiMo (Sauerkirschlimo) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,72 €', cat: 'getraenke' },
   { seq: 5, id: '268', name: 'Kolla Cola – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,72 €', cat: 'getraenke' },
@@ -64,7 +64,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 25, id: '352', name: 'Farfalle (IT, Bio-Hartweizengriess)', detail: 'nach Gewicht', unit: 'kg', price: '3,43 €/kg', cat: 'nudeln' },
   { seq: 26, id: '342', name: 'Fusilli Dinkel hell (Alb Gold, DE)', detail: 'nach Gewicht', unit: 'kg', price: '5,23 €/kg', cat: 'nudeln' },
   { seq: 27, id: '354', name: 'Linguine (IT, Bio-Hartweizengriess)', detail: 'nach Gewicht', unit: 'kg', price: '3,43 €/kg', cat: 'nudeln' },
-  { seq: 28, id: '353', name: 'Vollkorn Spirelli (IT)', detail: 'nach Gewicht', unit: 'kg', price: '3,33 €/kg', cat: 'nudeln' },
+  { seq: 28, id: '353', name: 'Vollkorn Spirelli (IT)', detail: 'nach Gewicht', unit: 'kg', price: '3,33 €/kg', cat: 'nudeln', unavailable: true },
   { seq: 29, id: '347', name: 'Dinkel Vollkornmehl (Biohof Reiche, LK Leipzig, Bioland)', detail: 'nach Gewicht', unit: 'kg', price: '2,58 €/kg', cat: 'getreide' },
   { seq: 30, id: '161', name: 'Weizen Vollkornmehl (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '1,78 €/kg', cat: 'getreide' },
   { seq: 31, id: '57', name: 'Couscous, Vollkorn', detail: 'nach Gewicht', unit: 'kg', price: '3,97 €/kg', cat: 'getreide' },
