@@ -1,8 +1,8 @@
-// Koope catalog — 165 products, 29 categories. Generated data layer (v2.0).
+// Koope catalog — 168 products, 29 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '11.06.2026';
+window.KOOPE_UPDATED = '12.06.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -32,7 +32,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'schoko', title: 'Chocolate & Sweets', ids: [122,123,124,125] },
   { badge: 'eis', title: 'Ice Cream & Sorbet', ids: [126,127] },
   { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133] },
-  { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144] },
+  { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151] },
 ];
 
@@ -174,7 +174,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 135, id: '35', name: 'Geschirrspülmittel', detail: 'nach Gewicht', unit: 'kg', price: '2,71 €/kg', cat: 'reinigung' },
   { seq: 136, id: '144', name: 'Glasreiniger', detail: 'nach Gewicht', unit: 'kg', price: '2,44 €/kg', cat: 'reinigung' },
   { seq: 137, id: '365', name: 'Handseife Citrus', detail: 'nach Gewicht', unit: 'kg', price: '6,20 €/kg', cat: 'reinigung' },
-  { seq: 138, id: '41', name: 'Handseife Rosmarin', detail: 'nach Gewicht', unit: 'kg', price: '6,30 €/kg', cat: 'reinigung' },
+  { seq: 138, id: '41', name: 'Handseife Rosmarin', detail: 'nach Gewicht', unit: 'kg', price: '6,39 €/kg', cat: 'reinigung' },
   { seq: 139, id: '36', name: 'Maschinenspülmittel', detail: 'nach Gewicht', unit: 'kg', price: '3,54 €/kg', cat: 'reinigung' },
   { seq: 140, id: '77', name: 'Waschmittel flüssig, Lavendel', detail: 'nach Gewicht', unit: 'kg', price: '2,67 €/kg', cat: 'reinigung' },
   { seq: 141, id: '253', name: 'Waschmittel Olive (Wolle & Seide)', detail: 'nach Gewicht', unit: 'kg', price: '4,24 €/kg', cat: 'reinigung' },
@@ -202,4 +202,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 163, id: '61', name: 'Reis, Basmati, weiß (PK)', detail: 'ca. 1 kg', unit: 'kg', price: '3,83 €/kg', cat: 'reis', isNew: true },
   { seq: 164, id: '374', name: 'Reis, Milchreis, rund, weiß (IT)', detail: 'ca. 1 kg', unit: 'kg', price: '4,00 €/kg', cat: 'reis', isNew: true },
   { seq: 165, id: '378', name: 'Shoyu (Sojasauce) (NL)', detail: 'ca. 1 kg', unit: 'kg', price: '9,37 €/kg', cat: 'essig', isNew: true },
+  { seq: 166, id: '384', name: 'Sonett Badreiniger (DE)', detail: '10 L, ca. 1 kg', unit: 'kg', price: '2,36 €/kg', cat: 'reinigung', isNew: true },
+  { seq: 167, id: '383', name: 'Sonett Scheuerschwamm (DE)', detail: '2er-Pack', unit: '2er-Pack', price: '2,32 €', cat: 'reinigung', isNew: true },
+  { seq: 168, id: '382', name: 'Sonett Spülschwamm (DE)', detail: '2er-Pack', unit: '2er-Pack', price: '2,32 €', cat: 'reinigung', isNew: true },
 ];
