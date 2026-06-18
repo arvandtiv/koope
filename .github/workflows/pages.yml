@@ -4,6 +4,13 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # The daily catalog sync commits data.js using the default GITHUB_TOKEN, whose
+  # pushes do NOT trigger the `push` event above (GitHub blocks that to avoid
+  # workflow loops). So deploy explicitly once the sync workflow finishes,
+  # otherwise catalog updates sit un-deployed until a human pushes.
+  workflow_run:
+    workflows: ["Sync catalog from shop.koope.de"]
+    types: [completed]
 
 permissions:
   contents: read
