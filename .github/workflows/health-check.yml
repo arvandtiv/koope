@@ -1,0 +1,51 @@
+name: Health check (Supabase + live site)
+
+# Pings the Supabase backend daily. This does two jobs at once:
+#   1. Keeps the free-tier project from auto-pausing (the query counts as DB
+#      activity, resetting the ~7-day inactivity timer). The catalog-sync
+#      workflow never touches Supabase, so without this the project pauses.
+#   2. Alerts on outage: if any check fails the job exits non-zero, and GitHub
+#      emails the workflow's owner (Actions failure notifications, on by default).
+# Also verifies the live GitHub Pages site responds.
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # daily, 06:00 UTC (one hour after the catalog sync)
+  workflow_dispatch: {}    # allow manual runs from the Actions tab
+
+concurrency:
+  group: health-check
+  cancel-in-progress: false
+
+# The anon key is publishable (already shipped in app.js / login.html), so it is
+# safe to hardcode here. Update these if the Supabase project URL/key change.
+env:
+  SUPABASE_URL: https://yxkkseauqoiemyswknsx.supabase.co
+  SUPABASE_KEY: sb_publishable_xQZU1Hvm5eOzNSaZE8wL1w_7YObMr-M
+  SITE_URL: https://arvandtiv.github.io/koope/
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase (keepalive + reachability)
+        run: |
+          # Same query the app runs on load. Expect HTTP 200.
+          code=$(curl -s -m 20 -o /dev/null -w '%{http_code}' \
+            "$SUPABASE_URL/rest/v1/shopping_state?select=item_id&limit=1" \
+            -H "apikey: $SUPABASE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_KEY")
+          echo "Supabase responded HTTP $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::Supabase backend is not healthy (HTTP $code). It may be paused or down."
+            exit 1
+          fi
+
+      - name: Ping live site
+        run: |
+          code=$(curl -s -m 20 -o /dev/null -w '%{http_code}' "$SITE_URL")
+          echo "Live site responded HTTP $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::Live site is not reachable (HTTP $code)."
+            exit 1
+          fi
