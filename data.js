@@ -1,8 +1,8 @@
-// Koope catalog — 169 products, 29 categories. Generated data layer (v2.0).
+// Koope catalog — 170 products, 29 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '22.06.2026';
+window.KOOPE_UPDATED = '23.06.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -22,7 +22,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'tofu', title: 'Tofu – Tofurei Leipzig', ids: [81,82,83,84] },
   { badge: 'konserven', title: 'Canned & Jarred Goods', ids: [85,86] },
   { badge: 'oele', title: 'Oils', ids: [87,88,89,90] },
-  { badge: 'essig', title: 'Vinegar & Sauces', ids: [91,92,93,153,165] },
+  { badge: 'essig', title: 'Vinegar & Sauces', ids: [91,92,93,153,165,170] },
   { badge: 'salz', title: 'Salt & Sugar', ids: [94,95,96] },
   { badge: 'bruehe', title: 'Broth & Seasoning', ids: [97,154] },
   { badge: 'gewuerze', title: 'Spices', ids: [98,99,100,101,102,103,104,105,106] },
@@ -61,8 +61,8 @@ window.KOOPE_PRODUCTS = [
   { seq: 22, id: '239', name: 'Fenchel-Anis-Kümmel', detail: 'nach Gewicht', unit: 'kg', price: '15,45 €/kg', cat: 'tee' },
   { seq: 23, id: '329', name: 'Ingwer-Zitrone', detail: 'nach Gewicht', unit: 'kg', price: '34,86 €/kg', cat: 'tee' },
   { seq: 24, id: '240', name: 'Morgentee', detail: 'Fenchel, Zitronengras, Grüner Tee, Mate …', unit: 'kg', price: '34,86 €/kg', cat: 'tee' },
-  { seq: 25, id: '352', name: 'Farfalle (IT, Bio-Hartweizengriess)', detail: 'nach Gewicht', unit: 'kg', price: '3,43 €/kg', cat: 'nudeln' },
-  { seq: 26, id: '342', name: 'Fusilli Dinkel hell (Alb Gold, DE)', detail: 'nach Gewicht', unit: 'kg', price: '5,23 €/kg', cat: 'nudeln' },
+  { seq: 25, id: '352', name: 'Farfalle (IT, Bio-Hartweizengriess)', detail: 'nach Gewicht', unit: 'kg', price: '3,43 €/kg', cat: 'nudeln', unavailable: true },
+  { seq: 26, id: '342', name: 'Fusilli Dinkel hell (Alb Gold, DE)', detail: 'nach Gewicht', unit: 'kg', price: '5,23 €/kg', cat: 'nudeln', unavailable: true },
   { seq: 27, id: '354', name: 'Linguine (IT, Bio-Hartweizengriess)', detail: 'nach Gewicht', unit: 'kg', price: '3,43 €/kg', cat: 'nudeln' },
   { seq: 28, id: '353', name: 'Vollkorn Spirelli (IT)', detail: 'nach Gewicht', unit: 'kg', price: '3,33 €/kg', cat: 'nudeln', unavailable: true },
   { seq: 29, id: '347', name: 'Dinkel Vollkornmehl (Biohof Reiche, LK Leipzig, Bioland)', detail: 'nach Gewicht', unit: 'kg', price: '2,58 €/kg', cat: 'getreide' },
@@ -128,7 +128,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 89, id: '361', name: 'Rapsöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,61 €/kg', cat: 'oele' },
   { seq: 90, id: '184', name: 'Sonnenblumenöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,94 €/kg', cat: 'oele' },
   { seq: 91, id: '254', name: 'Apfelessig (Beutelsbacher, DE, 10 L)', detail: 'ca. 3,56 € / L · nach Gewicht', unit: 'kg', price: '3,52 €/kg', cat: 'essig' },
-  { seq: 92, id: '260', name: 'Balsamico di Modena (De Nigris, IT)', detail: 'ca. 6,30 € / L · nach Gewicht', unit: 'kg', price: '5,25 €/kg', cat: 'essig' },
+  { seq: 92, id: '260', name: 'Balsamico di Modena (De Nigris, IT)', detail: 'ca. 6,30 € / L · nach Gewicht', unit: 'kg', price: '5,25 €/kg', cat: 'essig', unavailable: true },
   { seq: 93, id: '168', name: 'Sojasauce Shoyu (Arche Naturküche)', detail: 'ca. 11,14 € / L · nach Gewicht', unit: 'kg', price: '10,00 €/kg', cat: 'essig', unavailable: true },
   { seq: 94, id: '285', name: 'Steinsalz fein (Buxtrade, NL)', detail: 'nach Gewicht', unit: 'kg', price: '0,56 €/kg', cat: 'salz' },
   { seq: 95, id: '379', name: 'Steinsalz fein, ohne Zusätze (K+S, DE)', detail: 'nach Gewicht', unit: 'kg', price: '0,58 €/kg', cat: 'salz' },
@@ -169,7 +169,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 130, id: '90', name: 'Seife, Soleseife Mohn & Rose (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
   { seq: 131, id: '81', name: 'Seife, Soleseife Thymian + Limone (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
   { seq: 132, id: '182', name: 'Seife, Wolkensteiner Thermalwasser (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
-  { seq: 133, id: '284', name: 'Schneestern Seife Körper & Hände (KOJE)', detail: '90 g', unit: 'Stk', price: '4,75 €', cat: 'koerperpflege' },
+  { seq: 133, id: '284', name: 'Schneestern Seife Körper & Hände (KOJE)', detail: '90 g', unit: 'Stk', price: '4,75 €', cat: 'koerperpflege', unavailable: true },
   { seq: 134, id: '143', name: 'Allesreiniger', detail: 'nach Gewicht', unit: 'kg', price: '2,85 €/kg', cat: 'reinigung' },
   { seq: 135, id: '35', name: 'Geschirrspülmittel', detail: 'nach Gewicht', unit: 'kg', price: '2,71 €/kg', cat: 'reinigung' },
   { seq: 136, id: '144', name: 'Glasreiniger', detail: 'nach Gewicht', unit: 'kg', price: '2,44 €/kg', cat: 'reinigung' },
@@ -206,4 +206,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 167, id: '383', name: 'Sonett Scheuerschwamm (DE)', detail: '2er-Pack', unit: '2er-Pack', price: '2,32 €', cat: 'reinigung', isNew: true },
   { seq: 168, id: '382', name: 'Sonett Spülschwamm (DE)', detail: '2er-Pack', unit: '2er-Pack', price: '2,32 €', cat: 'reinigung', isNew: true },
   { seq: 169, id: '385', name: 'Trockenobst, Datteln, Deglet Nour (TUN)', detail: 'ca. 1 kg', unit: 'kg', price: '7,57 €/kg', cat: 'trocken', isNew: true },
+  { seq: 170, id: '386', name: 'Essig, Balsamico di Modena (De Nigris, IT)', detail: 'ca. 1 kg', unit: 'kg', price: '5,25 €/kg', cat: 'essig', isNew: true },
 ];
