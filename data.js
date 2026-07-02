@@ -1,8 +1,8 @@
-// Koope catalog — 170 products, 29 categories. Generated data layer (v2.0).
+// Koope catalog — 171 products, 29 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '30.06.2026';
+window.KOOPE_UPDATED = '02.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -33,7 +33,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'eis', title: 'Ice Cream & Sorbet', ids: [126,127] },
   { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
-  { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151] },
+  { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
 ];
 
 window.KOOPE_PRODUCTS = [
@@ -207,4 +207,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 168, id: '382', name: 'Sonett Spülschwamm (DE)', detail: '2er-Pack', unit: '2er-Pack', price: '2,32 €', cat: 'reinigung', isNew: true },
   { seq: 169, id: '385', name: 'Trockenobst, Datteln, Deglet Nour (TUN)', detail: 'ca. 1 kg', unit: 'kg', price: '7,57 €/kg', cat: 'trocken', isNew: true },
   { seq: 170, id: '386', name: 'Essig, Balsamico di Modena (De Nigris, IT)', detail: 'ca. 1 kg', unit: 'kg', price: '5,25 €/kg', cat: 'essig', isNew: true },
+  { seq: 171, id: '387', name: 'Non-Food, Denttabs Zahnputztabletten, Minze, mit Fluorid (DE)', detail: 'ca. 0,1 kg', unit: 'kg', price: '10,50 €/kg', cat: 'nonfood', isNew: true },
 ];
