@@ -1,8 +1,8 @@
-// Koope catalog — 175 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 176 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '10.07.2026';
+window.KOOPE_UPDATED = '11.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -30,7 +30,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'trocken', title: 'Dried Fruit', ids: [113,114,115,116,117,118,119,120,169] },
   { badge: 'oliven', title: 'Oliven', ids: [121] },
   { badge: 'schoko', title: 'Chocolate & Sweets', ids: [122,123,124,125] },
-  { badge: 'eis', title: 'Ice Cream & Sorbet', ids: [126,127] },
+  { badge: 'eis', title: 'Ice Cream & Sorbet', ids: [126,127,176] },
   { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
@@ -213,4 +213,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 173, id: '209', name: 'Tempeh | Lupine | natur [tiefgekühlt]', detail: '500 g', unit: '500 g', price: '6,52 €', cat: 'neu', isNew: true },
   { seq: 174, id: '198', name: 'Tempeh | Lupine | Vurst', detail: '220 g', unit: '220 g', price: '4,16 €', cat: 'neu', isNew: true },
   { seq: 175, id: '199', name: 'Tempeh | Soja | geräuchert', detail: '190 g', unit: '190 g', price: '3,99 €', cat: 'neu', isNew: true },
+  { seq: 176, id: '388', name: 'Eis vegan Haselnuss', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true },
 ];
