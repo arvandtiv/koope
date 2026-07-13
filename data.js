@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '12.07.2026';
+window.KOOPE_UPDATED = '13.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -209,9 +209,9 @@ window.KOOPE_PRODUCTS = [
   { seq: 169, id: '385', name: 'Trockenobst, Datteln, Deglet Nour (TUN)', detail: 'ca. 1 kg', unit: 'kg', price: '7,57 €/kg', cat: 'trocken', isNew: true },
   { seq: 170, id: '386', name: 'Essig, Balsamico di Modena (De Nigris, IT)', detail: 'ca. 1 kg', unit: 'kg', price: '5,25 €/kg', cat: 'essig', isNew: true },
   { seq: 171, id: '387', name: 'Non-Food, Denttabs Zahnputztabletten, Minze, mit Fluorid (DE)', detail: 'ca. 0,1 kg', unit: 'kg', price: '10,50 €/kg', cat: 'nonfood', isNew: true },
-  { seq: 172, id: '197', name: 'Tempeh | Lupine | Natur', detail: '200 g', unit: '200 g', price: '3,37 €', cat: 'neu', isNew: true },
-  { seq: 173, id: '209', name: 'Tempeh | Lupine | natur [tiefgekühlt]', detail: '500 g', unit: '500 g', price: '6,52 €', cat: 'neu', isNew: true },
-  { seq: 174, id: '198', name: 'Tempeh | Lupine | Vurst', detail: '220 g', unit: '220 g', price: '4,16 €', cat: 'neu', isNew: true },
-  { seq: 175, id: '199', name: 'Tempeh | Soja | geräuchert', detail: '190 g', unit: '190 g', price: '3,99 €', cat: 'neu', isNew: true },
+  { seq: 172, id: '197', name: 'Tempeh | Lupine | Natur', detail: '200 g', unit: '200 g', price: '3,37 €', cat: 'neu', isNew: true, unavailable: true },
+  { seq: 173, id: '209', name: 'Tempeh | Lupine | natur [tiefgekühlt]', detail: '500 g', unit: '500 g', price: '6,52 €', cat: 'neu', isNew: true, unavailable: true },
+  { seq: 174, id: '198', name: 'Tempeh | Lupine | Vurst', detail: '220 g', unit: '220 g', price: '4,16 €', cat: 'neu', isNew: true, unavailable: true },
+  { seq: 175, id: '199', name: 'Tempeh | Soja | geräuchert', detail: '190 g', unit: '190 g', price: '3,99 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 176, id: '388', name: 'Eis vegan Haselnuss', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true },
 ];
