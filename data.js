@@ -1,8 +1,8 @@
-// Koope catalog — 176 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 177 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '16.07.2026';
+window.KOOPE_UPDATED = '17.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -21,7 +21,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'fertig', title: 'Ready Meals', ids: [79,80] },
   { badge: 'tofu', title: 'Tofu – Tofurei Leipzig', ids: [81,82,83,84] },
   { badge: 'konserven', title: 'Canned & Jarred Goods', ids: [85,86] },
-  { badge: 'oele', title: 'Oils', ids: [87,88,89,90] },
+  { badge: 'oele', title: 'Oils', ids: [87,88,89,90,177] },
   { badge: 'essig', title: 'Vinegar & Sauces', ids: [91,92,93,153,165,170] },
   { badge: 'salz', title: 'Salt & Sugar', ids: [94,95,96] },
   { badge: 'bruehe', title: 'Broth & Seasoning', ids: [97,154] },
@@ -128,7 +128,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 88, id: '193', name: 'Olivenöl (Griechenland, 5-L-Kanister)', detail: 'ca. 15,52 € / L · nach Gewicht', unit: 'kg', price: '17,98 €/kg', cat: 'oele' },
   { seq: 89, id: '361', name: 'Rapsöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,61 €/kg', cat: 'oele' },
   { seq: 90, id: '184', name: 'Sonnenblumenöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,94 €/kg', cat: 'oele' },
-  { seq: 91, id: '254', name: 'Apfelessig (Beutelsbacher, DE, 10 L)', detail: 'ca. 3,56 € / L · nach Gewicht', unit: 'kg', price: '3,52 €/kg', cat: 'essig' },
+  { seq: 91, id: '254', name: 'Apfelessig (Beutelsbacher, DE, 10 L)', detail: 'ca. 3,56 € / L · nach Gewicht', unit: 'kg', price: '3,52 €/kg', cat: 'essig', unavailable: true },
   { seq: 92, id: '260', name: 'Balsamico di Modena (De Nigris, IT)', detail: 'ca. 6,30 € / L · nach Gewicht', unit: 'kg', price: '5,25 €/kg', cat: 'essig', unavailable: true },
   { seq: 93, id: '168', name: 'Sojasauce Shoyu (Arche Naturküche)', detail: 'ca. 11,14 € / L · nach Gewicht', unit: 'kg', price: '10,00 €/kg', cat: 'essig', unavailable: true },
   { seq: 94, id: '285', name: 'Steinsalz fein (Buxtrade, NL)', detail: 'nach Gewicht', unit: 'kg', price: '0,56 €/kg', cat: 'salz' },
@@ -214,4 +214,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 174, id: '198', name: 'Tempeh | Lupine | Vurst', detail: '220 g', unit: '220 g', price: '4,16 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 175, id: '199', name: 'Tempeh | Soja | geräuchert', detail: '190 g', unit: '190 g', price: '3,99 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 176, id: '388', name: 'Eis vegan Haselnuss', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true },
+  { seq: 177, id: '53', name: 'Öl, Rapsöl (DE)', detail: 'kg, ca. 1 kg', unit: 'kg', price: '5,65 €/kg', cat: 'oele', isNew: true },
 ];
