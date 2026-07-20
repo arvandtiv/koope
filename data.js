@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '19.07.2026';
+window.KOOPE_UPDATED = '20.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -72,8 +72,8 @@ window.KOOPE_PRODUCTS = [
   { seq: 32, id: '283', name: 'Buchweizen (Tarabao, Polen)', detail: 'nach Gewicht', unit: 'kg', price: '4,38 €/kg', cat: 'getreide' },
   { seq: 33, id: '113', name: 'Hirse (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '3,09 €/kg', cat: 'getreide' },
   { seq: 34, id: '363', name: 'Quinoa, Vollkorn (Mudda Natur, DE)', detail: 'nach Gewicht', unit: 'kg', price: '7,86 €/kg', cat: 'getreide' },
-  { seq: 35, id: '187', name: 'Hafer, Korn – ganzes Korn (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '2,22 €/kg', cat: 'getreide' },
-  { seq: 36, id: '62', name: 'Haferflocken, fein (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '2,19 €/kg', cat: 'getreide' },
+  { seq: 35, id: '187', name: 'Hafer, Korn – ganzes Korn (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '1,76 €/kg', cat: 'getreide' },
+  { seq: 36, id: '62', name: 'Haferflocken, fein (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '2,10 €/kg', cat: 'getreide' },
   { seq: 37, id: '274', name: 'Polenta (B-Ware, −10 %)', detail: 'nach Gewicht', unit: 'kg', price: '2,56 €/kg', cat: 'getreide' },
   { seq: 38, id: '167', name: 'Hefeflocken (Kamelur)', detail: 'nach Gewicht', unit: 'kg', price: '33,60 €/kg', cat: 'getreide' },
   { seq: 39, id: '69', name: 'Müsli, 4-Kornflocken Bioland (Hafer, Gerste, Weizen, Roggen)', detail: 'nach Gewicht', unit: 'kg', price: '2,61 €/kg', cat: 'muesli' },
