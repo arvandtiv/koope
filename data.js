@@ -1,8 +1,8 @@
-// Koope catalog — 177 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 178 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '23.07.2026';
+window.KOOPE_UPDATED = '24.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -34,7 +34,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
-  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175] },
+  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178] },
 ];
 
 window.KOOPE_PRODUCTS = [
@@ -82,7 +82,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 42, id: '76', name: 'Langkornreis Thaibonnet, weiß (IT)', detail: 'nach Gewicht', unit: 'kg', price: '4,43 €/kg', cat: 'reis' },
   { seq: 43, id: '107', name: 'Weiße Bohnen (CN)', detail: 'nach Gewicht', unit: 'kg', price: '4,58 €/kg', cat: 'reis' },
   { seq: 44, id: '128', name: 'Schwarze Bohnen (Tarabao, AT)', detail: 'nach Gewicht', unit: 'kg', price: '6,63 €/kg', cat: 'reis' },
-  { seq: 45, id: '37', name: 'Braune Linsen (IT)', detail: 'nach Gewicht', unit: 'kg', price: '3,17 €/kg', cat: 'reis' },
+  { seq: 45, id: '37', name: 'Braune Linsen (IT)', detail: 'nach Gewicht', unit: 'kg', price: '3,17 €/kg', cat: 'reis', unavailable: true },
   { seq: 46, id: '136', name: 'Grüne Linsen, Du-Puy-Art (Tarabao, DE–Hessen)', detail: 'nach Gewicht', unit: 'kg', price: '5,50 €/kg', cat: 'reis' },
   { seq: 47, id: '155', name: 'Rote Linsen (Tarabao, TR)', detail: 'nach Gewicht', unit: 'kg', price: '4,38 €/kg', cat: 'reis' },
   { seq: 48, id: '116', name: 'Kichererbsen (Jonas Schulze Niehoff, DE–Sachsen-Anhalt)', detail: 'nach Gewicht', unit: 'kg', price: '3,87 €/kg', cat: 'reis' },
@@ -101,7 +101,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 61, id: '106', name: 'Erdnussmus Monki', detail: '650 g Glas', unit: 'Glas', price: '6,46 €', cat: 'nussmus' },
   { seq: 62, id: '70', name: 'Erdnussmus Terrasana, crunchy', detail: '500 g Glas', unit: 'Glas', price: '5,44 €', cat: 'nussmus' },
   { seq: 63, id: '252', name: 'Mandelmus braun, Terrasana', detail: '250 g Glas', unit: 'Glas', price: '4,98 €', cat: 'nussmus' },
-  { seq: 64, id: '345', name: 'Mandelmus braun, Ecoterra', detail: '500 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '9,82 €', cat: 'nussmus' },
+  { seq: 64, id: '345', name: 'Mandelmus braun, Ecoterra', detail: '500 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '9,84 €', cat: 'nussmus' },
   { seq: 65, id: '124', name: 'Tahin dark, Terrasana (Uganda)', detail: '500 g Glas', unit: 'Glas', price: '6,47 €', cat: 'nussmus' },
   { seq: 66, id: '366', name: 'Tahin weiß, Terrasana (Bolivien/Uganda)', detail: '500 g Glas', unit: 'Glas', price: '6,80 €', cat: 'nussmus' },
   { seq: 67, id: '351', name: 'Tofu küsst Wirsing (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
@@ -122,8 +122,8 @@ window.KOOPE_PRODUCTS = [
   { seq: 82, id: '150', name: 'Tofu geräuchert – Natur Soja', detail: 'ca. 200 g', unit: 'Stk', price: '3,37 €', cat: 'tofu' },
   { seq: 83, id: '152', name: 'Tofu geräuchert – Röstzwiebel Pfeffer', detail: 'ca. 200 g', unit: 'Stk', price: '3,37 €', cat: 'tofu' },
   { seq: 84, id: '177', name: 'Tofu geräuchert – Sesam-Soja', detail: 'ca. 200 g', unit: 'Stk', price: '3,37 €', cat: 'tofu' },
-  { seq: 85, id: '344', name: 'Tomaten Passata (Ecoterra, IT)', detail: '500 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '2,28 €', cat: 'konserven' },
-  { seq: 86, id: '346', name: 'Tomatenmark (Ecoterra, IT)', detail: '270 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '2,78 €', cat: 'konserven' },
+  { seq: 85, id: '344', name: 'Tomaten Passata (Ecoterra, IT)', detail: '500 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '2,30 €', cat: 'konserven' },
+  { seq: 86, id: '346', name: 'Tomatenmark (Ecoterra, IT)', detail: '270 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '2,80 €', cat: 'konserven' },
   { seq: 87, id: '259', name: 'Bratöl Sonnenblumenkernöl (Teutoburger Ölmühle)', detail: '10 L · ca. 5,03 € / L · nach Gewicht', unit: 'kg', price: '5,46 €/kg', cat: 'oele' },
   { seq: 88, id: '193', name: 'Olivenöl (Griechenland, 5-L-Kanister)', detail: 'ca. 15,52 € / L · nach Gewicht', unit: 'kg', price: '17,98 €/kg', cat: 'oele' },
   { seq: 89, id: '361', name: 'Rapsöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,61 €/kg', cat: 'oele' },
@@ -215,4 +215,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 175, id: '199', name: 'Tempeh | Soja | geräuchert', detail: '190 g', unit: '190 g', price: '3,99 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 176, id: '388', name: 'Eis vegan Haselnuss', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true },
   { seq: 177, id: '53', name: 'Öl, Rapsöl (DE)', detail: 'kg, ca. 1 kg', unit: 'kg', price: '5,65 €/kg', cat: 'oele', isNew: true },
+  { seq: 178, id: '389', name: 'Pfandkiste für Mehrweggläser', detail: '', unit: '', price: '1,50 €', cat: 'neu', isNew: true },
 ];
