@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '24.07.2026';
+window.KOOPE_UPDATED = '25.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -41,13 +41,13 @@ window.KOOPE_PRODUCTS = [
   { seq: 1, id: '270', name: 'Rotkäppchen Sekt, alkoholfrei', detail: 'Flasche', unit: 'Fl', price: '4,84 €', cat: 'getraenke' },
   { seq: 2, id: '331', name: 'Natumi Haferdrink Natur', detail: '1 L', unit: 'Fl', price: '1,64 €', cat: 'getraenke', unavailable: true },
   { seq: 3, id: '267', name: 'Jolle Mate (Johannisbeere) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,36 €', cat: 'getraenke', unavailable: true },
-  { seq: 4, id: '266', name: 'KiLiMo (Sauerkirschlimo) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,72 €', cat: 'getraenke' },
-  { seq: 5, id: '268', name: 'Kolla Cola – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,72 €', cat: 'getraenke' },
-  { seq: 6, id: '264', name: 'Kolle Mate – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,90 €', cat: 'getraenke' },
-  { seq: 7, id: '263', name: 'Lipz Rhabarber', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,15 €', cat: 'getraenke' },
-  { seq: 8, id: '262', name: 'Lipz Schwarze Johannisbeere', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,62 €', cat: 'getraenke' },
-  { seq: 9, id: '261', name: 'Quipz (Quitte-Apfel-Schorle)', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,27 €', cat: 'getraenke' },
-  { seq: 10, id: '265', name: 'Zotrine (Zitronenlimonade) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,36 €', cat: 'getraenke' },
+  { seq: 4, id: '266', name: 'KiLiMo (Sauerkirschlimo) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,76 €', cat: 'getraenke' },
+  { seq: 5, id: '268', name: 'Kolla Cola – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,76 €', cat: 'getraenke' },
+  { seq: 6, id: '264', name: 'Kolle Mate – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,94 €', cat: 'getraenke' },
+  { seq: 7, id: '263', name: 'Lipz Rhabarber', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,19 €', cat: 'getraenke' },
+  { seq: 8, id: '262', name: 'Lipz Schwarze Johannisbeere', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,19 €', cat: 'getraenke' },
+  { seq: 9, id: '261', name: 'Quipz (Quitte-Apfel-Schorle)', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,31 €', cat: 'getraenke' },
+  { seq: 10, id: '265', name: 'Zotrine (Zitronenlimonade) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,76 €', cat: 'getraenke' },
   { seq: 11, id: '97', name: 'Fink Pils (Thüringen)', detail: '0,33 L + 0,08 € Pfand', unit: 'Fl', price: '1,29 €', cat: 'bier' },
   { seq: 12, id: '248', name: 'Fink, alkoholfrei (Thüringen)', detail: '0,33 L + 0,08 € Pfand', unit: 'Fl', price: '1,07 €', cat: 'bier' },
   { seq: 13, id: '137', name: 'Haferdrinkpulver (Blue Farm)', detail: 'ca. 1,37 € / L · nach Gewicht', unit: 'kg', price: '12,78 €/kg', cat: 'milch' },
