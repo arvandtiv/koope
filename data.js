@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '25.07.2026';
+window.KOOPE_UPDATED = '26.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -50,8 +50,8 @@ window.KOOPE_PRODUCTS = [
   { seq: 10, id: '265', name: 'Zotrine (Zitronenlimonade) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,76 €', cat: 'getraenke' },
   { seq: 11, id: '97', name: 'Fink Pils (Thüringen)', detail: '0,33 L + 0,08 € Pfand', unit: 'Fl', price: '1,29 €', cat: 'bier' },
   { seq: 12, id: '248', name: 'Fink, alkoholfrei (Thüringen)', detail: '0,33 L + 0,08 € Pfand', unit: 'Fl', price: '1,07 €', cat: 'bier' },
-  { seq: 13, id: '137', name: 'Haferdrinkpulver (Blue Farm)', detail: 'ca. 1,37 € / L · nach Gewicht', unit: 'kg', price: '12,78 €/kg', cat: 'milch' },
-  { seq: 14, id: '138', name: 'Haferdrinkpulver Barista (Blue Farm)', detail: 'ca. 1,58 € / L · nach Gewicht', unit: 'kg', price: '16,60 €/kg', cat: 'milch' },
+  { seq: 13, id: '137', name: 'Haferdrinkpulver (Blue Farm)', detail: 'ca. 1,37 € / L · nach Gewicht', unit: 'kg', price: '14,34 €/kg', cat: 'milch' },
+  { seq: 14, id: '138', name: 'Haferdrinkpulver Barista (Blue Farm)', detail: 'ca. 1,58 € / L · nach Gewicht', unit: 'kg', price: '14,34 €/kg', cat: 'milch' },
   { seq: 15, id: '349', name: 'Kokosmilch-Pulver (Kamelur)', detail: 'nach Gewicht', unit: 'kg', price: '23,45 €/kg', cat: 'milch' },
   { seq: 16, id: '225', name: 'Kaffee, gesegelt (Café Chavalo, Nicaragua)', detail: 'nach Gewicht', unit: 'kg', price: '29,49 €/kg', cat: 'kaffee' },
   { seq: 17, id: '78', name: 'Espresso, gesegelt (Café Chavalo, Nicaragua)', detail: 'nach Gewicht', unit: 'kg', price: '29,49 €/kg', cat: 'kaffee' },
