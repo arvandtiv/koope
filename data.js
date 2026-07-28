@@ -1,8 +1,8 @@
-// Koope catalog — 178 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 179 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '27.07.2026';
+window.KOOPE_UPDATED = '28.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -20,7 +20,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'frucht', title: 'Fruit Spreads', ids: [76,77,78] },
   { badge: 'fertig', title: 'Ready Meals', ids: [79,80] },
   { badge: 'tofu', title: 'Tofu – Tofurei Leipzig', ids: [81,82,83,84] },
-  { badge: 'konserven', title: 'Canned & Jarred Goods', ids: [85,86] },
+  { badge: 'konserven', title: 'Canned & Jarred Goods', ids: [85,86,179] },
   { badge: 'oele', title: 'Oils', ids: [87,88,89,90,177] },
   { badge: 'essig', title: 'Vinegar & Sauces', ids: [91,92,93,153,165,170] },
   { badge: 'salz', title: 'Salt & Sugar', ids: [94,95,96] },
@@ -216,4 +216,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 176, id: '388', name: 'Eis vegan Haselnuss', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true },
   { seq: 177, id: '53', name: 'Öl, Rapsöl (DE)', detail: 'kg, ca. 1 kg', unit: 'kg', price: '5,65 €/kg', cat: 'oele', isNew: true },
   { seq: 178, id: '389', name: 'Pfandkiste für Mehrweggläser', detail: '', unit: '', price: '1,50 €', cat: 'neu', isNew: true },
+  { seq: 179, id: '340', name: 'Konserven, Apfelmus, ungesüßt (DE)', detail: '500 g', unit: '500 g', price: '2,30 €', cat: 'konserven', isNew: true },
 ];
