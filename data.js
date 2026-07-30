@@ -1,8 +1,8 @@
-// Koope catalog — 179 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 180 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '29.07.2026';
+window.KOOPE_UPDATED = '30.07.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -34,7 +34,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
-  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178] },
+  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180] },
 ];
 
 window.KOOPE_PRODUCTS = [
@@ -126,7 +126,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 86, id: '346', name: 'Tomatenmark (Ecoterra, IT)', detail: '270 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '2,80 €', cat: 'konserven' },
   { seq: 87, id: '259', name: 'Bratöl Sonnenblumenkernöl (Teutoburger Ölmühle)', detail: '10 L · ca. 5,03 € / L · nach Gewicht', unit: 'kg', price: '5,46 €/kg', cat: 'oele' },
   { seq: 88, id: '193', name: 'Olivenöl (Griechenland, 5-L-Kanister)', detail: 'ca. 15,52 € / L · nach Gewicht', unit: 'kg', price: '17,98 €/kg', cat: 'oele' },
-  { seq: 89, id: '361', name: 'Rapsöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,61 €/kg', cat: 'oele' },
+  { seq: 89, id: '361', name: 'Rapsöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,61 €/kg', cat: 'oele', unavailable: true },
   { seq: 90, id: '184', name: 'Sonnenblumenöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,94 €/kg', cat: 'oele' },
   { seq: 91, id: '254', name: 'Apfelessig (Beutelsbacher, DE, 10 L)', detail: 'ca. 3,56 € / L · nach Gewicht', unit: 'kg', price: '3,52 €/kg', cat: 'essig', unavailable: true },
   { seq: 92, id: '260', name: 'Balsamico di Modena (De Nigris, IT)', detail: 'ca. 6,30 € / L · nach Gewicht', unit: 'kg', price: '5,25 €/kg', cat: 'essig', unavailable: true },
@@ -217,4 +217,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 177, id: '53', name: 'Öl, Rapsöl (DE)', detail: 'kg, ca. 1 kg', unit: 'kg', price: '5,65 €/kg', cat: 'oele', isNew: true },
   { seq: 178, id: '389', name: 'Pfandkiste für Mehrweggläser', detail: '', unit: '', price: '1,50 €', cat: 'neu', isNew: true },
   { seq: 179, id: '340', name: 'Konserven, Apfelmus, ungesüßt (DE)', detail: '500 g', unit: '500 g', price: '2,30 €', cat: 'konserven', isNew: true },
+  { seq: 180, id: '390', name: 'Tampons, Größe "normal"', detail: '16er-Pack', unit: '16er-Pack', price: '2,48 €', cat: 'neu', isNew: true },
 ];
