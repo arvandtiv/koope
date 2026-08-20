@@ -1,8 +1,8 @@
-// Koope catalog — 183 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 185 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '19.08.2026';
+window.KOOPE_UPDATED = '20.08.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -30,11 +30,11 @@ window.KOOPE_CATEGORIES = [
   { badge: 'trocken', title: 'Dried Fruit', ids: [113,114,115,116,117,118,119,120,169] },
   { badge: 'oliven', title: 'Oliven', ids: [121] },
   { badge: 'schoko', title: 'Chocolate & Sweets', ids: [122,123,124,125] },
-  { badge: 'eis', title: 'Ice Cream & Sorbet', ids: [126,127,176] },
+  { badge: 'eis', title: 'Ice Cream & Sorbet', ids: [126,127,176,184] },
   { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
-  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180,181,182,183] },
+  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180,181,182,183,185] },
 ];
 
 window.KOOPE_PRODUCTS = [
@@ -116,8 +116,8 @@ window.KOOPE_PRODUCTS = [
   { seq: 76, id: '371', name: 'Mirabelle, gelb (Rosenberg Delikatessen)', detail: '160 g Glas', unit: 'Glas', price: '3,54 €', cat: 'frucht' },
   { seq: 77, id: '370', name: 'Sanddorn (Rosenberg Delikatessen)', detail: '170 g Glas', unit: 'Glas', price: '3,54 €', cat: 'frucht' },
   { seq: 78, id: '372', name: 'Wilde Pflaume (Rosenberg Delikatessen)', detail: '160 g Glas', unit: 'Glas', price: '3,54 €', cat: 'frucht' },
-  { seq: 79, id: '306', name: 'Linsenbolognese (Leipspeis)', detail: '500 g Pfandglas + 0,15 € Pfand', unit: 'Glas', price: '5,48 €', cat: 'fertig' },
-  { seq: 80, id: '307', name: 'Veganes Gulasch (Leipspeis)', detail: '500 g Pfandglas + 0,15 € Pfand', unit: 'Glas', price: '5,48 €', cat: 'fertig' },
+  { seq: 79, id: '306', name: 'Linsenbolognese (Leipspeis)', detail: '500 g Pfandglas + 0,15 € Pfand', unit: 'Glas', price: '5,17 €', cat: 'fertig' },
+  { seq: 80, id: '307', name: 'Veganes Gulasch (Leipspeis)', detail: '500 g Pfandglas + 0,15 € Pfand', unit: 'Glas', price: '5,17 €', cat: 'fertig' },
   { seq: 81, id: '153', name: 'Tofu geräuchert – Alge Soja', detail: 'ca. 200 g', unit: 'Stk', price: '3,37 €', cat: 'tofu' },
   { seq: 82, id: '150', name: 'Tofu geräuchert – Natur Soja', detail: 'ca. 200 g', unit: 'Stk', price: '3,37 €', cat: 'tofu' },
   { seq: 83, id: '152', name: 'Tofu geräuchert – Röstzwiebel Pfeffer', detail: 'ca. 200 g', unit: 'Stk', price: '3,37 €', cat: 'tofu' },
@@ -182,7 +182,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 142, id: '33', name: 'Waschmittel Pulver', detail: 'nach Gewicht', unit: 'kg', price: '3,69 €/kg', cat: 'reinigung' },
   { seq: 143, id: '34', name: 'WC-Reiniger Zeder-Citronella', detail: 'nach Gewicht', unit: 'kg', price: '3,54 €/kg', cat: 'reinigung' },
   { seq: 144, id: '277', name: 'Waschsoda', detail: 'nach Gewicht', unit: 'kg', price: '0,49 €/kg', cat: 'reinigung' },
-  { seq: 145, id: '93', name: 'Klopapier (Goldeimer, 100 % Recycling)', detail: '8 Rollen · Blauer Engel', unit: 'Pack', price: '4,68 €', cat: 'nonfood' },
+  { seq: 145, id: '93', name: 'Klopapier (Goldeimer, 100 % Recycling)', detail: '8 Rollen · Blauer Engel', unit: 'Pack', price: '4,94 €', cat: 'nonfood' },
   { seq: 146, id: '357', name: 'Stumpenkerze bunt (Biokema, Thüringen)', detail: '60×55 mm', unit: 'Stk', price: '2,14 €', cat: 'nonfood' },
   { seq: 147, id: '358', name: 'Stumpenkerze weiß (Biokema, Thüringen)', detail: '60×120 mm', unit: 'Stk', price: '2,97 €', cat: 'nonfood' },
   { seq: 148, id: '360', name: 'Stabkerze bunt (Lichtbringer, Sachsen-Anhalt, Rapswachs)', detail: '2×20,5 cm', unit: 'Stk', price: '1,85 €', cat: 'nonfood' },
@@ -209,7 +209,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 169, id: '385', name: 'Trockenobst, Datteln, Deglet Nour (TUN)', detail: 'ca. 1 kg', unit: 'kg', price: '7,57 €/kg', cat: 'trocken', isNew: true },
   { seq: 170, id: '386', name: 'Essig, Balsamico di Modena (De Nigris, IT)', detail: 'ca. 1 kg', unit: 'kg', price: '5,25 €/kg', cat: 'essig', isNew: true },
   { seq: 171, id: '387', name: 'Non-Food, Denttabs Zahnputztabletten, Minze, mit Fluorid (DE)', detail: 'ca. 0,1 kg', unit: 'kg', price: '10,50 €/kg', cat: 'nonfood', isNew: true },
-  { seq: 172, id: '197', name: 'Tempeh | Lupine | Natur', detail: '200 g', unit: '200 g', price: '3,37 €', cat: 'neu', isNew: true },
+  { seq: 172, id: '197', name: 'Tempeh | Lupine | Natur', detail: '200 g', unit: '200 g', price: '3,60 €', cat: 'neu', isNew: true },
   { seq: 173, id: '209', name: 'Tempeh | Lupine | natur [tiefgekühlt]', detail: '500 g', unit: '500 g', price: '6,52 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 174, id: '198', name: 'Tempeh | Lupine | Vurst', detail: '220 g', unit: '220 g', price: '4,16 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 175, id: '199', name: 'Tempeh | Soja | geräuchert', detail: '190 g', unit: '190 g', price: '3,99 €', cat: 'neu', isNew: true, unavailable: true },
@@ -218,7 +218,9 @@ window.KOOPE_PRODUCTS = [
   { seq: 178, id: '389', name: 'Pfandkiste für Mehrweggläser', detail: '', unit: '', price: '1,50 €', cat: 'neu', isNew: true },
   { seq: 179, id: '340', name: 'Konserven, Apfelmus, ungesüßt (DE)', detail: '500 g', unit: '500 g', price: '2,30 €', cat: 'konserven', isNew: true },
   { seq: 180, id: '390', name: 'Tampons, Größe "normal"', detail: '16er-Pack', unit: '16er-Pack', price: '2,48 €', cat: 'neu', isNew: true },
-  { seq: 181, id: '196', name: 'Tempeh | Lupine | Curry', detail: '230 g', unit: '230 g', price: '3,60 €', cat: 'neu', isNew: true },
-  { seq: 182, id: '206', name: 'Tempeh | Lupine | mediterran', detail: '230 g', unit: '230 g', price: '3,60 €', cat: 'neu', isNew: true },
-  { seq: 183, id: '200', name: 'Tempeh | Soja | in Bulgogi', detail: '210 g', unit: '210 g', price: '3,48 €', cat: 'neu', isNew: true },
+  { seq: 181, id: '196', name: 'Tempeh | Lupine | Curry', detail: '230 g', unit: '230 g', price: '3,60 €', cat: 'neu', isNew: true, unavailable: true },
+  { seq: 182, id: '206', name: 'Tempeh | Lupine | mediterran', detail: '230 g', unit: '230 g', price: '3,93 €', cat: 'neu', isNew: true },
+  { seq: 183, id: '200', name: 'Tempeh | Soja | in Bulgogi', detail: '210 g', unit: '210 g', price: '3,48 €', cat: 'neu', isNew: true, unavailable: true },
+  { seq: 184, id: '392', name: 'Eis, Himbeer-Sorbet vegan', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true },
+  { seq: 185, id: '393', name: 'Tempeh | Lupine | Bulgogi', detail: '225 g', unit: '225 g', price: '3,93 €', cat: 'neu', isNew: true },
 ];
