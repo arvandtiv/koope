@@ -1,8 +1,8 @@
-// Koope catalog — 185 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 187 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '21.08.2026';
+window.KOOPE_UPDATED = '23.08.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -10,7 +10,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'milch', title: 'Milk Alternatives', ids: [13,14,15] },
   { badge: 'kaffee', title: 'Coffee & Espresso', ids: [16,17,18] },
   { badge: 'tee', title: 'Tea', ids: [19,20,21,22,23,24] },
-  { badge: 'nudeln', title: 'Pasta & Noodles', ids: [25,26,27,28,155,156,157] },
+  { badge: 'nudeln', title: 'Pasta & Noodles', ids: [25,26,27,28,155,156,157,186,187] },
   { badge: 'getreide', title: 'Grains & Flour', ids: [29,30,31,32,33,34,35,36,37,38,152,162] },
   { badge: 'muesli', title: 'Muesli & Flakes', ids: [39,40,41] },
   { badge: 'reis', title: 'Rice & Legumes', ids: [42,43,44,45,46,47,48,49,50,163,164] },
@@ -107,7 +107,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 67, id: '351', name: 'Tofu küsst Wirsing (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
   { seq: 68, id: '226', name: 'Hummus, goldbäckener (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
   { seq: 69, id: '84', name: 'Grüne Linse & rote Tomate (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
-  { seq: 70, id: '83', name: 'Purpurrote Königin – Rote Beete (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
+  { seq: 70, id: '83', name: 'Purpurrote Königin – Rote Beete (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche', unavailable: true },
   { seq: 71, id: '157', name: 'Sommertomate & Hanf (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
   { seq: 72, id: '86', name: 'Zucchini Lupini (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
   { seq: 73, id: '87', name: 'Confit Burgunder-Zwiebel (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '3,37 €', cat: 'aufstriche' },
@@ -213,7 +213,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 173, id: '209', name: 'Tempeh | Lupine | natur [tiefgekühlt]', detail: '500 g', unit: '500 g', price: '6,52 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 174, id: '198', name: 'Tempeh | Lupine | Vurst', detail: '220 g', unit: '220 g', price: '4,16 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 175, id: '199', name: 'Tempeh | Soja | geräuchert', detail: '190 g', unit: '190 g', price: '3,99 €', cat: 'neu', isNew: true, unavailable: true },
-  { seq: 176, id: '388', name: 'Eis vegan Haselnuss', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true },
+  { seq: 176, id: '388', name: 'Eis vegan Haselnuss', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true, unavailable: true },
   { seq: 177, id: '53', name: 'Öl, Rapsöl (DE)', detail: 'kg, ca. 1 kg', unit: 'kg', price: '5,65 €/kg', cat: 'oele', isNew: true },
   { seq: 178, id: '389', name: 'Pfandkiste für Mehrweggläser', detail: '', unit: '', price: '1,50 €', cat: 'neu', isNew: true },
   { seq: 179, id: '340', name: 'Konserven, Apfelmus, ungesüßt (DE)', detail: '500 g', unit: '500 g', price: '2,30 €', cat: 'konserven', isNew: true },
@@ -223,4 +223,6 @@ window.KOOPE_PRODUCTS = [
   { seq: 183, id: '200', name: 'Tempeh | Soja | in Bulgogi', detail: '210 g', unit: '210 g', price: '3,48 €', cat: 'neu', isNew: true, unavailable: true },
   { seq: 184, id: '392', name: 'Eis, Himbeer-Sorbet vegan', detail: '160 g', unit: '160 g', price: '2,07 €', cat: 'eis', isNew: true },
   { seq: 185, id: '393', name: 'Tempeh | Lupine | Bulgogi', detail: '225 g', unit: '225 g', price: '3,93 €', cat: 'neu', isNew: true },
+  { seq: 186, id: '394', name: 'Nudeln, Spirelli Dinkel, hell (DE)', detail: 'ca. 1 kg', unit: 'kg', price: '4,65 €/kg', cat: 'nudeln', isNew: true },
+  { seq: 187, id: '395', name: 'Nudeln, Spirelli Dinkel-Vollkorn (DE)', detail: 'ca. 1 kg', unit: 'kg', price: '4,65 €/kg', cat: 'nudeln', isNew: true },
 ];
