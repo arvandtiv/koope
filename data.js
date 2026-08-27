@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '26.08.2026';
+window.KOOPE_UPDATED = '27.08.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -110,7 +110,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 70, id: '83', name: 'Purpurrote Königin – Rote Beete (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche', unavailable: true },
   { seq: 71, id: '157', name: 'Sommertomate & Hanf (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
   { seq: 72, id: '86', name: 'Zucchini Lupini (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
-  { seq: 73, id: '87', name: 'Confit Burgunder-Zwiebel (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '3,37 €', cat: 'aufstriche' },
+  { seq: 73, id: '87', name: 'Confit Burgunder-Zwiebel (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '3,37 €', cat: 'aufstriche', unavailable: true },
   { seq: 74, id: '88', name: 'Confit Riesling-Zwiebel (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '3,37 €', cat: 'aufstriche' },
   { seq: 75, id: '246', name: 'Senf, süß & halbkörnig (Leipspeis)', detail: '150 ml Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
   { seq: 76, id: '371', name: 'Mirabelle, gelb (Rosenberg Delikatessen)', detail: '160 g Glas', unit: 'Glas', price: '3,54 €', cat: 'frucht' },
