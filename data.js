@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '27.08.2026';
+window.KOOPE_UPDATED = '28.08.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -152,7 +152,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 112, id: '235', name: 'Thymian (Griechenland)', detail: 'nach Gewicht', unit: 'kg', price: '45,55 €/kg', cat: 'kraeuter' },
   { seq: 113, id: '337', name: 'Apfelchips (Tarabao, Polen)', detail: 'nach Gewicht', unit: 'kg', price: '22,36 €/kg', cat: 'trocken' },
   { seq: 114, id: '275', name: 'Aprikosen, ungeschwefelt (Türkei)', detail: 'nach Gewicht', unit: 'kg', price: '15,29 €/kg', cat: 'trocken' },
-  { seq: 115, id: '43', name: 'Datteln Deglet Nour (Tunesien)', detail: 'nach Gewicht', unit: 'kg', price: '7,77 €/kg', cat: 'trocken' },
+  { seq: 115, id: '43', name: 'Datteln Deglet Nour (Tunesien)', detail: 'nach Gewicht', unit: 'kg', price: '7,77 €/kg', cat: 'trocken', unavailable: true },
   { seq: 116, id: '159', name: 'Feigen (Messenien, GR)', detail: 'nach Gewicht', unit: 'kg', price: '12,36 €/kg', cat: 'trocken' },
   { seq: 117, id: '369', name: 'Heidelbeeren, gefriergetrocknet (Tarabao, Chile)', detail: 'nach Gewicht', unit: 'kg', price: '77,52 €/kg', cat: 'trocken' },
   { seq: 118, id: '162', name: 'Maulbeeren (Tarabao, Türkei)', detail: 'nach Gewicht', unit: 'kg', price: '14,49 €/kg', cat: 'trocken' },
