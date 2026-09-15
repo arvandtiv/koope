@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '14.09.2026';
+window.KOOPE_UPDATED = '15.09.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -172,7 +172,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 132, id: '182', name: 'Seife, Wolkensteiner Thermalwasser (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
   { seq: 133, id: '284', name: 'Schneestern Seife Körper & Hände (KOJE)', detail: '90 g', unit: 'Stk', price: '4,75 €', cat: 'koerperpflege', unavailable: true },
   { seq: 134, id: '143', name: 'Allesreiniger', detail: 'nach Gewicht', unit: 'kg', price: '2,85 €/kg', cat: 'reinigung' },
-  { seq: 135, id: '35', name: 'Geschirrspülmittel', detail: 'nach Gewicht', unit: 'kg', price: '2,71 €/kg', cat: 'reinigung' },
+  { seq: 135, id: '35', name: 'Geschirrspülmittel', detail: 'nach Gewicht', unit: 'kg', price: '2,19 €/kg', cat: 'reinigung' },
   { seq: 136, id: '144', name: 'Glasreiniger', detail: 'nach Gewicht', unit: 'kg', price: '2,44 €/kg', cat: 'reinigung' },
   { seq: 137, id: '365', name: 'Handseife Citrus', detail: 'nach Gewicht', unit: 'kg', price: '6,20 €/kg', cat: 'reinigung' },
   { seq: 138, id: '41', name: 'Handseife Rosmarin', detail: 'nach Gewicht', unit: 'kg', price: '6,39 €/kg', cat: 'reinigung' },
