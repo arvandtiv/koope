@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '17.09.2026';
+window.KOOPE_UPDATED = '19.09.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -45,8 +45,8 @@ window.KOOPE_PRODUCTS = [
   { seq: 5, id: '268', name: 'Kolla Cola – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '1,76 €', cat: 'getraenke' },
   { seq: 6, id: '264', name: 'Kolle Mate – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,02 €', cat: 'getraenke' },
   { seq: 7, id: '263', name: 'Lipz Rhabarber', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,40 €', cat: 'getraenke' },
-  { seq: 8, id: '262', name: 'Lipz Schwarze Johannisbeere', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,40 €', cat: 'getraenke' },
-  { seq: 9, id: '261', name: 'Quipz (Quitte-Apfel-Schorle)', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,31 €', cat: 'getraenke' },
+  { seq: 8, id: '262', name: 'Lipz Schwarze Johannisbeere', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,16 €', cat: 'getraenke' },
+  { seq: 9, id: '261', name: 'Quipz (Quitte-Apfel-Schorle)', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,00 €', cat: 'getraenke' },
   { seq: 10, id: '265', name: 'Zotrine (Zitronenlimonade) – zickzack', detail: '0,5 L + 0,15 € Pfand', unit: 'Fl', price: '2,02 €', cat: 'getraenke' },
   { seq: 11, id: '97', name: 'Fink Pils (Thüringen)', detail: '0,33 L + 0,08 € Pfand', unit: 'Fl', price: '1,29 €', cat: 'bier' },
   { seq: 12, id: '248', name: 'Fink, alkoholfrei (Thüringen)', detail: '0,33 L + 0,08 € Pfand', unit: 'Fl', price: '1,07 €', cat: 'bier' },
