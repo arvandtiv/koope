@@ -1,8 +1,8 @@
-// Koope catalog — 187 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 188 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '23.09.2026';
+window.KOOPE_UPDATED = '26.09.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -15,7 +15,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'muesli', title: 'Muesli & Flakes', ids: [39,40,41] },
   { badge: 'reis', title: 'Rice & Legumes', ids: [42,43,44,45,46,47,48,49,50,163,164] },
   { badge: 'nuesse', title: 'Nuts & Seeds', ids: [51,52,53,54,55,56,57,58,59,60] },
-  { badge: 'nussmus', title: 'Nut Butter', ids: [61,62,63,64,65,66,158] },
+  { badge: 'nussmus', title: 'Nut Butter', ids: [61,62,63,64,65,66,158,188] },
   { badge: 'aufstriche', title: 'Savory Spreads', ids: [67,68,69,70,71,72,73,74,75,159,160,161] },
   { badge: 'frucht', title: 'Fruit Spreads', ids: [76,77,78] },
   { badge: 'fertig', title: 'Ready Meals', ids: [79,80] },
@@ -225,4 +225,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 185, id: '393', name: 'Tempeh | Lupine | Bulgogi', detail: '225 g', unit: '225 g', price: '3,93 €', cat: 'neu', isNew: true },
   { seq: 186, id: '394', name: 'Nudeln, Spirelli Dinkel, hell (DE)', detail: 'ca. 1 kg', unit: 'kg', price: '4,65 €/kg', cat: 'nudeln', isNew: true },
   { seq: 187, id: '395', name: 'Nudeln, Spirelli Dinkel-Vollkorn (DE)', detail: 'ca. 1 kg', unit: 'kg', price: '4,65 €/kg', cat: 'nudeln', isNew: true },
+  { seq: 188, id: '339', name: 'Nussmus, Cashewmus, geröstet (BF, CI / DE)', detail: '500 g', unit: '500 g', price: '9,84 €', cat: 'nussmus', isNew: true },
 ];
