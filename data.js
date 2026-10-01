@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '30.09.2026';
+window.KOOPE_UPDATED = '01.10.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -93,7 +93,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 53, id: '181', name: 'Sonnenblumenkerne (Riesernuss, DE–Bayern, Bioland)', detail: 'nach Gewicht', unit: 'kg', price: '3,77 €/kg', cat: 'nuesse' },
   { seq: 54, id: '180', name: 'Haselnusskerne (Riesernuss, Bayern)', detail: 'nach Gewicht', unit: 'kg', price: '20,31 €/kg', cat: 'nuesse' },
   { seq: 55, id: '133', name: 'Mandeln, ganz (Tarabao, Spanien)', detail: 'nach Gewicht', unit: 'kg', price: '15,06 €/kg', cat: 'nuesse' },
-  { seq: 56, id: '355', name: 'Walnusskerne, Bruch (Riesernuss, Frankreich/Périgord)', detail: 'nach Gewicht', unit: 'kg', price: '14,51 €/kg', cat: 'nuesse' },
+  { seq: 56, id: '355', name: 'Walnusskerne, Bruch (Riesernuss, Frankreich/Périgord)', detail: 'nach Gewicht', unit: 'kg', price: '13,86 €/kg', cat: 'nuesse' },
   { seq: 57, id: '134', name: 'Walnusskerne, B-Ware ⚠️ Bitte erhitzen! (Tarabao, Ungarn, −10 %)', detail: 'nach Gewicht', unit: 'kg', price: '13,04 €/kg', cat: 'nuesse' },
   { seq: 58, id: '154', name: 'Cashew, Bruch (Tarabao, Burkina Faso)', detail: 'nach Gewicht', unit: 'kg', price: '10,00 €/kg', cat: 'nuesse' },
   { seq: 59, id: '243', name: 'Cashews, Tamari-Sesam (Tarabao, Burkina Faso/Uganda)', detail: 'nach Gewicht', unit: 'kg', price: '20,11 €/kg', cat: 'nuesse' },
