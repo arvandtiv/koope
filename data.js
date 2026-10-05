@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '04.10.2026';
+window.KOOPE_UPDATED = '05.10.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -97,7 +97,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 57, id: '134', name: 'Walnusskerne, B-Ware ⚠️ Bitte erhitzen! (Tarabao, Ungarn, −10 %)', detail: 'nach Gewicht', unit: 'kg', price: '13,04 €/kg', cat: 'nuesse' },
   { seq: 58, id: '154', name: 'Cashew, Bruch (Tarabao, Burkina Faso)', detail: 'nach Gewicht', unit: 'kg', price: '10,00 €/kg', cat: 'nuesse' },
   { seq: 59, id: '243', name: 'Cashews, Tamari-Sesam (Tarabao, Burkina Faso/Uganda)', detail: 'nach Gewicht', unit: 'kg', price: '20,11 €/kg', cat: 'nuesse' },
-  { seq: 60, id: '242', name: 'Erdnüsse, gesalzen (Tarabao, Burkina Faso)', detail: 'nach Gewicht', unit: 'kg', price: '10,56 €/kg', cat: 'nuesse' },
+  { seq: 60, id: '242', name: 'Erdnüsse, gesalzen (Tarabao, Burkina Faso)', detail: 'nach Gewicht', unit: 'kg', price: '10,56 €/kg', cat: 'nuesse', unavailable: true },
   { seq: 61, id: '106', name: 'Erdnussmus Monki', detail: '650 g Glas', unit: 'Glas', price: '6,46 €', cat: 'nussmus' },
   { seq: 62, id: '70', name: 'Erdnussmus Terrasana, crunchy', detail: '500 g Glas', unit: 'Glas', price: '5,44 €', cat: 'nussmus' },
   { seq: 63, id: '252', name: 'Mandelmus braun, Terrasana', detail: '250 g Glas', unit: 'Glas', price: '4,98 €', cat: 'nussmus' },
@@ -159,7 +159,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 119, id: '165', name: 'Pflaumen, entsteint (Tarabao, Bulgarien)', detail: 'nach Gewicht', unit: 'kg', price: '10,00 €/kg', cat: 'trocken' },
   { seq: 120, id: '55', name: 'Sultaninen (Türkei)', detail: 'nach Gewicht', unit: 'kg', price: '7,90 €/kg', cat: 'trocken' },
   { seq: 121, id: '160', name: 'Kalamon-Oliven (Messenien, GR)', detail: 'nach Gewicht', unit: 'kg', price: '14,98 €/kg', cat: 'oliven' },
-  { seq: 122, id: '251', name: 'Choco Knuspies Dunkel – Kichererbsen (Hülsenreich)', detail: 'nach Gewicht', unit: 'kg', price: '22,47 €/kg', cat: 'schoko' },
+  { seq: 122, id: '251', name: 'Choco Knuspies Dunkel – Kichererbsen (Hülsenreich)', detail: 'nach Gewicht', unit: 'kg', price: '22,47 €/kg', cat: 'schoko', unavailable: true },
   { seq: 123, id: '348', name: 'Kakaopulver (Nusskauf, Peru/DR)', detail: 'nach Gewicht', unit: 'kg', price: '24,14 €/kg', cat: 'schoko' },
   { seq: 124, id: '245', name: 'Schokolade, Himbeeren in Zartbitter (Tarabao, Ghana)', detail: 'nach Gewicht', unit: 'kg', price: '32,47 €/kg', cat: 'schoko' },
   { seq: 125, id: '244', name: 'Schokolade, Zartbitter Kakaosplitter 70% (Tarabao, Ghana)', detail: 'nach Gewicht', unit: 'kg', price: '22,36 €/kg', cat: 'schoko' },
