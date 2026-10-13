@@ -1,8 +1,8 @@
-// Koope catalog — 188 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 191 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '12.10.2026';
+window.KOOPE_UPDATED = '13.10.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -14,7 +14,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'getreide', title: 'Grains & Flour', ids: [29,30,31,32,33,34,35,36,37,38,152,162] },
   { badge: 'muesli', title: 'Muesli & Flakes', ids: [39,40,41] },
   { badge: 'reis', title: 'Rice & Legumes', ids: [42,43,44,45,46,47,48,49,50,163,164] },
-  { badge: 'nuesse', title: 'Nuts & Seeds', ids: [51,52,53,54,55,56,57,58,59,60] },
+  { badge: 'nuesse', title: 'Nuts & Seeds', ids: [51,52,53,54,55,56,57,58,59,60,189,190] },
   { badge: 'nussmus', title: 'Nut Butter', ids: [61,62,63,64,65,66,158,188] },
   { badge: 'aufstriche', title: 'Savory Spreads', ids: [67,68,69,70,71,72,73,74,75,159,160,161] },
   { badge: 'frucht', title: 'Fruit Spreads', ids: [76,77,78] },
@@ -34,7 +34,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
-  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180,181,182,183,185] },
+  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180,181,182,183,185,191] },
 ];
 
 window.KOOPE_PRODUCTS = [
@@ -83,7 +83,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 43, id: '107', name: 'Weiße Bohnen (CN)', detail: 'nach Gewicht', unit: 'kg', price: '4,58 €/kg', cat: 'reis' },
   { seq: 44, id: '128', name: 'Schwarze Bohnen (Tarabao, AT)', detail: 'nach Gewicht', unit: 'kg', price: '6,63 €/kg', cat: 'reis' },
   { seq: 45, id: '37', name: 'Braune Linsen (IT)', detail: 'nach Gewicht', unit: 'kg', price: '3,17 €/kg', cat: 'reis', unavailable: true },
-  { seq: 46, id: '136', name: 'Grüne Linsen, Du-Puy-Art (Tarabao, DE–Hessen)', detail: 'nach Gewicht', unit: 'kg', price: '5,50 €/kg', cat: 'reis' },
+  { seq: 46, id: '136', name: 'Grüne Linsen, Du-Puy-Art (Tarabao, DE–Hessen)', detail: 'nach Gewicht', unit: 'kg', price: '5,84 €/kg', cat: 'reis' },
   { seq: 47, id: '155', name: 'Rote Linsen (Tarabao, TR)', detail: 'nach Gewicht', unit: 'kg', price: '4,38 €/kg', cat: 'reis' },
   { seq: 48, id: '116', name: 'Kichererbsen (Jonas Schulze Niehoff, DE–Sachsen-Anhalt)', detail: 'nach Gewicht', unit: 'kg', price: '3,87 €/kg', cat: 'reis' },
   { seq: 49, id: '175', name: 'Sojaschnetzel, grob (Sobo, DE/EU)', detail: 'nach Gewicht', unit: 'kg', price: '8,53 €/kg', cat: 'reis' },
@@ -105,7 +105,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 65, id: '124', name: 'Tahin dark, Terrasana (Uganda)', detail: '500 g Glas', unit: 'Glas', price: '6,47 €', cat: 'nussmus' },
   { seq: 66, id: '366', name: 'Tahin weiß, Terrasana (Bolivien/Uganda)', detail: '500 g Glas', unit: 'Glas', price: '6,80 €', cat: 'nussmus' },
   { seq: 67, id: '351', name: 'Tofu küsst Wirsing (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
-  { seq: 68, id: '226', name: 'Hummus, goldbäckener (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
+  { seq: 68, id: '226', name: 'Hummus, goldbäckener (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche', unavailable: true },
   { seq: 69, id: '84', name: 'Grüne Linse & rote Tomate (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
   { seq: 70, id: '83', name: 'Purpurrote Königin – Rote Beete (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche', unavailable: true },
   { seq: 71, id: '157', name: 'Sommertomate & Hanf (Leipspeis)', detail: '140 g Glas', unit: 'Glas', price: '2,81 €', cat: 'aufstriche' },
@@ -194,7 +194,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 154, id: '44', name: 'Gemüsebrühe, hefefrei (Erntesegen, CH)', detail: 'ca. 1 kg', unit: 'kg', price: '10,70 €/kg', cat: 'bruehe', isNew: true },
   { seq: 155, id: '74', name: 'Nudeln, Farfalle semola klein (IT)', detail: '1 kg, ca. 1 kg', unit: 'kg', price: '3,12 €/kg', cat: 'nudeln', isNew: true },
   { seq: 156, id: '51', name: 'Nudeln, Spaghetti (IT)', detail: '1 kg, ca. 1 kg', unit: 'kg', price: '3,02 €/kg', cat: 'nudeln', isNew: true },
-  { seq: 157, id: '75', name: 'Nudeln, Spirelli Vollkorn (IT)', detail: '1 kg, ca. 1 kg', unit: 'kg', price: '3,02 €/kg', cat: 'nudeln', isNew: true },
+  { seq: 157, id: '75', name: 'Nudeln, Spirelli Vollkorn (IT)', detail: '1 kg, ca. 1 kg', unit: 'kg', price: '3,02 €/kg', cat: 'nudeln', isNew: true, unavailable: true },
   { seq: 158, id: '373', name: 'Nussmus, Monki-Tahin (NL / BO/UG)', detail: '650 g', unit: '650 g', price: '8,11 €', cat: 'nussmus', isNew: true },
   { seq: 159, id: '276', name: 'Pesto Olive (bioverde, DE)', detail: '125 ml', unit: '125 ml', price: '2,90 €', cat: 'aufstriche', isNew: true },
   { seq: 160, id: '376', name: 'Pesto rosso (La Selva, IT)', detail: '130 g', unit: '130 g', price: '2,52 €', cat: 'aufstriche', isNew: true },
@@ -226,4 +226,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 186, id: '394', name: 'Nudeln, Spirelli Dinkel, hell (DE)', detail: 'ca. 1 kg', unit: 'kg', price: '4,65 €/kg', cat: 'nudeln', isNew: true },
   { seq: 187, id: '395', name: 'Nudeln, Spirelli Dinkel-Vollkorn (DE)', detail: 'ca. 1 kg', unit: 'kg', price: '4,65 €/kg', cat: 'nudeln', isNew: true },
   { seq: 188, id: '339', name: 'Nussmus, Cashewmus, geröstet (BF, CI / DE)', detail: '500 g', unit: '500 g', price: '9,84 €', cat: 'nussmus', isNew: true },
+  { seq: 189, id: '271', name: 'Nüsse, gebrannte Mandeln mit Zucker & Zimt (ES)', detail: '5,5, ca. 1 kg', unit: 'kg', price: '22,36 €/kg', cat: 'nuesse', isNew: true },
+  { seq: 190, id: '272', name: 'Nüsse, Haselnüsse mit Zartbitterschokolade (HR/GHA)', detail: '6, ca. 1 kg', unit: 'kg', price: '24,60 €/kg', cat: 'nuesse', isNew: true },
+  { seq: 191, id: '273', name: 'Ravellis, gebrannte Kürbiskerne Vanille & Zimt (AT)', detail: '4, ca. 1 kg', unit: 'kg', price: '22,36 €/kg', cat: 'neu', isNew: true },
 ];
