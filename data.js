@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '13.10.2026';
+window.KOOPE_UPDATED = '14.10.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -124,7 +124,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 84, id: '177', name: 'Tofu geräuchert – Sesam-Soja', detail: 'ca. 200 g', unit: 'Stk', price: '3,37 €', cat: 'tofu' },
   { seq: 85, id: '344', name: 'Tomaten Passata (Ecoterra, IT)', detail: '500 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '2,30 €', cat: 'konserven' },
   { seq: 86, id: '346', name: 'Tomatenmark (Ecoterra, IT)', detail: '270 g Mehrwegglas + 0,15 € Pfand', unit: 'Glas', price: '2,80 €', cat: 'konserven' },
-  { seq: 87, id: '259', name: 'Bratöl Sonnenblumenkernöl (Teutoburger Ölmühle)', detail: '10 L · ca. 5,03 € / L · nach Gewicht', unit: 'kg', price: '5,46 €/kg', cat: 'oele' },
+  { seq: 87, id: '259', name: 'Bratöl Sonnenblumenkernöl (Teutoburger Ölmühle)', detail: '10 L · ca. 5,03 € / L · nach Gewicht', unit: 'kg', price: '6,13 €/kg', cat: 'oele' },
   { seq: 88, id: '193', name: 'Olivenöl (Griechenland, 5-L-Kanister)', detail: 'ca. 15,52 € / L · nach Gewicht', unit: 'kg', price: '17,98 €/kg', cat: 'oele' },
   { seq: 89, id: '361', name: 'Rapsöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,61 €/kg', cat: 'oele', unavailable: true },
   { seq: 90, id: '184', name: 'Sonnenblumenöl (Ölmühle Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '7,94 €/kg', cat: 'oele' },
