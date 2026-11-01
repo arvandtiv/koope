@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '31.10.2026';
+window.KOOPE_UPDATED = '01.11.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -73,7 +73,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 33, id: '113', name: 'Hirse (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '3,09 €/kg', cat: 'getreide' },
   { seq: 34, id: '363', name: 'Quinoa, Vollkorn (Mudda Natur, DE)', detail: 'nach Gewicht', unit: 'kg', price: '7,86 €/kg', cat: 'getreide' },
   { seq: 35, id: '187', name: 'Hafer, Korn – ganzes Korn (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '1,76 €/kg', cat: 'getreide' },
-  { seq: 36, id: '62', name: 'Haferflocken, fein (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '2,20 €/kg', cat: 'getreide' },
+  { seq: 36, id: '62', name: 'Haferflocken, fein (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '2,04 €/kg', cat: 'getreide' },
   { seq: 37, id: '274', name: 'Polenta (B-Ware, −10 %)', detail: 'nach Gewicht', unit: 'kg', price: '2,56 €/kg', cat: 'getreide' },
   { seq: 38, id: '167', name: 'Hefeflocken (Kamelur)', detail: 'nach Gewicht', unit: 'kg', price: '33,60 €/kg', cat: 'getreide' },
   { seq: 39, id: '69', name: 'Müsli, 4-Kornflocken Bioland (Hafer, Gerste, Weizen, Roggen)', detail: 'nach Gewicht', unit: 'kg', price: '2,61 €/kg', cat: 'muesli' },
@@ -182,7 +182,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 142, id: '33', name: 'Waschmittel Pulver', detail: 'nach Gewicht', unit: 'kg', price: '3,69 €/kg', cat: 'reinigung' },
   { seq: 143, id: '34', name: 'WC-Reiniger Zeder-Citronella', detail: 'nach Gewicht', unit: 'kg', price: '3,54 €/kg', cat: 'reinigung' },
   { seq: 144, id: '277', name: 'Waschsoda', detail: 'nach Gewicht', unit: 'kg', price: '0,49 €/kg', cat: 'reinigung' },
-  { seq: 145, id: '93', name: 'Klopapier (Goldeimer, 100 % Recycling)', detail: '8 Rollen · Blauer Engel', unit: 'Pack', price: '4,94 €', cat: 'nonfood' },
+  { seq: 145, id: '93', name: 'Klopapier (Goldeimer, 100 % Recycling)', detail: '8 Rollen · Blauer Engel', unit: 'Pack', price: '4,71 €', cat: 'nonfood' },
   { seq: 146, id: '357', name: 'Stumpenkerze bunt (Biokema, Thüringen)', detail: '60×55 mm', unit: 'Stk', price: '2,14 €', cat: 'nonfood' },
   { seq: 147, id: '358', name: 'Stumpenkerze weiß (Biokema, Thüringen)', detail: '60×120 mm', unit: 'Stk', price: '2,97 €', cat: 'nonfood' },
   { seq: 148, id: '360', name: 'Stabkerze bunt (Lichtbringer, Sachsen-Anhalt, Rapswachs)', detail: '2×20,5 cm', unit: 'Stk', price: '1,96 €', cat: 'nonfood' },
