@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '03.11.2026';
+window.KOOPE_UPDATED = '04.11.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -178,9 +178,9 @@ window.KOOPE_PRODUCTS = [
   { seq: 138, id: '41', name: 'Handseife Rosmarin', detail: 'nach Gewicht', unit: 'kg', price: '6,39 €/kg', cat: 'reinigung' },
   { seq: 139, id: '36', name: 'Maschinenspülmittel', detail: 'nach Gewicht', unit: 'kg', price: '3,65 €/kg', cat: 'reinigung' },
   { seq: 140, id: '77', name: 'Waschmittel flüssig, Lavendel', detail: 'nach Gewicht', unit: 'kg', price: '2,70 €/kg', cat: 'reinigung' },
-  { seq: 141, id: '253', name: 'Waschmittel Olive (Wolle & Seide)', detail: 'nach Gewicht', unit: 'kg', price: '4,24 €/kg', cat: 'reinigung' },
+  { seq: 141, id: '253', name: 'Waschmittel Olive (Wolle & Seide)', detail: 'nach Gewicht', unit: 'kg', price: '7,06 €/kg', cat: 'reinigung' },
   { seq: 142, id: '33', name: 'Waschmittel Pulver', detail: 'nach Gewicht', unit: 'kg', price: '3,69 €/kg', cat: 'reinigung' },
-  { seq: 143, id: '34', name: 'WC-Reiniger Zeder-Citronella', detail: 'nach Gewicht', unit: 'kg', price: '3,54 €/kg', cat: 'reinigung' },
+  { seq: 143, id: '34', name: 'WC-Reiniger Zeder-Citronella', detail: 'nach Gewicht', unit: 'kg', price: '2,61 €', cat: 'reinigung' },
   { seq: 144, id: '277', name: 'Waschsoda', detail: 'nach Gewicht', unit: 'kg', price: '0,49 €/kg', cat: 'reinigung' },
   { seq: 145, id: '93', name: 'Klopapier (Goldeimer, 100 % Recycling)', detail: '8 Rollen · Blauer Engel', unit: 'Pack', price: '4,71 €', cat: 'nonfood' },
   { seq: 146, id: '357', name: 'Stumpenkerze bunt (Biokema, Thüringen)', detail: '60×55 mm', unit: 'Stk', price: '2,14 €', cat: 'nonfood' },
