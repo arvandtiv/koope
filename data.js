@@ -1,8 +1,8 @@
-// Koope catalog — 191 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 192 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '07.11.2026';
+window.KOOPE_UPDATED = '08.11.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -31,7 +31,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'oliven', title: 'Oliven', ids: [121] },
   { badge: 'schoko', title: 'Chocolate & Sweets', ids: [122,123,124,125] },
   { badge: 'eis', title: 'Ice Cream & Sorbet', ids: [126,127,176,184] },
-  { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133] },
+  { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133,192] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
   { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180,181,182,183,185,191] },
@@ -165,11 +165,11 @@ window.KOOPE_PRODUCTS = [
   { seq: 125, id: '244', name: 'Schokolade, Zartbitter Kakaosplitter 70% (Tarabao, Ghana)', detail: 'nach Gewicht', unit: 'kg', price: '22,36 €/kg', cat: 'schoko' },
   { seq: 126, id: '381', name: 'Sorbet Schwarze Johannisbeere (Quietzsch)', detail: '110 ml', unit: 'Stk', price: '2,25 €', cat: 'eis' },
   { seq: 127, id: '380', name: 'Sorbet Zitrone (Quietzsch, Sizilien)', detail: '110 ml', unit: 'Stk', price: '2,25 €', cat: 'eis' },
-  { seq: 128, id: '139', name: 'Seife, Lavaerde Lavendel (KOJE, DE-Lpz)', detail: '50 g · palmöl- & plastikfrei', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
+  { seq: 128, id: '139', name: 'Seife, Lavaerde Lavendel (KOJE, DE-Lpz)', detail: '50 g · palmöl- & plastikfrei', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege', unavailable: true },
   { seq: 129, id: '91', name: 'Seife, Weiße Tonerde Brombeer + Lavendel (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
   { seq: 130, id: '90', name: 'Seife, Soleseife Mohn & Rose (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
-  { seq: 131, id: '81', name: 'Seife, Soleseife Thymian + Limone (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
-  { seq: 132, id: '182', name: 'Seife, Wolkensteiner Thermalwasser (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
+  { seq: 131, id: '81', name: 'Seife, Soleseife Thymian + Limone (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege', unavailable: true },
+  { seq: 132, id: '182', name: 'Seife, Wolkensteiner Thermalwasser (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege', unavailable: true },
   { seq: 133, id: '284', name: 'Schneestern Seife Körper & Hände (KOJE)', detail: '90 g', unit: 'Stk', price: '4,75 €', cat: 'koerperpflege', unavailable: true },
   { seq: 134, id: '143', name: 'Allesreiniger', detail: 'nach Gewicht', unit: 'kg', price: '2,85 €/kg', cat: 'reinigung' },
   { seq: 135, id: '35', name: 'Geschirrspülmittel', detail: 'nach Gewicht', unit: 'kg', price: '2,19 €/kg', cat: 'reinigung' },
@@ -229,4 +229,5 @@ window.KOOPE_PRODUCTS = [
   { seq: 189, id: '271', name: 'Nüsse, gebrannte Mandeln mit Zucker & Zimt (ES)', detail: '5,5, ca. 1 kg', unit: 'kg', price: '22,36 €/kg', cat: 'nuesse', isNew: true },
   { seq: 190, id: '272', name: 'Nüsse, Haselnüsse mit Zartbitterschokolade (HR/GHA)', detail: '6, ca. 1 kg', unit: 'kg', price: '24,60 €/kg', cat: 'nuesse', isNew: true },
   { seq: 191, id: '273', name: 'Ravellis, gebrannte Kürbiskerne Vanille & Zimt (AT)', detail: '4, ca. 1 kg', unit: 'kg', price: '22,36 €/kg', cat: 'neu', isNew: true },
+  { seq: 192, id: '92', name: 'Seife, Haut & Haar, Weiße Tonerde Brombeer + Lavendel (DE-Lpz)', detail: '100g Stück', unit: '100g Stück', price: '4,99 €', cat: 'koerperpflege', isNew: true },
 ];
