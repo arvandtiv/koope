@@ -1,8 +1,8 @@
-// Koope catalog — 192 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 195 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '08.11.2026';
+window.KOOPE_UPDATED = '09.11.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -31,7 +31,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'oliven', title: 'Oliven', ids: [121] },
   { badge: 'schoko', title: 'Chocolate & Sweets', ids: [122,123,124,125] },
   { badge: 'eis', title: 'Ice Cream & Sorbet', ids: [126,127,176,184] },
-  { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133,192] },
+  { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133,192,193,194,195] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
   { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180,181,182,183,185,191] },
@@ -72,8 +72,8 @@ window.KOOPE_PRODUCTS = [
   { seq: 32, id: '283', name: 'Buchweizen (Tarabao, Polen)', detail: 'nach Gewicht', unit: 'kg', price: '4,38 €/kg', cat: 'getreide' },
   { seq: 33, id: '113', name: 'Hirse (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '3,09 €/kg', cat: 'getreide' },
   { seq: 34, id: '363', name: 'Quinoa, Vollkorn (Mudda Natur, DE)', detail: 'nach Gewicht', unit: 'kg', price: '7,86 €/kg', cat: 'getreide' },
-  { seq: 35, id: '187', name: 'Hafer, Korn – ganzes Korn (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '1,76 €/kg', cat: 'getreide' },
-  { seq: 36, id: '62', name: 'Haferflocken, fein (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '2,04 €/kg', cat: 'getreide' },
+  { seq: 35, id: '187', name: 'Hafer, Korn – ganzes Korn (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '1,99 €/kg', cat: 'getreide' },
+  { seq: 36, id: '62', name: 'Haferflocken, fein (Maria Bienert, DE-Leipzig)', detail: 'nach Gewicht', unit: 'kg', price: '2,33 €/kg', cat: 'getreide' },
   { seq: 37, id: '274', name: 'Polenta (B-Ware, −10 %)', detail: 'nach Gewicht', unit: 'kg', price: '2,56 €/kg', cat: 'getreide' },
   { seq: 38, id: '167', name: 'Hefeflocken (Kamelur)', detail: 'nach Gewicht', unit: 'kg', price: '33,60 €/kg', cat: 'getreide' },
   { seq: 39, id: '69', name: 'Müsli, 4-Kornflocken Bioland (Hafer, Gerste, Weizen, Roggen)', detail: 'nach Gewicht', unit: 'kg', price: '2,61 €/kg', cat: 'muesli' },
@@ -229,5 +229,8 @@ window.KOOPE_PRODUCTS = [
   { seq: 189, id: '271', name: 'Nüsse, gebrannte Mandeln mit Zucker & Zimt (ES)', detail: '5,5, ca. 1 kg', unit: 'kg', price: '22,36 €/kg', cat: 'nuesse', isNew: true },
   { seq: 190, id: '272', name: 'Nüsse, Haselnüsse mit Zartbitterschokolade (HR/GHA)', detail: '6, ca. 1 kg', unit: 'kg', price: '24,60 €/kg', cat: 'nuesse', isNew: true },
   { seq: 191, id: '273', name: 'Ravellis, gebrannte Kürbiskerne Vanille & Zimt (AT)', detail: '4, ca. 1 kg', unit: 'kg', price: '22,36 €/kg', cat: 'neu', isNew: true },
-  { seq: 192, id: '92', name: 'Seife, Haut & Haar, Weiße Tonerde Brombeer + Lavendel (DE-Lpz)', detail: '100g Stück', unit: '100g Stück', price: '4,99 €', cat: 'koerperpflege', isNew: true },
+  { seq: 192, id: '92', name: 'Seife, Haut & Haar, Weiße Tonerde Brombeer + Lavendel (DE-Lpz)', detail: '100g Stück', unit: '100g Stück', price: '5,00 €', cat: 'koerperpflege', isNew: true },
+  { seq: 193, id: '397', name: 'Seife, Haut & Haar, LAVAERDE LAVENDEL (DE-Lpz, FR)', detail: '100g', unit: '100g', price: '5,00 €', cat: 'koerperpflege', isNew: true },
+  { seq: 194, id: '396', name: 'Seife, Körper & Hände, Soleseife Thymian+Limone (DE-Lpz)', detail: '100g', unit: '100g', price: '5,00 €', cat: 'koerperpflege', isNew: true },
+  { seq: 195, id: '398', name: 'Seife, Körper & Hände, Wolkensteiner Thermalwasser (DE-Lpz)', detail: '100g', unit: '100g', price: '5,00 €', cat: 'koerperpflege', isNew: true },
 ];
