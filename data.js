@@ -2,7 +2,7 @@
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '09.11.2026';
+window.KOOPE_UPDATED = '10.11.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -169,7 +169,7 @@ window.KOOPE_PRODUCTS = [
   { seq: 129, id: '91', name: 'Seife, Weiße Tonerde Brombeer + Lavendel (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
   { seq: 130, id: '90', name: 'Seife, Soleseife Mohn & Rose (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
   { seq: 131, id: '81', name: 'Seife, Soleseife Thymian + Limone (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege', unavailable: true },
-  { seq: 132, id: '182', name: 'Seife, Wolkensteiner Thermalwasser (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege', unavailable: true },
+  { seq: 132, id: '182', name: 'Seife, Wolkensteiner Thermalwasser (KOJE)', detail: '50 g', unit: 'Stk', price: '2,63 €', cat: 'koerperpflege' },
   { seq: 133, id: '284', name: 'Schneestern Seife Körper & Hände (KOJE)', detail: '90 g', unit: 'Stk', price: '4,75 €', cat: 'koerperpflege', unavailable: true },
   { seq: 134, id: '143', name: 'Allesreiniger', detail: 'nach Gewicht', unit: 'kg', price: '2,85 €/kg', cat: 'reinigung' },
   { seq: 135, id: '35', name: 'Geschirrspülmittel', detail: 'nach Gewicht', unit: 'kg', price: '2,19 €/kg', cat: 'reinigung' },
