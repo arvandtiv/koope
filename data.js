@@ -1,8 +1,8 @@
-// Koope catalog — 195 products, 30 categories. Generated data layer (v2.0).
+// Koope catalog — 200 products, 30 categories. Generated data layer (v2.0).
 // Each product: id = koope catalog #ID (searchable), seq = internal key for Supabase.
 // Auto-synced from shop.koope.de — see scripts/sync-catalog.mjs.
 
-window.KOOPE_UPDATED = '23.11.2026';
+window.KOOPE_UPDATED = '24.11.2026';
 
 window.KOOPE_CATEGORIES = [
   { badge: 'getraenke', title: 'Drinks', ids: [1,2,3,4,5,6,7,8,9,10] },
@@ -34,7 +34,7 @@ window.KOOPE_CATEGORIES = [
   { badge: 'koerperpflege', title: 'Personal Care & Soaps', ids: [128,129,130,131,132,133,192,193,194,195] },
   { badge: 'reinigung', title: 'Cleaning Products (Sonett)', ids: [134,135,136,137,138,139,140,141,142,143,144,166,167,168] },
   { badge: 'nonfood', title: 'Non-Food & Household', ids: [145,146,147,148,149,150,151,171] },
-  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180,181,182,183,185,191] },
+  { badge: 'neu', title: 'Neu / Unsortiert', ids: [172,173,174,175,178,180,181,182,183,185,191,196,197,198,199,200] },
 ];
 
 window.KOOPE_PRODUCTS = [
@@ -233,4 +233,9 @@ window.KOOPE_PRODUCTS = [
   { seq: 193, id: '397', name: 'Seife, Haut & Haar, LAVAERDE LAVENDEL (DE-Lpz, FR)', detail: '100g', unit: '100g', price: '5,00 €', cat: 'koerperpflege', isNew: true },
   { seq: 194, id: '396', name: 'Seife, Körper & Hände, Soleseife Thymian+Limone (DE-Lpz)', detail: '100g', unit: '100g', price: '5,00 €', cat: 'koerperpflege', isNew: true },
   { seq: 195, id: '398', name: 'Seife, Körper & Hände, Wolkensteiner Thermalwasser (DE-Lpz)', detail: '100g', unit: '100g', price: '5,00 €', cat: 'koerperpflege', isNew: true },
+  { seq: 196, id: '322', name: 'Obst, Avocado (Hass oder Bacon), (IT), [BESTELLWARE]', detail: '500g', unit: '500g', price: '4,45 €', cat: 'neu', isNew: true },
+  { seq: 197, id: '315', name: 'Obst, Blutorange (Tarocco) (IT) [BESTELLWARE]', detail: '1kg', unit: '1kg', price: '3,49 €', cat: 'neu', isNew: true },
+  { seq: 198, id: '320', name: 'Obst, Clementinen (IT), [BESTELLWARE]', detail: '1kg', unit: '1kg', price: '4,77 €', cat: 'neu', isNew: true },
+  { seq: 199, id: '308', name: 'Obst, Orangen, Navel (IT) [BESTELLWARE]', detail: 'ca. 1 kg', unit: 'kg', price: '3,49 €/kg', cat: 'neu', isNew: true },
+  { seq: 200, id: '323', name: 'Obst, Zitronen (IT), [Bestellware]', detail: '500g', unit: '500g', price: '2,03 €', cat: 'neu', isNew: true },
 ];
